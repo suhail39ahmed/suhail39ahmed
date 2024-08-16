@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #0073b1;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    margin-top: 40px;
+    font-size: 28px;
+}
+
+.profile-pic {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.contact-info, .about, .experience, .education, .skills, .certifications, .recommendations {
+    margin-bottom: 30px;
+}
+
+.skills ul, .certifications ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills ul li, .certifications ul li {
+    background: #0073b1;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.recommendations blockquote {
+    font-style: italic;
+    background: #f0f0f0;
+    padding: 20px;
+    border-left: 5px solid #0073b1;
+}
+
+.contact-info p, .about p, .experience p, .education p {
+    margin: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #0073b1;
+    color: white;
+    margin-top: 40px;
+}
