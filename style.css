@@ -1,70 +1,149 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
     line-height: 1.6;
-}
-
-.container {
-    max-width: 800px;
-    margin: auto;
-    background: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2 {
-    color: #0073b1;
-}
-
-h1 {
-    font-size: 36px;
+    color: #333;
 }
 
 h2 {
-    margin-top: 40px;
-    font-size: 28px;
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 
-.profile-pic {
-    float: left;
-    margin-right: 20px;
-    border-radius: 50%;
-}
-
-.contact-info, .about, .experience, .education, .skills, .certifications, .recommendations {
-    margin-bottom: 30px;
-}
-
-.skills ul, .certifications ul {
+ul {
     list-style-type: none;
     padding: 0;
 }
 
-.skills ul li, .certifications ul li {
-    background: #0073b1;
-    color: #fff;
-    padding: 10px;
+li {
     margin-bottom: 10px;
-    border-radius: 5px;
 }
 
-.recommendations blockquote {
-    font-style: italic;
-    background: #f0f0f0;
-    padding: 20px;
-    border-left: 5px solid #0073b1;
+p {
+    margin-bottom: 20px;
 }
 
-.contact-info p, .about p, .experience p, .education p {
-    margin: 0;
-}
-
-footer {
+/* Hero Section */
+.hero {
+    background: #f4f4f4;
+    padding: 60px 20px;
     text-align: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Designer Section */
+.designer {
+    padding: 40px 20px;
+}
+
+.designer h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.designer ul li {
+    margin-bottom: 5px;
+}
+
+/* Frontend Developer Section */
+.frontend-developer {
+    background: #f9f9f9;
+    padding: 40px 20px;
+}
+
+.frontend-developer h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Mentor Section */
+.mentor {
+    padding: 40px 20px;
+}
+
+.mentor h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.mentor ul li {
+    margin-bottom: 5px;
+}
+
+/* Recent Work Section */
+.recent-work {
+    background: #f9f9f9;
+    padding: 40px 20px;
+}
+
+.recent-work ul li {
+    margin-bottom: 5px;
+}
+
+/* Startup Projects Section */
+.startup-projects {
+    padding: 40px 20px;
+}
+
+.startup-projects ul li {
+    margin-bottom: 5px;
+}
+
+.startup-projects a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+/* Testimonials Section */
+.testimonials {
+    background: #f9f9f9;
+    padding: 40px 20px;
+}
+
+.testimonials blockquote {
+    border-left: 4px solid #007acc;
+    padding-left: 10px;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+.testimonials cite {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Contact Section */
+.contact {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.contact p {
+    font-size: 1.2em;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
     padding: 20px;
-    background: #0073b1;
-    color: white;
-    margin-top: 40px;
+    text-align: center;
 }
