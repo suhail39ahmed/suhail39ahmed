@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -300,13 +300,9 @@ body {
   animation: fillBar 1.5s ease forwards;
 }
 
-/* ─── Pipeline SVG animation ─── */
+/* ─── Pipeline SVG (lightweight) ─── */
 @keyframes flowDash {
-  to { stroke-dashoffset: -1000; }
-}
-.pipeline-flow {
-  stroke-dasharray: 8 4;
-  animation: flowDash 3s linear infinite;
+  to { stroke-dashoffset: -80; }
 }
 
 /* ─── Blink cursor ─── */

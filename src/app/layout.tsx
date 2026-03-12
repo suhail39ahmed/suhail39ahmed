@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
-import { ScanLine } from "@/components/ScanLine";
 
 export const metadata: Metadata = {
   title: "Suhail Ahmed Inayathulla | Senior DevOps Engineer",
@@ -28,7 +27,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark">
       <body className="antialiased">
-        <ScanLine />
         <Nav />
         <main>{children}</main>
       </body>

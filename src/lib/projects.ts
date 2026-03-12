@@ -290,65 +290,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "vrealize-automation-servicenow",
-    title: "vRealize Automation + ServiceNow",
-    tagline: "vRO + ServiceNow CR automation for VMware era cloud management",
-    description:
-      "Enterprise-grade automation integrating VMware vRealize Orchestrator with ServiceNow for automated change request workflows, VM lifecycle management, and approval gates — managing 1000+ VMs with zero manual intervention.",
-    tech: ["vRealize Automation", "vRealize Orchestrator", "ServiceNow", "JavaScript", "CouchDB", "VMware ESXi"],
-    metrics: ["1000+ VMs managed", "90% reduction in manual tasks", "ITSM-integrated change management", "CMDB auto-updated on VM events"],
-    color: "#39ff14",
-    icon: "🖥️",
-    github: "https://github.com/suhail39ahmed/vrealize-automation-servicenow",
-    featured: false,
-    category: "Automation / VMware",
-    architecture: `graph TB
-  USER[End User Request] --> SNOW[ServiceNow Portal]
-  SNOW --> CR[Change Request Workflow]
-  CR -->|Approved| VRA[vRealize Automation]
-  VRA --> VRO[vRealize Orchestrator]
-  VRO --> ESXI[ESXi Cluster]
-  VRO --> COUCH[CouchDB State Store]
-  ESXI -->|VM Created| VRO
-  VRO -->|Update CMDB| SNOW`,
-    highlights: [
-      "vRO JavaScript workflows for VM provisioning, cloning, decommission",
-      "ServiceNow ITSM integration via REST API for automated CR creation",
-      "CouchDB persistence for workflow state and audit trail",
-      "HA/DRS policy enforcement via vCenter API calls",
-      "Self-service portal reducing ticket queue by 80%",
-    ],
-  },
-  {
-    slug: "legacy-to-cloud-migration-patterns",
-    title: "Legacy-to-Cloud Migration Patterns",
-    tagline: "Accenture-era patterns: discovery, lift-and-shift, re-platform",
-    description:
-      "Comprehensive migration pattern library developed during Accenture consulting engagements — covering application discovery, dependency mapping, wave planning, landing zone setup, and validation frameworks for enterprise cloud migrations.",
-    tech: ["Azure Migrate", "AWS MGN", "Terraform", "Python", "PowerShell", "Azure DevOps"],
-    metrics: ["50+ applications migrated", "90% performance benchmark hit", "Zero data loss migrations", "3 enterprise clients"],
-    color: "#00f5ff",
-    icon: "🚀",
-    github: "https://github.com/suhail39ahmed/legacy-to-cloud-migration-patterns",
-    featured: false,
-    category: "Cloud Migration",
-    architecture: `graph LR
-  DISC[Discovery] --> DEP[Dependency Mapping]
-  DEP --> WAVE[Wave Planning]
-  WAVE --> LZ[Landing Zone Setup]
-  LZ --> PILOT[Pilot Migration]
-  PILOT --> VALIDATE[Validation & Testing]
-  VALIDATE --> WAVE2[Wave N Migration]
-  WAVE2 --> CUTOVER[Production Cutover]`,
-    highlights: [
-      "Azure Migrate and AWS MGN automation scripts for agentless discovery",
-      "Python-based dependency graph generation and wave planning",
-      "Landing zone Terraform templates for secure, compliant baseline",
-      "Pre/post migration validation test suites",
-      "Runbook templates for cutover, rollback, and hypercare phases",
-    ],
-  },
-  {
     slug: "iac-best-practices-monorepo",
     title: "IaC Best Practices Monorepo",
     tagline: "Bicep + Terraform + CloudFormation with security-first patterns",
