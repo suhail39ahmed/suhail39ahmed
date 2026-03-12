@@ -1,0 +1,276 @@
+---
+title: "Production Kubernetes Observability: Prometheus, Grafana, and SLO Engineering"
+date: "2025-08-12"
+slug: "kubernetes-observability-prometheus"
+tags: ["Kubernetes", "Prometheus", "Grafana", "SLO", "Observability", "Helm"]
+excerpt: "How I built a production-grade Kubernetes observability stack with Prometheus Operator, custom SLO alerting, Grafana dashboards, and zero alert fatigue — the exact setup running at Revantage Asia."
+readTime: "13 min"
+---
+
+# Production Kubernetes Observability: Prometheus, Grafana, and SLO Engineering
+
+Alert fatigue kills on-call engineers. After building observability stacks at Revantage Asia for 200+ cloud resources, I've refined a pattern that gives you signal, not noise.
+
+## The Four Golden Signals (Start Here)
+
+Every service gets these four dashboards, no exceptions:
+
+1. **Latency** — p50, p95, p99 request duration
+2. **Traffic** — requests per second (RPS)
+3. **Errors** — 4xx and 5xx error rates
+4. **Saturation** — CPU, memory, connection pool utilization
+
+## Deploying Prometheus Operator via Helm
+
+```bash
+# Add Prometheus community Helm repo
+helm repo add prometheus-community \
+  https://prometheus-community.github.io/helm-charts
+helm repo update
+
+# Install kube-prometheus-stack (includes Grafana, AlertManager)
+helm install monitoring prometheus-community/kube-prometheus-stack \
+  --namespace monitoring \
+  --create-namespace \
+  --values values-monitoring.yaml \
+  --version 55.5.0
+```
+
+```yaml
+# values-monitoring.yaml
+prometheus:
+  prometheusSpec:
+    retention: 30d
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: managed-premium
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 100Gi
+    
+    # Scrape all ServiceMonitors/PodMonitors in cluster
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    
+    resources:
+      requests:
+        cpu: 500m
+        memory: 2Gi
+      limits:
+        cpu: 2000m
+        memory: 8Gi
+
+grafana:
+  adminPassword: "${GRAFANA_ADMIN_PASSWORD}"
+  persistence:
+    enabled: true
+    size: 10Gi
+  
+  grafana.ini:
+    server:
+      domain: grafana.internal.company.com
+    auth.azure_ad:
+      enabled: true
+      allow_sign_up: true
+      client_id: "${AZURE_CLIENT_ID}"
+      client_secret: "${AZURE_CLIENT_SECRET}"
+      scopes: openid email profile
+      auth_url: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize"
+      token_url: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token"
+
+alertmanager:
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: managed-premium
+          resources:
+            requests:
+              storage: 5Gi
+```
+
+## ServiceMonitor: Scraping Your Apps
+
+```yaml
+# service-monitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: api-service-monitor
+  namespace: production
+  labels:
+    release: monitoring  # Must match Prometheus selector
+spec:
+  selector:
+    matchLabels:
+      app: api-service
+  endpoints:
+  - port: metrics
+    interval: 30s
+    path: /metrics
+    scheme: http
+    tlsConfig:
+      insecureSkipVerify: false
+  namespaceSelector:
+    matchNames:
+    - production
+```
+
+## SLO Engineering: Multi-Window Burn Rate
+
+This is the real game-changer vs naive threshold alerts.
+
+**SLO**: 99.9% availability over 30 days = 43.2 minutes allowed downtime/month
+
+```yaml
+# slo-alerts.yaml — PrometheusRule
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: api-service-slo
+  namespace: monitoring
+spec:
+  groups:
+  - name: api-service.slo.rules
+    rules:
+    # Error rate recording rules
+    - record: job:http_requests_total:rate5m
+      expr: rate(http_requests_total[5m])
+    
+    - record: job:http_errors_total:rate5m
+      expr: rate(http_requests_total{status=~"5.."}[5m])
+    
+    - record: job:http_error_ratio:rate5m
+      expr: |
+        job:http_errors_total:rate5m
+        /
+        job:http_requests_total:rate5m
+
+    # SLO: 99.9% (error budget = 0.1%)
+    # Fast burn: 1h window, 14.4x budget burn rate
+    - alert: APIServiceHighErrorBurnRate
+      expr: |
+        (
+          job:http_error_ratio:rate5m > (14.4 * 0.001)
+        )
+        and
+        (
+          rate(http_requests_total{status=~"5.."}[1h])
+          /
+          rate(http_requests_total[1h])
+          > (14.4 * 0.001)
+        )
+      for: 2m
+      labels:
+        severity: critical
+        team: platform
+        slo: api-availability
+      annotations:
+        summary: "High error burn rate: consuming error budget 14.4x faster"
+        description: |
+          Current error rate: {{ $value | humanizePercentage }}
+          At this rate, monthly error budget exhausted in ~2 hours.
+          Runbook: https://wiki.internal/runbooks/api-high-error-rate
+
+    # Slow burn: 6h window, 6x budget burn rate
+    - alert: APIServiceMediumErrorBurnRate
+      expr: |
+        (
+          job:http_error_ratio:rate5m > (6 * 0.001)
+        )
+        and
+        (
+          rate(http_requests_total{status=~"5.."}[6h])
+          /
+          rate(http_requests_total[6h])
+          > (6 * 0.001)
+        )
+      for: 15m
+      labels:
+        severity: warning
+        team: platform
+      annotations:
+        summary: "Elevated error rate: consuming budget 6x faster than expected"
+```
+
+## Alertmanager: Routing Without Fatigue
+
+```yaml
+# alertmanager-config.yaml
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: platform-alerts
+  namespace: monitoring
+spec:
+  route:
+    receiver: 'null'
+    groupBy: ['alertname', 'namespace']
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 4h
+    routes:
+    # Critical: Page immediately
+    - receiver: pagerduty-critical
+      match:
+        severity: critical
+      repeatInterval: 30m
+      continue: true
+    
+    # Warning: Slack only
+    - receiver: slack-warnings
+      match:
+        severity: warning
+      repeatInterval: 2h
+    
+    # Informational: No alert (record only)
+    - receiver: 'null'
+      match:
+        severity: info
+
+  receivers:
+  - name: 'null'
+  
+  - name: pagerduty-critical
+    pagerdutyConfigs:
+    - routingKey: "${PAGERDUTY_ROUTING_KEY}"
+      description: '{{ template "pagerduty.description" . }}'
+      severity: '{{ if eq .Labels.severity "critical" }}critical{{ else }}warning{{ end }}'
+  
+  - name: slack-warnings
+    slackConfigs:
+    - apiURL: "${SLACK_WEBHOOK_URL}"
+      channel: '#platform-alerts'
+      title: '{{ template "slack.title" . }}'
+      text: '{{ template "slack.text" . }}'
+      iconEmoji: ':prometheus:'
+      sendResolved: true
+```
+
+## Key Grafana Dashboards to Build
+
+### 1. Service Health Overview
+- RPS, error rate, p99 latency — single pane
+- SLO burn rate gauge (remaining budget)
+- Deployment markers (correlated with error spikes)
+
+### 2. Kubernetes Resource Saturation
+- Node CPU/memory heatmap by node
+- Pod restart frequency (canary for memory leaks)
+- PVC usage trending with 7-day forecast
+
+### 3. Cost per Namespace
+- Resource requests vs actual usage (spot waste)
+- Idle pods (requests ≠ usage for 24h+)
+
+## Lessons from Production
+
+1. **Alert on burn rate, never raw thresholds** — "CPU > 80%" is meaningless, "SLO burn rate 10x" is actionable
+2. **Group alerts aggressively** — 50 alerts from one outage = 1 PagerDuty notification, not 50
+3. **`repeatInterval: 4h` minimum** — alerts repeating every 30s cause engineers to mute everything
+4. **Document runbooks in alert annotations** — the engineer woken at 3am needs the link immediately
+5. **Test your alerting quarterly** — chaos engineer your alert pipeline, not just your app
+
+> Full Helm values and dashboards: [github.com/suhail39ahmed/kubernetes-observability-stack](https://github.com/suhail39ahmed/kubernetes-observability-stack)

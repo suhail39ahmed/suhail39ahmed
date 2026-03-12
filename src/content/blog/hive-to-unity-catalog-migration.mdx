@@ -1,0 +1,311 @@
+---
+title: "Hive Metastore to Unity Catalog: The Complete Migration Guide"
+date: "2025-09-20"
+slug: "hive-to-unity-catalog-migration"
+tags: ["Databricks", "Unity Catalog", "Data Engineering", "Migration", "Azure DevOps"]
+excerpt: "A complete technical guide for migrating from Hive Metastore to Databricks Unity Catalog — covering ACL preservation, table migration scripts, Delta Lake upgrade, and CI/CD automation for zero-downtime cutover."
+readTime: "15 min"
+---
+
+# Hive Metastore to Unity Catalog: The Complete Migration Guide
+
+At Revantage Asia, I led the migration of 5TB+ of data assets from legacy Hive Metastore to Databricks Unity Catalog (UC). This is the complete technical playbook.
+
+## Why Unity Catalog?
+
+Unity Catalog (UC) gives you what Hive Metastore never could:
+
+| Feature | Hive Metastore | Unity Catalog |
+|---------|---------------|---------------|
+| Governance | Per-workspace | Cross-workspace |
+| Column-level security | No | Yes |
+| Data lineage | No | Built-in |
+| Row-level filters | Manual | Native |
+| Audit logs | Basic | Fine-grained |
+| Sharing | Complex | Delta Sharing |
+
+## Pre-Migration Assessment
+
+Before touching anything, run this assessment script:
+
+```python
+# assessment.py
+from pyspark.sql import SparkSession
+from databricks.sdk import WorkspaceClient
+
+spark = SparkSession.builder.getOrCreate()
+w = WorkspaceClient()
+
+def assess_hive_metastore():
+    """Inventory all HMS objects for migration planning"""
+    
+    # List all databases
+    databases = spark.sql("SHOW DATABASES").collect()
+    
+    inventory = []
+    for db in databases:
+        db_name = db.databaseName
+        tables = spark.sql(f"SHOW TABLES IN {db_name}").collect()
+        
+        for table in tables:
+            table_name = table.tableName
+            
+            try:
+                props = spark.sql(
+                    f"DESCRIBE EXTENDED {db_name}.{table_name}"
+                ).collect()
+                
+                props_dict = {r.col_name: r.data_type for r in props}
+                
+                inventory.append({
+                    "database": db_name,
+                    "table": table_name,
+                    "type": props_dict.get("Type", "unknown"),
+                    "format": props_dict.get("Provider", "unknown"),
+                    "location": props_dict.get("Location", ""),
+                    "is_delta": props_dict.get("Provider", "").lower() == "delta",
+                    "is_managed": "dbfs:/user/hive" in props_dict.get("Location", ""),
+                })
+            except Exception as e:
+                print(f"Error assessing {db_name}.{table_name}: {e}")
+    
+    return inventory
+
+inventory = assess_hive_metastore()
+print(f"Total tables: {len(inventory)}")
+print(f"Delta tables: {sum(1 for t in inventory if t['is_delta'])}")
+print(f"Non-Delta (need conversion): {sum(1 for t in inventory if not t['is_delta'])}")
+```
+
+## The Migration Strategy: Phased Waves
+
+### Wave 1: Non-Production Schemas
+### Wave 2: Read-heavy Production Tables  
+### Wave 3: Write-critical Production Tables (with brief maintenance window)
+
+## Step 1: Upgrade Non-Delta Tables to Delta
+
+UC works best with Delta Lake. Convert Parquet/CSV tables first:
+
+```python
+# convert_to_delta.py
+def upgrade_table_to_delta(database: str, table: str, dry_run: bool = True):
+    """Convert non-Delta table to Delta format"""
+    
+    # Check current format
+    desc = spark.sql(f"DESCRIBE EXTENDED {database}.{table}").collect()
+    props = {r.col_name: r.data_type for r in desc}
+    
+    if props.get("Provider", "").lower() == "delta":
+        print(f"  ✓ {database}.{table} already Delta, skipping")
+        return
+    
+    location = props.get("Location", "")
+    
+    if not dry_run:
+        # Convert in-place for Parquet
+        spark.sql(f"""
+            CONVERT TO DELTA parquet.`{location}`
+        """)
+        
+        # Recreate table pointing to Delta location
+        spark.sql(f"""
+            CREATE TABLE IF NOT EXISTS {database}.{table}_delta
+            USING DELTA
+            LOCATION '{location}'
+        """)
+        
+        # Rename with atomic operation
+        spark.sql(f"ALTER TABLE {database}.{table} RENAME TO {database}.{table}_old")
+        spark.sql(f"ALTER TABLE {database}.{table}_delta RENAME TO {database}.{table}")
+        
+        print(f"  ✓ Converted {database}.{table} to Delta")
+    else:
+        print(f"  [DRY RUN] Would convert {database}.{table} (format: {props.get('Provider')})")
+```
+
+## Step 2: Catalog/Schema Structure in UC
+
+Map your HMS databases to UC three-level namespace:
+
+```python
+# create_uc_structure.py
+from databricks.sdk import WorkspaceClient
+from databricks.sdk.service.catalog import SecurableType
+
+w = WorkspaceClient()
+
+# Create catalog per business domain
+def create_catalog(catalog_name: str, comment: str):
+    try:
+        w.catalogs.create(
+            name=catalog_name,
+            comment=comment,
+            properties={"managed_by": "terraform", "env": "production"}
+        )
+        print(f"✓ Created catalog: {catalog_name}")
+    except Exception as e:
+        if "already exists" in str(e):
+            print(f"  Catalog {catalog_name} already exists")
+        else:
+            raise
+
+# Create schemas (map from HMS databases)
+def create_schema(catalog: str, schema: str, comment: str = ""):
+    w.schemas.create(
+        catalog_name=catalog,
+        name=schema,
+        comment=comment
+    )
+
+# Example structure
+create_catalog("prod_finance", "Finance domain - production data")
+create_catalog("prod_operations", "Operations domain - production data")
+create_schema("prod_finance", "accounting", "GL and AP/AR data")
+create_schema("prod_finance", "reporting", "Finance reporting layer")
+```
+
+## Step 3: Migrate Tables with ACL Preservation
+
+This is the critical part — preserving permissions:
+
+```python
+# migrate_tables.py
+import json
+from databricks.sdk.service.catalog import PermissionsChange, SecurableType
+
+def get_hms_permissions(database: str, table: str) -> dict:
+    """Extract HMS permissions via SHOW GRANTS"""
+    grants = spark.sql(f"SHOW GRANTS ON TABLE {database}.{table}").collect()
+    return {
+        "principals": [
+            {"principal": g.Principal, "privilege": g.ActionType}
+            for g in grants
+        ]
+    }
+
+def migrate_table_to_uc(
+    hms_db: str, 
+    hms_table: str,
+    uc_catalog: str,
+    uc_schema: str,
+    uc_table: str = None
+):
+    uc_table = uc_table or hms_table
+    full_uc_name = f"{uc_catalog}.{uc_schema}.{uc_table}"
+    
+    print(f"Migrating {hms_db}.{hms_table} → {full_uc_name}")
+    
+    # 1. Get HMS location
+    desc = spark.sql(f"DESCRIBE EXTENDED {hms_db}.{hms_table}").collect()
+    props = {r.col_name: r.data_type for r in desc}
+    location = props["Location"]
+    
+    # 2. Capture permissions before migration
+    perms = get_hms_permissions(hms_db, hms_table)
+    
+    # 3. Create table in UC (external table pointing to existing location)
+    spark.sql(f"""
+        CREATE TABLE IF NOT EXISTS {full_uc_name}
+        USING DELTA
+        LOCATION '{location}'
+    """)
+    
+    # 4. Re-apply permissions in UC
+    for grant in perms["principals"]:
+        try:
+            spark.sql(f"""
+                GRANT {grant['privilege']} ON TABLE {full_uc_name}
+                TO `{grant['principal']}`
+            """)
+        except Exception as e:
+            print(f"  Warning: Could not apply grant {grant}: {e}")
+    
+    # 5. Upgrade to UC managed table (optional - moves to UC managed storage)
+    # spark.sql(f"ALTER TABLE {full_uc_name} SET TBLPROPERTIES ('upgraded_to' = '{full_uc_name}')")
+    
+    print(f"  ✓ Migrated with {len(perms['principals'])} permission grants")
+    return full_uc_name
+```
+
+## Step 4: Azure DevOps Pipeline for Automated Migration
+
+```yaml
+# azure-pipelines-uc-migration.yml
+stages:
+- stage: Assessment
+  jobs:
+  - job: RunAssessment
+    steps:
+    - task: DatabricksNotebook@0
+      inputs:
+        notebookPath: '/Shared/migration/assessment'
+        existingClusterId: $(CLUSTER_ID)
+        executionResultsVariable: 'assessmentResults'
+
+- stage: NonProd
+  dependsOn: Assessment
+  jobs:
+  - job: MigrateNonProd
+    steps:
+    - task: DatabricksNotebook@0
+      inputs:
+        notebookPath: '/Shared/migration/migrate_tables'
+        notebookParameters: |
+          {
+            "env": "nonprod",
+            "dry_run": "false",
+            "catalogs": "$(NON_PROD_CATALOGS)"
+          }
+
+- stage: Production
+  dependsOn: NonProd
+  jobs:
+  - deployment: MigrateProd
+    environment: 'databricks-production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DatabricksNotebook@0
+            inputs:
+              notebookPath: '/Shared/migration/migrate_tables'
+              notebookParameters: '{"env": "prod", "dry_run": "false"}'
+```
+
+## Step 5: Validation
+
+Never declare success without validation:
+
+```python
+# validate_migration.py
+def validate_migration(hms_table: str, uc_table: str) -> bool:
+    """Validate row counts and schema match post-migration"""
+    
+    # Row count check
+    hms_count = spark.sql(f"SELECT COUNT(*) FROM {hms_table}").collect()[0][0]
+    uc_count = spark.sql(f"SELECT COUNT(*) FROM {uc_table}").collect()[0][0]
+    
+    count_match = hms_count == uc_count
+    
+    # Schema check
+    hms_schema = spark.sql(f"DESCRIBE {hms_table}").collect()
+    uc_schema = spark.sql(f"DESCRIBE {uc_table}").collect()
+    
+    schema_match = len(hms_schema) == len(uc_schema)
+    
+    print(f"  Rows: HMS={hms_count:,} UC={uc_count:,} {'✓' if count_match else '✗'}")
+    print(f"  Schema columns: {'✓' if schema_match else '✗'}")
+    
+    return count_match and schema_match
+```
+
+## Key Lessons from 5TB Migration
+
+1. **Never migrate and upgrade storage simultaneously** — do Delta conversion first, UC migration second
+2. **External tables are your safety net** — data stays in ADLS, easy rollback
+3. **Test ACL migration on a sandbox** — UC principals are case-sensitive, HMS often isn't
+4. **Keep HMS running for 30 days post-migration** — rollback window for edge cases
+5. **Lineage breaks on migration** — document this for stakeholders upfront
+
+> Scripts available at [github.com/suhail39ahmed/databricks-snowflake-devops](https://github.com/suhail39ahmed/databricks-snowflake-devops)

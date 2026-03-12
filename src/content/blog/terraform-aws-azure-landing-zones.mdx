@@ -1,0 +1,309 @@
+---
+title: "Multi-Cloud Landing Zones: Terraform Patterns for AWS and Azure"
+date: "2025-07-05"
+slug: "terraform-aws-azure-landing-zones"
+tags: ["Terraform", "AWS", "Azure", "Landing Zone", "IaC", "Cloud Governance"]
+excerpt: "How I structure enterprise Terraform landing zones that work across both Azure and AWS — shared patterns, reusable modules, and governance guardrails that scale from startup to 1000+ account enterprise."
+readTime: "11 min"
+---
+
+# Multi-Cloud Landing Zones: Terraform Patterns for AWS and Azure
+
+Landing zones aren't glamorous. But get them wrong and you're spending the next 2 years firefighting. Here's the Terraform architecture that scales.
+
+## What a Landing Zone Actually Is
+
+A landing zone is the **opinionated starting point** for every workload that comes into your cloud environment. It pre-wires:
+
+- Account/subscription structure
+- Identity and RBAC
+- Networking baseline (VPC/VNet)
+- Logging and monitoring
+- Security guardrails
+- Cost management
+
+## Repository Structure
+
+```
+terraform-multi-cloud-modules/
+├── modules/
+│   ├── azure/
+│   │   ├── landing-zone/
+│   │   ├── networking/
+│   │   ├── iam/
+│   │   ├── security/
+│   │   └── monitoring/
+│   └── aws/
+│       ├── landing-zone/
+│       ├── networking/
+│       ├── iam/
+│       ├── security/
+│       └── monitoring/
+├── environments/
+│   ├── azure/
+│   │   ├── prod/
+│   │   └── nonprod/
+│   └── aws/
+│       ├── prod/
+│       └── nonprod/
+└── tests/
+    └── (Terratest Go tests)
+```
+
+## Azure Landing Zone Module
+
+```hcl
+# modules/azure/landing-zone/main.tf
+terraform {
+  required_providers {
+    azurerm = { source = "hashicorp/azurerm", version = "~> 3.80" }
+    azuread = { source = "hashicorp/azuread", version = "~> 2.45" }
+  }
+}
+
+# Management Group hierarchy
+resource "azurerm_management_group" "root" {
+  display_name = "${var.org_prefix}-root"
+}
+
+resource "azurerm_management_group" "platform" {
+  display_name               = "${var.org_prefix}-platform"
+  parent_management_group_id = azurerm_management_group.root.id
+}
+
+resource "azurerm_management_group" "workloads" {
+  display_name               = "${var.org_prefix}-workloads"
+  parent_management_group_id = azurerm_management_group.root.id
+}
+
+# Core policy assignments at root MG
+resource "azurerm_management_group_policy_assignment" "allowed_regions" {
+  name                 = "allowed-locations"
+  policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/..."
+  management_group_id  = azurerm_management_group.root.id
+
+  parameters = jsonencode({
+    listOfAllowedLocations = {
+      value = var.allowed_regions
+    }
+  })
+}
+
+resource "azurerm_management_group_policy_assignment" "require_tags" {
+  name                 = "require-tags"
+  policy_definition_id = data.azurerm_policy_definition.require_tags.id
+  management_group_id  = azurerm_management_group.root.id
+  enforce              = true
+}
+```
+
+## AWS Landing Zone Module
+
+```hcl
+# modules/aws/landing-zone/main.tf
+# Assumes AWS Organizations and Control Tower are enabled
+
+terraform {
+  required_providers {
+    aws = { source = "hashicorp/aws", version = "~> 5.0" }
+  }
+}
+
+# Account structure via Organizations
+resource "aws_organizations_organizational_unit" "platform" {
+  name      = "Platform"
+  parent_id = data.aws_organizations_organization.current.roots[0].id
+}
+
+resource "aws_organizations_organizational_unit" "workloads" {
+  name      = "Workloads"
+  parent_id = data.aws_organizations_organization.current.roots[0].id
+}
+
+# SCP: Deny disabling CloudTrail
+resource "aws_organizations_policy" "deny_disable_cloudtrail" {
+  name        = "DenyDisableCloudTrail"
+  description = "Prevents disabling CloudTrail"
+  type        = "SERVICE_CONTROL_POLICY"
+
+  content = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid       = "DenyDisableCloudTrail"
+        Effect    = "Deny"
+        Action    = [
+          "cloudtrail:DeleteTrail",
+          "cloudtrail:StopLogging",
+          "cloudtrail:UpdateTrail"
+        ]
+        Resource  = "*"
+        Condition = {
+          StringNotLike = {
+            "aws:PrincipalARN" = [
+              "arn:aws:iam::*:role/AWSControlTowerExecution"
+            ]
+          }
+        }
+      }
+    ]
+  })
+}
+
+# Attach SCP to all workload OUs
+resource "aws_organizations_policy_attachment" "deny_cloudtrail_workloads" {
+  policy_id = aws_organizations_policy.deny_disable_cloudtrail.id
+  target_id = aws_organizations_organizational_unit.workloads.id
+}
+```
+
+## Shared Module Pattern: VPC/VNet
+
+The trick is **identical interfaces** so calling code doesn't care which cloud:
+
+```hcl
+# modules/azure/networking/variables.tf
+variable "name_prefix"    { type = string }
+variable "address_space"  { type = list(string) }
+variable "subnets"        { type = map(object({ cidr = string, name = string })) }
+variable "tags"           { type = map(string), default = {} }
+
+# modules/aws/networking/variables.tf  
+variable "name_prefix"    { type = string }
+variable "address_space"  { type = list(string) }  # Same interface!
+variable "subnets"        { type = map(object({ cidr = string, name = string })) }
+variable "tags"           { type = map(string), default = {} }
+```
+
+Calling code in environments:
+
+```hcl
+# environments/azure/prod/main.tf
+module "network" {
+  source = "../../../modules/azure/networking"
+  
+  name_prefix   = "prod"
+  address_space = ["10.1.0.0/16"]
+  subnets = {
+    app  = { cidr = "10.1.1.0/24", name = "snet-app" }
+    data = { cidr = "10.1.2.0/24", name = "snet-data" }
+  }
+}
+
+# environments/aws/prod/main.tf — same calling interface
+module "network" {
+  source = "../../../modules/aws/networking"
+  
+  name_prefix   = "prod"
+  address_space = ["10.1.0.0/16"]  
+  subnets = {
+    app  = { cidr = "10.1.1.0/24", name = "subnet-app" }
+    data = { cidr = "10.1.2.0/24", name = "subnet-data" }
+  }
+}
+```
+
+## Terratest: Automated Module Testing
+
+Don't ship untested modules to production teams:
+
+```go
+// tests/azure_network_test.go
+package test
+
+import (
+    "testing"
+    "github.com/gruntwork-io/terratest/modules/terraform"
+    "github.com/stretchr/testify/assert"
+)
+
+func TestAzureNetworkingModule(t *testing.T) {
+    t.Parallel()
+
+    terraformOptions := &terraform.Options{
+        TerraformDir: "../modules/azure/networking",
+        Vars: map[string]interface{}{
+            "name_prefix":   "test",
+            "address_space": []string{"10.99.0.0/16"},
+            "subnets": map[string]interface{}{
+                "app": map[string]string{
+                    "cidr": "10.99.1.0/24",
+                    "name": "snet-app",
+                },
+            },
+        },
+    }
+
+    defer terraform.Destroy(t, terraformOptions)
+    terraform.InitAndApply(t, terraformOptions)
+
+    vnetName := terraform.Output(t, terraformOptions, "vnet_name")
+    assert.Contains(t, vnetName, "test")
+    
+    subnetIds := terraform.OutputMap(t, terraformOptions, "subnet_ids")
+    assert.Contains(t, subnetIds, "app")
+}
+```
+
+## CI Pipeline with Security Gates
+
+```yaml
+# .github/workflows/module-ci.yml
+name: Module CI
+
+on:
+  pull_request:
+    paths: ['modules/**']
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: tfsec
+      uses: aquasecurity/tfsec-action@v1
+      with:
+        working_directory: modules/
+        
+    - name: Checkov
+      uses: bridgecrewio/checkov-action@master
+      with:
+        directory: modules/
+        framework: terraform
+        output_format: sarif
+        output_file_path: reports/results.sarif
+        
+    - name: Upload SARIF
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: reports/results.sarif
+
+  terratest:
+    needs: security-scan
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-go@v5
+      with:
+        go-version: '1.21'
+    - name: Run Terratest
+      run: |
+        cd tests/
+        go test -v -timeout 30m ./...
+      env:
+        ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+```
+
+## Top 5 Landing Zone Mistakes
+
+1. **Skipping Management Group hierarchy** — flat subscriptions = no inheritance for policies
+2. **Not locking down regions** — workloads appearing in unapproved regions for cost/compliance reasons
+3. **Manual drift** — someone clicks in portal, Terraform state diverges. Enforce `prevent_destroy` on critical resources.
+4. **No cost guardrails** — budgets and alerts at subscription level from day one
+5. **Generic tags** — enforce `Environment`, `Owner`, `CostCenter` from day one, not after 200 resources exist
+
+> Full module library: [github.com/suhail39ahmed/terraform-multi-cloud-modules](https://github.com/suhail39ahmed/terraform-multi-cloud-modules)
