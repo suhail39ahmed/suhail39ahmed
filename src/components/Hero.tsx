@@ -46,7 +46,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-6 max-w-xl leading-relaxed">
-              Cloud &amp; Data Architect — Designing, building, and securing enterprise platforms on Azure &amp; AWS with AI-first DevSecOps.
+              Cloud &amp; Data Architect — Designing, building, and securing enterprise platforms on Azure, AWS, Databricks &amp; Snowflake with AI-first DevSecOps.
             </p>
 
             <p className="text-base text-slate-500 dark:text-slate-500 mb-6 max-w-lg leading-relaxed">
