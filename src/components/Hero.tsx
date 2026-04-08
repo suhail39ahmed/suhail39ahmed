@@ -5,10 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 
+const certs = [
+  "Microsoft DevOps Engineer Expert",
+  "Azure Solutions Architect Expert",
+  "AWS Solutions Architect",
+  "HashiCorp Terraform Associate",
+  "Databricks Data Engineer",
+  "Snowflake SnowPro Core",
+];
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-slate-950">
-      {/* Subtle gradient background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-azure/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-sky-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
@@ -16,7 +24,6 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 w-full pt-24 pb-16">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          {/* Text content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -30,7 +37,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-azure/10 text-azure text-sm font-medium mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              Sydney, Australia &middot; Open to opportunities
+              Singapore &middot; Open to Middle East, SG &amp; Australia
             </motion.div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4 leading-[1.1]">
@@ -41,6 +48,23 @@ export default function Hero() {
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-6 max-w-xl leading-relaxed">
               Azure DevOps Engineer &amp; Agentic AI Builder — Turning Autonomous Agents into Production-Grade DevSecOps on Azure.
             </p>
+
+            <p className="text-base text-slate-500 dark:text-slate-500 mb-6 max-w-lg leading-relaxed">
+              10+ years engineering enterprise cloud platforms at Revantage, Accenture &amp; Cognizant across Singapore, India &amp; GCC. Certified across Azure, AWS, Terraform, Databricks &amp; Snowflake.
+            </p>
+
+            {/* Cert badges */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-8">
+              {certs.map((cert) => (
+                <span
+                  key={cert}
+                  className="text-xs font-medium px-2.5 py-1 rounded-full bg-azure/8 text-azure/90 dark:bg-azure/10 dark:text-azure-light border border-azure/15"
+                >
+                  {cert}
+                </span>
+              ))}
+              <span className="text-xs text-slate-400 dark:text-slate-500">+7 more</span>
+            </div>
 
             <div className="flex items-center justify-center lg:justify-start gap-4 mb-10 flex-wrap">
               <Link
@@ -57,7 +81,6 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* Social links */}
             <div className="flex items-center justify-center lg:justify-start gap-4">
               {[
                 { icon: Github, href: "https://github.com/suhail39ahmed", label: "GitHub" },
@@ -78,7 +101,6 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Profile photo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -100,7 +122,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -108,10 +129,10 @@ export default function Hero() {
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
         >
           {[
-            { value: "9+", label: "Years Experience" },
-            { value: "14+", label: "Certifications" },
-            { value: "85%", label: "MTTR Reduction" },
-            { value: "100%", label: "Azure Native" },
+            { value: "10+", label: "Years Experience" },
+            { value: "13+", label: "Certifications" },
+            { value: "4", label: "Companies" },
+            { value: "3", label: "Countries" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-azure mb-1">{stat.value}</div>

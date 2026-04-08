@@ -20,7 +20,7 @@ export const projects: Project[] = [
     // Grok Imagine: "Futuristic Azure cloud data center with self-healing AI pipelines, blue glowing neural networks connecting servers, dark background, cinematic lighting"
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
     tags: ["Azure DevOps", "Agentic AI", "MCP Agents", "DevSecOps", "Self-Healing Pipelines"],
-    github: "https://github.com/suhaildev/self-healing-azure-pipelines",
+    github: "https://github.com/suhail39ahmed/self-healing-azure-pipelines",
     demo: "#",
     featured: true,
   },
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     // Grok Imagine: "AI code editor workspace with multiple agent windows, Claude AI assistant interface, dark theme, Azure blue accents, holographic displays"
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
     tags: ["Cursor", "Claude", "MCP Agents", "Azure DevOps", "Agentic AI"],
-    github: "https://github.com/suhaildev/cursor-claude-mcp-azure",
+    github: "https://github.com/suhail39ahmed/cursor-claude-mcp-azure",
     featured: true,
   },
   {
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     // Grok Imagine: "Minimalist code governance dashboard showing agent rules and markdown files, structured data flow, dark UI with Azure blue highlights"
     image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
     tags: ["Agent Rules", "agents.md", "Azure DevOps", "MCP Agents", "Governance"],
-    github: "https://github.com/suhaildev/agents-md-production-ai",
+    github: "https://github.com/suhail39ahmed/agents-md-production-ai",
     demo: "#",
     featured: true,
   },
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     // Grok Imagine: "Global Azure cloud orchestration platform with autonomous AI agents managing DevSecOps workflows, earth view with data streams, futuristic"
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
     tags: ["Agentic AI", "Autonomous Agents", "Azure DevSecOps", "Trending 2026"],
-    github: "https://github.com/suhaildev/self-orchestrating-devsecops",
+    github: "https://github.com/suhail39ahmed/self-orchestrating-devsecops",
     featured: true,
   },
   {
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     // Grok Imagine: "AI co-pilot dashboard for Azure DevOps, intelligent suggestions panel with code, pipeline visualization, dark mode, Azure brand colors"
     image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=800&q=80",
     tags: ["Azure DevOps", "MCP Agents", "AI Co-Pilot", "IaC"],
-    github: "https://github.com/suhaildev/azure-devops-ai-copilot",
+    github: "https://github.com/suhail39ahmed/azure-devops-ai-copilot",
     demo: "#",
     featured: true,
   },
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     // Grok Imagine: "Zero-touch autonomous release pipeline visualization, flowing code through security gates to production, dark background, Azure blue and cyan glow"
     image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80",
     tags: ["Azure Pipelines", "Autonomous AI", "DevSecOps"],
-    github: "https://github.com/suhaildev/autonomous-release-pipeline",
+    github: "https://github.com/suhail39ahmed/autonomous-release-pipeline",
     featured: true,
   },
   {
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     // Grok Imagine: "Azure cloud infrastructure sentinel AI monitoring dashboard, real-time threat detection, blue security shield, dark futuristic interface"
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f2?auto=format&fit=crop&w=800&q=80",
     tags: ["Azure Policy", "Cloud Governance", "MCP Agents", "Security"],
-    github: "https://github.com/suhaildev/azure-infra-sentinel",
+    github: "https://github.com/suhail39ahmed/azure-infra-sentinel",
     featured: false,
   },
   {
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     // Grok Imagine: "Swarm of autonomous AI agents collaborating in Azure DevOps environment, interconnected neural pathways, dark background, blue and teal"
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80",
     tags: ["Multi-Agent AI", "Azure Service Bus", "Swarm Intelligence", "DevOps"],
-    github: "https://github.com/suhaildev/multi-agent-devops-swarm",
+    github: "https://github.com/suhail39ahmed/multi-agent-devops-swarm",
     featured: false,
   },
 ];

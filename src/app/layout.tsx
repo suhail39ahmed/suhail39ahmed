@@ -7,7 +7,7 @@ import ThemeProvider from "@/components/ThemeProvider";
 export const metadata: Metadata = {
   title: "Suhail Ahmed — Azure DevOps Engineer & Agentic AI Builder",
   description:
-    "Turning Autonomous Agents into Production-Grade DevSecOps on Azure. Portfolio and tech blog by Suhail Ahmed, Sydney.",
+    "10+ years engineering enterprise cloud platforms. Turning Autonomous Agents into Production-Grade DevSecOps on Azure. Based in Singapore.",
   keywords: [
     "Azure DevOps",
     "Agentic AI",
@@ -16,24 +16,27 @@ export const metadata: Metadata = {
     "Claude",
     "Cursor",
     "Azure",
+    "Databricks",
+    "Snowflake",
+    "Terraform",
     "Cloud Architecture",
   ],
-  authors: [{ name: "Suhail Ahmed" }],
-  creator: "Suhail Ahmed",
+  authors: [{ name: "Suhail Ahmed Inayathulla" }],
+  creator: "Suhail Ahmed Inayathulla",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://suhail39ahmed.github.io",
     title: "Suhail Ahmed — Azure DevOps Engineer & Agentic AI Builder",
     description:
-      "Turning Autonomous Agents into Production-Grade DevSecOps on Azure.",
+      "10+ years engineering enterprise cloud platforms. Turning Autonomous Agents into Production-Grade DevSecOps on Azure.",
     siteName: "Suhail Ahmed",
   },
   twitter: {
     card: "summary_large_image",
     title: "Suhail Ahmed — Azure DevOps Engineer & Agentic AI Builder",
     description:
-      "Turning Autonomous Agents into Production-Grade DevSecOps on Azure.",
+      "10+ years engineering enterprise cloud platforms. Turning Autonomous Agents into Production-Grade DevSecOps on Azure.",
   },
 };
 
@@ -41,7 +44,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        {/* Prevent flash of wrong theme */}
         <script
           dangerouslySetInnerHTML={{
             __html: `try{const t=localStorage.getItem('theme');if(t==='light')document.documentElement.classList.remove('dark');else document.documentElement.classList.add('dark')}catch(e){}`,

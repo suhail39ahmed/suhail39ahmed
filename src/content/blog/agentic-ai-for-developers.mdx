@@ -1,0 +1,175 @@
+---
+title: "Agentic AI for Developers: From Code Assistants to Autonomous Agents"
+date: "2026-01-20"
+tags: ["Agentic AI", "Cursor", "Claude", "MCP Agents"]
+excerpt: "A practical guide to using Cursor, Claude, and MCP Agents to build autonomous development workflows — from simple code completion to multi-agent orchestration that writes, tests, and deploys code."
+readTime: "11 min"
+---
+
+# Agentic AI for Developers: From Code Assistants to Autonomous Agents
+
+The evolution from code completion to autonomous agents happened faster than anyone expected. In 2024, we were impressed when AI could autocomplete a function. In 2026, AI agents are writing entire features, running tests, fixing bugs, and deploying to production — with human oversight but minimal intervention.
+
+Here's how this works in practice, and how to set it up yourself.
+
+## The Agentic AI Stack for Developers
+
+```
+┌────────────────────────────────────┐
+│  Cursor IDE (Development Surface)  │
+├────────────────────────────────────┤
+│  Claude (Reasoning Engine)         │
+├────────────────────────────────────┤
+│  MCP Agents (Multi-Agent Layer)    │
+├────────────────────────────────────┤
+│  agents.md (Behavior Rules)        │
+├────────────────────────────────────┤
+│  Azure DevOps (CI/CD Platform)     │
+└────────────────────────────────────┘
+```
+
+## Step 1: Understanding MCP (Model Context Protocol)
+
+MCP is the protocol that lets AI models interact with external tools and data sources. Think of it as **USB for AI** — a standardized way to plug AI into your development workflow.
+
+With MCP, your AI agent can:
+- Read and write files in your repository
+- Query databases
+- Call REST APIs
+- Run shell commands
+- Interact with Azure DevOps, GitHub, and other services
+
+## Step 2: Setting Up agents.md
+
+The `agents.md` file is the rulebook for your AI agents. It defines behavior, constraints, and decision-making patterns.
+
+```markdown
+# Development Agent Rules
+
+## Identity
+You are a senior Azure DevOps engineer specializing in Terraform and Python.
+
+## Capabilities
+- Write and modify Terraform configurations
+- Create Azure DevOps pipeline YAML files
+- Write Python scripts for automation
+- Run security scans using Trivy and Checkov
+
+## Constraints
+- Always use Azure provider version >= 4.0
+- Never hardcode secrets — use Azure Key Vault references
+- All resources must have cost tags
+- Follow the team's naming convention: {env}-{region}-{resource}-{purpose}
+
+## Code Style
+- Terraform: Use modules for reusable components
+- Python: Type hints required, PEP 8 formatting
+- YAML: Use anchors to reduce duplication
+```
+
+## Step 3: Building Specialized Agents
+
+Instead of one AI that does everything, build specialized agents that excel at specific tasks:
+
+**1. The IaC Writer Agent**
+Takes a plain-English infrastructure description and generates production-ready Terraform with security best practices baked in.
+
+**2. The Security Scanner Agent**
+Automatically runs Trivy, Checkov, and tfsec against your code changes and provides remediation suggestions.
+
+**3. The Pipeline Builder Agent**
+Generates Azure DevOps YAML pipelines based on your project structure, including stages for build, test, security scan, and deploy.
+
+**4. The Code Reviewer Agent**
+Reviews pull requests for security issues, performance problems, and adherence to team coding standards.
+
+## Step 4: Multi-Agent Orchestration
+
+The real power emerges when agents collaborate:
+
+```
+Developer writes: "Create an Azure Function App with Cosmos DB backend"
+
+IaC Writer Agent:
+  → Generates Terraform for Function App + Cosmos DB
+  → Adds Application Insights monitoring
+  → Configures managed identity
+
+Security Scanner Agent:
+  → Scans generated Terraform
+  → Flags: "Cosmos DB public endpoint enabled"
+  → Suggests: Add private endpoint configuration
+
+IaC Writer Agent:
+  → Applies security fix
+  → Adds private endpoint + DNS zone
+
+Pipeline Builder Agent:
+  → Generates azure-pipelines.yml
+  → Includes terraform plan → apply stages
+  → Adds security scan gate
+
+Code Reviewer Agent:
+  → Final review of all generated code
+  → ✅ Approved — ready for PR
+```
+
+## Step 5: Integrating with Azure DevOps
+
+Connect your agents to Azure DevOps for end-to-end automation:
+
+```python
+# MCP server configuration for Azure DevOps
+{
+    "mcpServers": {
+        "azure-devops": {
+            "command": "npx",
+            "args": ["azure-devops-mcp"],
+            "env": {
+                "AZURE_DEVOPS_ORG": "your-org",
+                "AZURE_DEVOPS_PAT": "${AZURE_DEVOPS_PAT}"
+            }
+        }
+    }
+}
+```
+
+Now your agent can:
+- Create work items from bug reports
+- Trigger pipeline runs
+- Read build logs and diagnose failures
+- Create PRs with fixes
+
+## How AI Helps Developers — Real Numbers
+
+From our team's experience at Revantage:
+
+| Task | Before AI | With AI Agents | Improvement |
+|------|-----------|----------------|-------------|
+| Terraform module creation | 4 hours | 30 minutes | **8x faster** |
+| Security review | 2 hours | 5 minutes | **24x faster** |
+| Pipeline YAML creation | 1 hour | 10 minutes | **6x faster** |
+| Bug diagnosis from logs | 30 minutes | 2 minutes | **15x faster** |
+
+## The Human-AI Partnership
+
+The goal isn't to remove developers from the loop. It's to **elevate what developers work on**:
+
+- Instead of writing boilerplate Terraform → design architecture decisions
+- Instead of debugging YAML syntax → define deployment strategies
+- Instead of manual security reviews → set security policies that agents enforce
+- Instead of reading logs → build observability that agents act on
+
+## Getting Started
+
+1. Install Cursor IDE and configure Claude as your model
+2. Create an `agents.md` file in your repo root
+3. Start with one agent — the IaC writer is the easiest win
+4. Measure: track time-to-PR for tasks with and without agents
+5. Expand: add security scanning, then pipeline generation
+
+The developers who learn to work effectively with AI agents will be the most productive engineers of this decade.
+
+---
+
+*Explore the full framework: [Cursor + Claude + MCP Agents for Azure Development](https://github.com/suhail39ahmed/cursor-claude-mcp-azure)*

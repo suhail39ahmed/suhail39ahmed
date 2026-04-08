@@ -11,7 +11,7 @@ export default function Footer() {
               Suhail<span className="text-azure">.</span>
             </Link>
             <p className="text-sm text-slate-500 dark:text-slate-500 mt-1">
-              Azure DevOps Engineer &amp; Agentic AI Builder
+              Azure DevOps Engineer &amp; Agentic AI Builder &middot; Singapore
             </p>
           </div>
 

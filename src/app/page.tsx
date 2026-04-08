@@ -4,8 +4,24 @@ import ProjectCard from "@/components/ProjectCard";
 import { getFeaturedProjects } from "@/lib/projects";
 import { getAllPosts } from "@/lib/blog";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Award } from "lucide-react";
 import { FadeInSection } from "@/components/FadeIn";
+
+const certifications = [
+  { name: "Microsoft DevOps Engineer Expert", issuer: "Microsoft" },
+  { name: "Azure Solutions Architect Expert", issuer: "Microsoft" },
+  { name: "AWS Solutions Architect Associate", issuer: "AWS" },
+  { name: "HashiCorp Terraform Associate 003", issuer: "HashiCorp" },
+  { name: "Databricks Data Engineer Associate", issuer: "Databricks" },
+  { name: "Snowflake SnowPro Core", issuer: "Snowflake" },
+  { name: "AZ-305 Infrastructure Design", issuer: "Microsoft" },
+  { name: "Azure Administrator Associate", issuer: "Microsoft" },
+  { name: "Azure AI Fundamentals", issuer: "Microsoft" },
+  { name: "Security & Compliance Fundamentals", issuer: "Microsoft" },
+  { name: "OCI 2023 Architect Associate", issuer: "Oracle" },
+  { name: "VMware VCP Cloud Mgmt & Automation", issuer: "VMware" },
+  { name: "SAFe 4 Practitioner", issuer: "Scaled Agile" },
+];
 
 export default function Home() {
   const featured = getFeaturedProjects().slice(0, 3);
@@ -25,28 +41,65 @@ export default function Home() {
                 <span className="text-azure">Azure DevOps</span>
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                I&rsquo;m a DevSecOps Engineer and Agentic AI Builder based in Sydney with 9+ years
-                of experience designing, securing, and operating enterprise-scale cloud platforms.
-                I specialize in turning autonomous AI agents into production-grade DevSecOps
-                workflows on Azure.
+                Senior DevOps Engineer at <strong className="text-slate-800 dark:text-slate-200">Revantage Asia</strong> in Singapore,
+                with 10+ years across <strong className="text-slate-800 dark:text-slate-200">Accenture</strong> and{" "}
+                <strong className="text-slate-800 dark:text-slate-200">Cognizant</strong> — designing, securing,
+                and operating enterprise-scale cloud platforms across Azure and AWS.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-                From self-healing pipelines to AI co-pilots that write IaC and run security reviews,
-                I build the tools that make engineering teams faster and more secure.
+                My current focus: turning autonomous AI agents (Cursor, Claude, MCP) into
+                production-grade DevSecOps workflows on Azure — from self-healing pipelines
+                to AI co-pilots that write IaC, run security reviews, and optimize cloud costs.
               </p>
               <Link
                 href="/about"
                 className="inline-flex items-center gap-2 text-azure font-medium hover:gap-3 transition-all"
               >
-                Learn more about me <ArrowRight size={16} />
+                Full career &amp; certifications <ArrowRight size={16} />
               </Link>
             </div>
           </FadeInSection>
         </div>
       </section>
 
+      {/* Certifications */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeInSection>
+            <div className="text-center mb-10">
+              <p className="text-sm font-semibold text-azure uppercase tracking-wider mb-2">
+                Certifications
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">
+                13+ Industry Certifications
+              </h2>
+            </div>
+          </FadeInSection>
+          <FadeInSection>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+              {certifications.map((cert) => (
+                <div
+                  key={cert.name}
+                  className="flex items-start gap-2.5 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-azure/30 transition-colors"
+                >
+                  <Award size={16} className="text-azure flex-shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-xs font-semibold text-slate-800 dark:text-slate-200 leading-snug">
+                      {cert.name}
+                    </div>
+                    <div className="text-[10px] text-slate-500 dark:text-slate-500 mt-0.5">
+                      {cert.issuer}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </FadeInSection>
+        </div>
+      </section>
+
       {/* Featured Projects */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-6xl mx-auto px-6">
           <FadeInSection>
             <div className="flex items-end justify-between mb-12">
@@ -98,8 +151,8 @@ export default function Home() {
                   Let&rsquo;s Build Something Amazing
                 </h2>
                 <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto">
+                  Open to roles in Singapore, Middle East &amp; Australia.
                   Looking for an Azure DevOps Engineer who builds with AI-first thinking?
-                  Let&rsquo;s connect.
                 </p>
                 <div className="flex items-center justify-center gap-4 flex-wrap">
                   <Link
