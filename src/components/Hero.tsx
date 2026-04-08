@@ -131,8 +131,8 @@ export default function Hero() {
           {[
             { value: "10+", label: "Years Experience" },
             { value: "13+", label: "Certifications" },
-            { value: "4", label: "Companies" },
-            { value: "3", label: "Countries" },
+            { value: "100+", label: "Pipelines Automated" },
+            { value: "85%", label: "Ops Overhead Reduced" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-azure mb-1">{stat.value}</div>
