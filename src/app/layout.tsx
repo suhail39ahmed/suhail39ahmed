@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Suhail Ahmed — Azure DevOps Engineer & Agentic AI Builder",
+  title: "Suhail Ahmed — Cloud & Data Architect | DevSecOps | AI Enablement",
   description:
-    "10+ years engineering enterprise cloud platforms. Turning Autonomous Agents into Production-Grade DevSecOps on Azure. Based in Singapore.",
+    "10+ years architecting and implementing enterprise cloud & data platforms on Azure and AWS. DevSecOps, Agentic AI, Databricks, Snowflake. Based in Singapore.",
   keywords: [
     "Azure DevOps",
     "Agentic AI",
@@ -27,16 +27,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://suhail39ahmed.github.io",
-    title: "Suhail Ahmed — Azure DevOps Engineer & Agentic AI Builder",
+    title: "Suhail Ahmed — Cloud & Data Architect | DevSecOps | AI Enablement",
     description:
-      "10+ years engineering enterprise cloud platforms. Turning Autonomous Agents into Production-Grade DevSecOps on Azure.",
+      "10+ years architecting and implementing enterprise cloud & data platforms on Azure and AWS. DevSecOps, Agentic AI, Databricks, Snowflake.",
     siteName: "Suhail Ahmed",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Suhail Ahmed — Azure DevOps Engineer & Agentic AI Builder",
+    title: "Suhail Ahmed — Cloud & Data Architect | DevSecOps | AI Enablement",
     description:
-      "10+ years engineering enterprise cloud platforms. Turning Autonomous Agents into Production-Grade DevSecOps on Azure.",
+      "10+ years architecting and implementing enterprise cloud & data platforms on Azure and AWS. DevSecOps, Agentic AI, Databricks, Snowflake.",
   },
 };
 

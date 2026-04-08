@@ -38,18 +38,18 @@ export default function Home() {
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
                 Engineering the Future of{" "}
-                <span className="text-azure">Azure DevOps</span>
+                <span className="text-azure">Cloud &amp; Data</span>
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                 Senior DevOps Engineer at <strong className="text-slate-800 dark:text-slate-200">Revantage Asia</strong> in Singapore,
                 with 10+ years across <strong className="text-slate-800 dark:text-slate-200">Accenture</strong> and{" "}
-                <strong className="text-slate-800 dark:text-slate-200">Cognizant</strong> — designing, securing,
-                and operating enterprise-scale cloud platforms across Azure and AWS.
+                <strong className="text-slate-800 dark:text-slate-200">Cognizant</strong> — architecting, implementing,
+                and securing enterprise cloud &amp; data platforms on Azure and AWS.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-                My current focus: turning autonomous AI agents (Cursor, Claude, MCP) into
-                production-grade DevSecOps workflows on Azure — from self-healing pipelines
-                to AI co-pilots that write IaC, run security reviews, and optimize cloud costs.
+                I bridge cloud architecture, data engineering, and DevSecOps — with a focus
+                on AI enablement using Cursor, Claude, and MCP Agents to automate everything
+                from infrastructure provisioning to self-healing pipelines and intelligent data workflows.
               </p>
               <Link
                 href="/about"
@@ -152,7 +152,7 @@ export default function Home() {
                 </h2>
                 <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto">
                   Open to roles in Singapore, Middle East &amp; Australia.
-                  Looking for an Azure DevOps Engineer who builds with AI-first thinking?
+                  Looking for a Cloud &amp; Data Architect who builds with AI-first thinking?
                 </p>
                 <div className="flex items-center justify-center gap-4 flex-wrap">
                   <Link

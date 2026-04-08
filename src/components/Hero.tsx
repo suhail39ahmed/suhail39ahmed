@@ -46,11 +46,11 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-6 max-w-xl leading-relaxed">
-              Azure DevOps Engineer &amp; Agentic AI Builder — Turning Autonomous Agents into Production-Grade DevSecOps on Azure.
+              Cloud &amp; Data Architect — Designing, building, and securing enterprise platforms on Azure &amp; AWS with AI-first DevSecOps.
             </p>
 
             <p className="text-base text-slate-500 dark:text-slate-500 mb-6 max-w-lg leading-relaxed">
-              10+ years engineering enterprise cloud platforms at Revantage, Accenture &amp; Cognizant across Singapore, India &amp; GCC. Certified across Azure, AWS, Terraform, Databricks &amp; Snowflake.
+              10+ years architecting and implementing enterprise cloud &amp; data platforms at Revantage, Accenture &amp; Cognizant across Singapore, India &amp; GCC. Certified across Azure, AWS, Terraform, Databricks &amp; Snowflake.
             </p>
 
             {/* Cert badges */}

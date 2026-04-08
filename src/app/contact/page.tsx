@@ -4,7 +4,7 @@ import { FadeInSection } from "@/components/FadeIn";
 
 export const metadata: Metadata = {
   title: "Contact — Suhail Ahmed",
-  description: "Get in touch with Suhail Ahmed — Azure DevOps Engineer based in Singapore. Open to roles in Middle East, Singapore & Australia.",
+  description: "Get in touch with Suhail Ahmed — Cloud & Data Architect based in Singapore. Open to roles in Middle East, Singapore & Australia.",
 };
 
 const contactLinks = [
@@ -25,7 +25,7 @@ export default function ContactPage() {
               Let&rsquo;s Connect
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-              Open to Azure DevOps, DevSecOps, and Agentic AI roles in
+              Open to Cloud Architecture, Data Engineering, DevSecOps, and AI Enablement roles in
               Singapore, Middle East &amp; Australia.
             </p>
           </div>
@@ -59,7 +59,7 @@ export default function ContactPage() {
               Whether it&rsquo;s building autonomous AI pipelines on Azure, modernizing
               DevSecOps workflows, or cloud-native data platform integrations — I&rsquo;d love to hear about it.
             </p>
-            <a href="mailto:suhail39ahmed@gmail.com?subject=Project%20Inquiry&body=Hi%20Suhail%2C%0A%0AI'd%20like%20to%20discuss%20a%20project%20with%20you.%0A%0A"
+            <a href="mailto:suhail39ahmed@gmail.com?subject=Project%20Inquiry&body=Hi%20Suhail%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20with%20you.%0A%0A"
               className="inline-flex items-center gap-2 px-6 py-3 bg-azure text-white font-medium rounded-lg hover:bg-azure-dark transition-colors">
               <Mail size={16} /> Send Me an Email
             </a>

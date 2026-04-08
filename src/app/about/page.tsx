@@ -7,7 +7,7 @@ import { FadeInSection } from "@/components/FadeIn";
 export const metadata: Metadata = {
   title: "About — Suhail Ahmed Inayathulla",
   description:
-    "Senior DevOps Engineer with 10+ years experience across Revantage, Accenture & Cognizant. 13+ certifications in Azure, AWS, Terraform, Databricks & Snowflake.",
+    "Cloud & Data Architect with 10+ years experience across Revantage, Accenture & Cognizant. Architecting, implementing, and securing enterprise platforms with AI enablement.",
 };
 
 const career = [
@@ -124,16 +124,16 @@ export default function AboutPage() {
                 Suhail Ahmed Inayathulla
               </h1>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                Senior DevOps Engineer at <strong className="text-slate-800 dark:text-slate-200">Revantage Asia</strong> in Singapore,
-                with 10+ years of global experience designing, securing, and operating
-                enterprise-scale cloud platforms across Azure and AWS — spanning Singapore, India, and GCC enterprise environments.
+                Cloud &amp; Data Architect at <strong className="text-slate-800 dark:text-slate-200">Revantage Asia</strong> in Singapore,
+                with 10+ years of global experience architecting, implementing, and securing
+                enterprise cloud &amp; data platforms across Azure and AWS — spanning Singapore, India, and GCC enterprise environments.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                Currently driving enterprise cloud-native transformations with integrations
-                spanning Snowflake, Databricks, and multi-cloud platforms. My passion is at the
-                intersection of Azure DevOps and autonomous AI agents — building systems where
-                AI agents monitor, detect, and auto-remediate pipeline issues using Cursor, Claude,
-                and MCP multi-agent orchestration.
+                I drive end-to-end cloud-native transformations — from architecture and IaC to
+                data platform integrations with Snowflake, Databricks, and Delta Lake. My current
+                passion is AI enablement: using Cursor, Claude, and MCP Agents to automate
+                DevSecOps, self-heal pipelines, and build intelligent data workflows that
+                make engineering teams 10x more productive.
               </p>
               <div className="flex flex-wrap gap-3 mt-4 text-sm text-slate-500 dark:text-slate-500">
                 <span>English · Full Professional</span>
@@ -316,7 +316,7 @@ export default function AboutPage() {
               Interested in working together?
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-              Open to DevOps, DevSecOps, and Agentic AI roles in Singapore, Middle East &amp; Australia.
+              Open to Cloud Architecture, Data Engineering, DevSecOps, and AI Enablement roles in Singapore, Middle East &amp; Australia.
             </p>
             <div className="flex items-center justify-center gap-4 flex-wrap">
               <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-azure text-white font-medium rounded-lg hover:bg-azure-dark transition-colors">
