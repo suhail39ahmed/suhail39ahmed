@@ -126,22 +126,18 @@ export default function Certifications() {
       />
 
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16 text-center"
-        >
-          <p className="font-mono text-xs mb-3" style={{ color: "var(--cyan)" }}>
-            <span style={{ color: "var(--magenta)" }}>04.</span> CREDENTIALS
+        <div className="text-center mb-16 md:mb-20">
+          <p className="font-mono text-sm uppercase tracking-widest mb-3" style={{ color: "var(--cyan)" }}>
+            Credentials
           </p>
-          <h2 className="section-title text-neon-cyan mb-4">CERTIFICATIONS</h2>
-          <div className="w-24 h-0.5 mx-auto" style={{ background: "linear-gradient(90deg, var(--cyan), var(--magenta))" }} />
-          <p className="font-mono text-xs mt-4" style={{ color: "var(--gray-light)" }}>
-            {certs.length} active certifications across cloud, security &amp; infrastructure
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "var(--white)", fontFamily: "var(--font-display)" }}>
+            Certifications
+          </h2>
+          <p className="text-base max-w-xl mx-auto" style={{ color: "var(--gray-light)", lineHeight: 1.6 }}>
+            {certs.length} active certifications across cloud, data, and security.
           </p>
-        </motion.div>
+          <div className="w-24 h-0.5 mx-auto mt-6" style={{ background: "linear-gradient(90deg, var(--cyan), var(--magenta))" }} />
+        </div>
 
         {/* Certs grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-16">

@@ -55,13 +55,22 @@ const categories = [
     ],
   },
   {
-    label: "Monitoring & Data",
+    label: "Data & Analytics",
     color: "var(--magenta)",
+    skills: [
+      { name: "Databricks",  level: 85, icon: "⚡" },
+      { name: "Snowflake",   level: 85, icon: "❄️" },
+      { name: "Power BI",    level: 80, icon: "📊" },
+      { name: "Sigma",       level: 75, icon: "Σ" },
+      { name: "dbt",         level: 78, icon: "🦦" },
+    ],
+  },
+  {
+    label: "Monitoring",
+    color: "var(--cyan)",
     skills: [
       { name: "Prometheus",  level: 85, icon: "📈" },
       { name: "Grafana",     level: 83, icon: "📊" },
-      { name: "Snowflake",   level: 80, icon: "❄️" },
-      { name: "Databricks",  level: 78, icon: "⚡" },
     ],
   },
 ];
@@ -77,19 +86,19 @@ export default function Skills() {
       />
 
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16 text-center"
-        >
-          <p className="font-mono text-xs mb-3" style={{ color: "var(--magenta)" }}>
-            <span style={{ color: "var(--magenta)" }}>03.</span> SKILLS_MATRIX
+        {/* Section header */}
+        <div className="text-center mb-16 md:mb-20">
+          <p className="font-mono text-sm uppercase tracking-widest mb-3" style={{ color: "var(--magenta)" }}>
+            Skills
           </p>
-          <h2 className="section-title text-neon-magenta mb-4">TECH STACK</h2>
-          <div className="w-24 h-0.5 mx-auto" style={{ background: "linear-gradient(90deg, var(--magenta), var(--cyan))" }} />
-        </motion.div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "var(--white)", fontFamily: "var(--font-display)" }}>
+            Tech stack
+          </h2>
+          <p className="text-base max-w-xl mx-auto" style={{ color: "var(--gray-light)", lineHeight: 1.6 }}>
+            Cloud, data platforms, DevSecOps, and observability.
+          </p>
+          <div className="w-24 h-0.5 mx-auto mt-6" style={{ background: "linear-gradient(90deg, var(--magenta), var(--cyan))" }} />
+        </div>
 
         {/* Category tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">

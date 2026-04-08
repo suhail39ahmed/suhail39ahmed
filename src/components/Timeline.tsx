@@ -89,19 +89,18 @@ export default function Timeline() {
       />
 
       <div className="max-w-4xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16 text-center"
-        >
-          <p className="font-mono text-xs mb-3" style={{ color: "var(--green)" }}>
-            <span style={{ color: "var(--magenta)" }}>02.</span> CAREER_TIMELINE
+        <div className="text-center mb-16 md:mb-20">
+          <p className="font-mono text-sm uppercase tracking-widest mb-3" style={{ color: "var(--green)" }}>
+            Experience
           </p>
-          <h2 className="section-title text-neon-green mb-4">EXPERIENCE</h2>
-          <div className="w-24 h-0.5 mx-auto" style={{ background: "linear-gradient(90deg, var(--green), var(--cyan))" }} />
-        </motion.div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "var(--white)", fontFamily: "var(--font-display)" }}>
+            Career timeline
+          </h2>
+          <p className="text-base max-w-xl mx-auto" style={{ color: "var(--gray-light)", lineHeight: 1.6 }}>
+            9+ years across cloud, data, and DevSecOps.
+          </p>
+          <div className="w-24 h-0.5 mx-auto mt-6" style={{ background: "linear-gradient(90deg, var(--green), var(--cyan))" }} />
+        </div>
 
         {/* Timeline */}
         <div className="relative">

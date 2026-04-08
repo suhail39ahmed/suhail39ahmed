@@ -43,23 +43,18 @@ export default function Contact() {
       />
 
       <div className="max-w-4xl mx-auto px-6 text-center">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <p className="font-mono text-xs mb-3" style={{ color: "var(--cyan)" }}>
-            <span style={{ color: "var(--magenta)" }}>07.</span> CONTACT
+        <div className="text-center mb-16 md:mb-20">
+          <p className="font-mono text-sm uppercase tracking-widest mb-3" style={{ color: "var(--cyan)" }}>
+            Contact
           </p>
-          <h2 className="section-title text-neon-cyan mb-4">GET IN TOUCH</h2>
-          <div className="w-24 h-0.5 mx-auto mb-6" style={{ background: "linear-gradient(90deg, var(--cyan), var(--green))" }} />
-          <p className="text-base leading-relaxed max-w-xl mx-auto" style={{ color: "#a0aec0" }}>
-            Open to senior DevOps/DevSecOps roles, cloud architecture consulting,
-            and speaking opportunities. Based in Singapore, available globally.
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "var(--white)", fontFamily: "var(--font-display)" }}>
+            Get in touch
+          </h2>
+          <p className="text-base leading-relaxed max-w-xl mx-auto" style={{ color: "var(--gray-light)", lineHeight: 1.6 }}>
+            Open to DevSecOps, Cloud Solution Architect, and data platform roles. Singapore · available globally.
           </p>
-        </motion.div>
+          <div className="w-24 h-0.5 mx-auto mt-6" style={{ background: "linear-gradient(90deg, var(--cyan), var(--green))" }} />
+        </div>
 
         {/* Terminal message box */}
         <motion.div

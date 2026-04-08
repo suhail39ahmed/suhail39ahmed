@@ -8,7 +8,7 @@ const pillars = [
   { icon: Shield,    label: "DevSecOps",            desc: "Shift-left security, guardrails, compliance automation" },
   { icon: GitBranch, label: "CI/CD Pipelines",      desc: "Azure DevOps, GitLab CI — automated delivery at scale" },
   { icon: Server,    label: "IaC & Automation",     desc: "Terraform, Bicep, CloudFormation, Ansible Tower" },
-  { icon: Database,  label: "Data Platforms",       desc: "Snowflake, Databricks, ETL optimization & integration" },
+  { icon: Database,  label: "Data & Analytics",     desc: "Databricks, Snowflake, Power BI, Sigma, ETL" },
   { icon: Eye,       label: "Observability",        desc: "Prometheus, Grafana — full-stack monitoring" },
 ];
 
@@ -22,22 +22,19 @@ export default function About() {
       />
 
       <div className="max-w-6xl mx-auto px-6">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
-          <p className="font-mono text-xs mb-3" style={{ color: "var(--cyan)" }}>
-            <span style={{ color: "var(--magenta)" }}>01.</span> ABOUT_ME
+        {/* Section header - clear value prop style */}
+        <div className="text-center mb-16 md:mb-20">
+          <p className="font-mono text-sm uppercase tracking-widest mb-3" style={{ color: "var(--cyan)" }}>
+            About
           </p>
-          <h2 className="section-title text-neon-cyan mb-4">
-            WHO I AM
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "var(--white)", fontFamily: "var(--font-display)" }}>
+            Who I am
           </h2>
-          <div className="w-24 h-0.5 mx-auto" style={{ background: "linear-gradient(90deg, var(--cyan), var(--green))" }} />
-        </motion.div>
+          <p className="text-base max-w-xl mx-auto" style={{ color: "var(--gray-light)", lineHeight: 1.6 }}>
+            DevSecOps Engineer and Cloud Solution Architect focused on Cloud &amp; Data.
+          </p>
+          <div className="w-24 h-0.5 mx-auto mt-6" style={{ background: "linear-gradient(90deg, var(--cyan), var(--green))" }} />
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: Profile card */}
@@ -87,7 +84,7 @@ export default function About() {
                       Suhail Ahmed Inayathulla
                     </div>
                     <div className="font-mono text-sm mb-1" style={{ color: "var(--cyan)" }}>
-                      Senior DevOps Engineer
+                      DevSecOps · Cloud Solution Architect
                     </div>
                     <div className="font-mono text-xs" style={{ color: "var(--green)" }}>
                       📍 Singapore, Singapore
@@ -99,7 +96,8 @@ export default function About() {
                 <div className="space-y-2 font-mono text-sm">
                   {[
                     { key: "experience",   val: "9+ years global" },
-                    { key: "speciality",   val: "DevSecOps + Cloud Architecture" },
+                    { key: "speciality",   val: "Cloud & Data · Solution Architect" },
+                    { key: "data_stack",   val: "Databricks, Snowflake, Power BI, Sigma" },
                     { key: "platforms",    val: "Azure ★★★★★  AWS ★★★★☆" },
                     { key: "certs",        val: "14 active certifications" },
                     { key: "regions",      val: "Singapore + GCC Enterprise" },

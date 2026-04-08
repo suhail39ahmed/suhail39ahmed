@@ -14,6 +14,9 @@
 # production
 /build
 
+# local project repo clones (created by create-and-push-repos.ps1)
+_project_repos/
+
 # misc
 .DS_Store
 *.pem

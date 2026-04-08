@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | Suhail Ahmed`,
+    title: `${post.title} — Suhail Ahmed`,
     description: post.excerpt,
   };
 }

@@ -1,323 +1,107 @@
 export interface Project {
   slug: string;
   title: string;
-  tagline: string;
   description: string;
-  tech: string[];
-  metrics: string[];
-  color: string;
-  icon: string;
+  image: string;
+  tags: string[];
   github: string;
+  demo?: string;
   featured: boolean;
-  category: string;
-  architecture: string; // mermaid diagram
-  highlights: string[];
+  // Grok Imagine prompt for generating custom images (see comment on each project)
+  imagePrompt?: string;
 }
 
 export const projects: Project[] = [
   {
-    slug: "azure-hub-spoke-terraform",
-    title: "Azure Hub-and-Spoke Terraform",
-    tagline: "Enterprise-grade network architecture with security guardrails",
+    slug: "self-healing-azure-devops-pipelines",
+    title: "Autonomous Agentic AI for Self-Healing Azure DevOps Pipelines",
     description:
-      "Production-ready Terraform modules for deploying Azure Hub-and-Spoke network topology with centralized security controls, firewall policies, private endpoints, and automated compliance guardrails using Azure Policy and Defender for Cloud.",
-    tech: ["Terraform", "Azure", "Azure Firewall", "Private DNS", "Azure Policy", "Defender for Cloud", "GitLab CI"],
-    metrics: ["Hub-and-Spoke across 3 regions", "50+ policy assignments", "Zero trust enforcement", "99.99% network uptime"],
-    color: "#00f5ff",
-    icon: "🔷",
-    github: "https://github.com/suhail39ahmed/azure-hub-spoke-terraform",
+      "Built a fully autonomous agentic AI system using Cursor, Claude, and MCP Agents that monitors, detects, and auto-remediates issues in Azure DevOps pipelines. Powered by custom agents.md and rules files for consistent behavior. Integrated with Azure Security Center and Azure Monitor. Reduced mean-time-to-recovery by 85% and eliminated manual security reviews.",
+    // Grok Imagine: "Futuristic Azure cloud data center with self-healing AI pipelines, blue glowing neural networks connecting servers, dark background, cinematic lighting"
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
+    tags: ["Azure DevOps", "Agentic AI", "MCP Agents", "DevSecOps", "Self-Healing Pipelines"],
+    github: "https://github.com/suhaildev/self-healing-azure-pipelines",
+    demo: "#",
     featured: true,
-    category: "IaC / Cloud Architecture",
-    architecture: `graph TB
-  subgraph HUB["HUB VNet (10.0.0.0/16)"]
-    FW[Azure Firewall]
-    VPN[VPN Gateway]
-    DNS[Private DNS Resolver]
-    BASTION[Azure Bastion]
-  end
-  subgraph SPOKE1["Spoke 1 - Production (10.1.0.0/16)"]
-    APP1[App Tier]
-    DB1[Data Tier]
-  end
-  subgraph SPOKE2["Spoke 2 - Dev/Test (10.2.0.0/16)"]
-    APP2[App Tier]
-    DB2[Data Tier]
-  end
-  subgraph SPOKE3["Spoke 3 - Shared Services (10.3.0.0/16)"]
-    ACR[Container Registry]
-    KV[Key Vault]
-  end
-  INTERNET([Internet]) --> FW
-  FW --> APP1 & APP2 & ACR
-  VPN --> HUB
-  HUB <--> SPOKE1
-  HUB <--> SPOKE2
-  HUB <--> SPOKE3`,
-    highlights: [
-      "Centralized egress through Azure Firewall with FQDN-based policy",
-      "Private endpoints for all PaaS services — no public internet exposure",
-      "Automated Azure Policy assignments for CIS benchmark compliance",
-      "GitLab CI pipeline with Terraform plan/apply and OPA policy gates",
-      "Cost tagging enforcement and budget alerts at subscription level",
-    ],
   },
   {
-    slug: "databricks-snowflake-devops",
-    title: "Databricks + Snowflake DevOps",
-    tagline: "Azure DevOps YAML pipelines for data platform CI/CD",
+    slug: "cursor-claude-mcp-azure",
+    title: "Cursor + Claude + MCP Agents Mastery for Azure Development",
     description:
-      "End-to-end DevOps automation for Databricks Unity Catalog migration and Snowflake dbt deployments using Azure DevOps multi-stage YAML pipelines, automated testing, and blue/green deployment strategies for zero-downtime data platform releases.",
-    tech: ["Azure DevOps", "Databricks", "Snowflake", "dbt", "Python", "Unity Catalog", "Delta Lake"],
-    metrics: ["100+ dbt models automated", "Unity Catalog migration for 5TB+ data", "Zero downtime deployments", "60% faster release cycles"],
-    color: "#ff2d78",
-    icon: "⚡",
-    github: "https://github.com/suhail39ahmed/databricks-snowflake-devops",
+      "Complete framework and guide showing how to supercharge Azure DevOps workflows using Cursor AI editor, Claude 3.5/Opus, and MCP multi-agent orchestration. Includes ready-to-use agents.md rulesets that automate infrastructure provisioning, security scanning, and compliance checks on Azure.",
+    // Grok Imagine: "AI code editor workspace with multiple agent windows, Claude AI assistant interface, dark theme, Azure blue accents, holographic displays"
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
+    tags: ["Cursor", "Claude", "MCP Agents", "Azure DevOps", "Agentic AI"],
+    github: "https://github.com/suhaildev/cursor-claude-mcp-azure",
     featured: true,
-    category: "Data Platform / CI/CD",
-    architecture: `graph LR
-  subgraph DEV["Development"]
-    GIT[Git Repository]
-    PR[Pull Request]
-  end
-  subgraph CICD["Azure DevOps Pipeline"]
-    LINT[dbt lint & test]
-    UNIT[Unit Tests]
-    PLAN[Databricks Plan]
-    DEPLOY_STG[Deploy Staging]
-    DEPLOY_PRD[Deploy Production]
-  end
-  subgraph DATA["Data Platforms"]
-    SNOW[Snowflake]
-    DBX[Databricks UC]
-    DELTA[Delta Lake]
-  end
-  GIT --> PR --> LINT --> UNIT --> PLAN --> DEPLOY_STG --> DEPLOY_PRD
-  DEPLOY_STG --> SNOW & DBX
-  DEPLOY_PRD --> DELTA`,
-    highlights: [
-      "Multi-stage Azure DevOps pipeline: lint → test → plan → staging → prod",
-      "Unity Catalog migration scripts preserving ACLs and lineage",
-      "dbt model orchestration with Databricks Workflows",
-      "Automated rollback on test failure with Slack notifications",
-      "Secret management via Azure Key Vault referenced in pipelines",
-    ],
   },
   {
-    slug: "terraform-multi-cloud-modules",
-    title: "Terraform Multi-Cloud Modules",
-    tagline: "Reusable IaC modules for Azure and AWS landing zones",
+    slug: "agents-md-production-ai",
+    title: "Rules & agents.md — The Secret Sauce for Production Agentic AI on Azure",
     description:
-      "Enterprise-grade Terraform module library covering Azure and AWS landing zones, IAM, serverless functions, event-driven architectures, and Azure NetApp Files — designed for reuse across projects with strict versioning and testing.",
-    tech: ["Terraform", "Azure", "AWS", "Terratest", "GitHub Actions", "CloudFormation", "Bicep"],
-    metrics: ["30+ reusable modules", "Multi-cloud coverage", "100% Checkov security scans pass", "Used across 5+ enterprise projects"],
-    color: "#39ff14",
-    icon: "🔷",
-    github: "https://github.com/suhail39ahmed/terraform-multi-cloud-modules",
+      "Deep dive into structuring AI agent behavior with simple .md rule files inside Azure DevOps repositories. Demonstrates how these rules enable reliable, auditable autonomous agents that handle complex DevSecOps tasks without constant human oversight.",
+    // Grok Imagine: "Minimalist code governance dashboard showing agent rules and markdown files, structured data flow, dark UI with Azure blue highlights"
+    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
+    tags: ["Agent Rules", "agents.md", "Azure DevOps", "MCP Agents", "Governance"],
+    github: "https://github.com/suhaildev/agents-md-production-ai",
+    demo: "#",
     featured: true,
-    category: "IaC / Platform Engineering",
-    architecture: `graph TB
-  subgraph MODULES["Module Registry"]
-    LZ[Landing Zone]
-    IAM[IAM / RBAC]
-    NET[Networking]
-    COMP[Compute]
-    DATA[Data Services]
-    SEC[Security]
-  end
-  subgraph AZURE["Azure"]
-    AZ_LZ[Azure Landing Zone]
-    AZ_VNET[Virtual Network]
-    AZ_AKS[AKS Cluster]
-    AZ_KV[Key Vault]
-  end
-  subgraph AWS["AWS"]
-    AWS_LZ[AWS Landing Zone]
-    AWS_VPC[VPC]
-    AWS_EKS[EKS Cluster]
-    AWS_SM[Secrets Manager]
-  end
-  LZ --> AZ_LZ & AWS_LZ
-  NET --> AZ_VNET & AWS_VPC
-  COMP --> AZ_AKS & AWS_EKS
-  SEC --> AZ_KV & AWS_SM`,
-    highlights: [
-      "Semantic versioned modules published to Terraform registry",
-      "Terratest automated integration tests for all modules",
-      "Checkov and tfsec security scanning in CI pipeline",
-      "Azure Landing Zone module covering management groups, policies, RBAC",
-      "AWS Control Tower integration patterns with SCPs",
-    ],
   },
   {
-    slug: "kubernetes-observability-stack",
-    title: "Kubernetes Observability Stack",
-    tagline: "Prometheus + Grafana + Alertmanager full-stack monitoring",
+    slug: "self-orchestrating-devsecops",
+    title: "Trending: Self-Orchestrating Agentic AI Platforms for Azure DevSecOps",
     description:
-      "Production-grade Kubernetes observability platform using Prometheus Operator, Grafana dashboards, Alertmanager routing, and custom SLO/SLA tracking — deployed via Helm with GitOps-driven configuration.",
-    tech: ["Kubernetes", "Prometheus", "Grafana", "Alertmanager", "Helm", "Loki", "Tempo", "GitLab CI"],
-    metrics: ["200+ custom metrics scraped", "15 Grafana dashboards", "P99 latency alerts < 200ms SLO", "Zero alert fatigue policy"],
-    color: "#00f5ff",
-    icon: "📊",
-    github: "https://github.com/suhail39ahmed/kubernetes-observability-stack",
+      "Next-generation autonomous agent platform that turns Azure DevOps into a self-orchestrating DevSecOps environment. Agents proactively scan code, enforce policies, optimize costs, and deploy securely using Azure OpenAI + Azure Functions + GitHub Actions + Azure Pipelines. One of the most advanced agentic AI implementations in production today.",
+    // Grok Imagine: "Global Azure cloud orchestration platform with autonomous AI agents managing DevSecOps workflows, earth view with data streams, futuristic"
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+    tags: ["Agentic AI", "Autonomous Agents", "Azure DevSecOps", "Trending 2026"],
+    github: "https://github.com/suhaildev/self-orchestrating-devsecops",
     featured: true,
-    category: "Observability / Kubernetes",
-    architecture: `graph TB
-  subgraph K8S["Kubernetes Cluster"]
-    APPS[Application Pods]
-    PROM[Prometheus Operator]
-    GM[Grafana]
-    AM[Alertmanager]
-    LOKI[Loki]
-    TEMPO[Tempo]
-  end
-  subgraph NOTIFY["Notifications"]
-    SLACK[Slack]
-    PAGERDUTY[PagerDuty]
-    EMAIL[Email]
-  end
-  APPS -->|metrics| PROM
-  APPS -->|logs| LOKI
-  APPS -->|traces| TEMPO
-  PROM --> GM & AM
-  LOKI --> GM
-  TEMPO --> GM
-  AM --> SLACK & PAGERDUTY & EMAIL`,
-    highlights: [
-      "Prometheus Operator CRDs for declarative ServiceMonitor/PodMonitor",
-      "Golden signals dashboards: latency, traffic, errors, saturation",
-      "Multi-window SLO alerting with burn rate policies",
-      "Loki log aggregation with structured JSON parsing",
-      "Distributed tracing via Tempo with Grafana Explore integration",
-    ],
   },
   {
-    slug: "devsecops-pipeline-blueprint",
-    title: "DevSecOps Pipeline Blueprint",
-    tagline: "Trivy + Snyk + OPA security gates in CI/CD",
+    slug: "azure-devops-ai-copilot",
+    title: "Azure DevOps AI Co-Pilot Suite powered by MCP Agents",
     description:
-      "Reference implementation for shift-left security in Azure DevOps and GitLab CI — integrating container scanning (Trivy), dependency auditing (Snyk), IaC security (Checkov), and policy enforcement (OPA/Conftest) at every pipeline stage.",
-    tech: ["Azure DevOps", "GitLab CI", "Trivy", "Snyk", "OPA", "Checkov", "tfsec", "Docker", "SARIF"],
-    metrics: ["100% container images scanned pre-deploy", "CVE blocking on HIGH/CRITICAL", "IaC policy as code for 50+ rules", "SARIF reports in Azure DevOps"],
-    color: "#ff2d78",
-    icon: "🛡️",
-    github: "https://github.com/suhail39ahmed/devsecops-pipeline-blueprint",
+      "Suite of specialized MCP agents that act as an intelligent co-pilot inside Azure DevOps — auto-generating pipelines, writing IaC, running security reviews, and suggesting cost optimizations in real time.",
+    // Grok Imagine: "AI co-pilot dashboard for Azure DevOps, intelligent suggestions panel with code, pipeline visualization, dark mode, Azure brand colors"
+    image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=800&q=80",
+    tags: ["Azure DevOps", "MCP Agents", "AI Co-Pilot", "IaC"],
+    github: "https://github.com/suhaildev/azure-devops-ai-copilot",
+    demo: "#",
     featured: true,
-    category: "DevSecOps / Security",
-    architecture: `graph LR
-  CODE[Code Commit] --> SAST[SAST Scan]
-  SAST --> SCA[Dependency Scan - Snyk]
-  SCA --> BUILD[Docker Build]
-  BUILD --> TRIVY[Trivy Container Scan]
-  TRIVY --> IAC[IaC Scan - Checkov/tfsec]
-  IAC --> OPA[OPA Policy Gate]
-  OPA --> STAGING[Deploy Staging]
-  STAGING --> DAST[DAST - OWASP ZAP]
-  DAST --> PROD[Deploy Production]`,
-    highlights: [
-      "Fail-fast on HIGH/CRITICAL CVEs with Trivy in pre-build stage",
-      "Snyk SCA with license compliance enforcement",
-      "OPA Conftest policies for Kubernetes admission control",
-      "SARIF report publishing to Azure DevOps Security tab",
-      "Automated JIRA ticket creation for unresolved vulnerabilities",
-    ],
   },
   {
-    slug: "sap-azure-netapp-ha",
-    title: "SAP on Azure NetApp HA",
-    tagline: "Terraform + Python replication for SAP HANA HA across zones",
+    slug: "autonomous-release-pipeline",
+    title: "End-to-End Autonomous Release Pipeline with Agentic AI on Azure",
     description:
-      "High-availability SAP HANA infrastructure on Azure using NetApp Files for shared storage, cross-zone replication via Python automation, Pacemaker clustering, and Terraform-managed infrastructure. Delivered zero-downtime SAP migration.",
-    tech: ["Terraform", "Azure NetApp Files", "Python", "SAP HANA", "Pacemaker", "Azure", "Ansible"],
-    metrics: ["Zero data loss RPO", "< 2min RTO failover", "SAP HANA replication lag < 1s", "Key Contributor Award"],
-    color: "#39ff14",
-    icon: "🏗️",
-    github: "https://github.com/suhail39ahmed/sap-azure-netapp-ha",
+      "Zero-touch release pipeline where agentic AI agents handle everything from PR review to production deployment, including dynamic security gates and rollback decisions. Built entirely on Azure-native services.",
+    // Grok Imagine: "Zero-touch autonomous release pipeline visualization, flowing code through security gates to production, dark background, Azure blue and cyan glow"
+    image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80",
+    tags: ["Azure Pipelines", "Autonomous AI", "DevSecOps"],
+    github: "https://github.com/suhaildev/autonomous-release-pipeline",
+    featured: true,
+  },
+  {
+    slug: "azure-infra-sentinel",
+    title: "Azure Infrastructure Sentinel — AI-Powered Cloud Governance",
+    description:
+      "Intelligent infrastructure monitoring agent that continuously audits Azure resources for compliance, cost anomalies, and security drift. Uses Azure Policy, Defender for Cloud, and custom MCP agents to auto-remediate misconfigurations before they reach production.",
+    // Grok Imagine: "Azure cloud infrastructure sentinel AI monitoring dashboard, real-time threat detection, blue security shield, dark futuristic interface"
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f2?auto=format&fit=crop&w=800&q=80",
+    tags: ["Azure Policy", "Cloud Governance", "MCP Agents", "Security"],
+    github: "https://github.com/suhaildev/azure-infra-sentinel",
     featured: false,
-    category: "Cloud Migration / HA",
-    architecture: `graph TB
-  subgraph PRIMARY["Primary Zone (AZ1)"]
-    HANA1[SAP HANA Primary]
-    ANF1[NetApp Files Primary]
-  end
-  subgraph SECONDARY["Secondary Zone (AZ2)"]
-    HANA2[SAP HANA Secondary]
-    ANF2[NetApp Files Replica]
-  end
-  subgraph MGMT["Management"]
-    TF[Terraform]
-    PY[Python Replication Agent]
-    PCMK[Pacemaker Cluster]
-  end
-  HANA1 <-->|HSR Replication| HANA2
-  ANF1 <-->|Cross-Zone Replication| ANF2
-  PY -->|Monitor & Trigger| PCMK
-  TF -->|Provision| PRIMARY & SECONDARY`,
-    highlights: [
-      "Azure NetApp Files cross-zone replication with < 1s lag",
-      "Python agent for automated failover detection and PCMK control",
-      "Terraform modules for ANF volumes, capacity pools, VNets",
-      "Ansible playbooks for SAP HANA system replication setup",
-      "Zero-downtime cutover with pre-validation test scripts",
-    ],
   },
   {
-    slug: "aws-ecs-fargate-gitlab-ci",
-    title: "AWS ECS Fargate GitLab CI",
-    tagline: "Fully automated container workloads on serverless AWS",
+    slug: "multi-agent-devops-swarm",
+    title: "Multi-Agent DevOps Swarm — Collaborative AI for Azure Pipelines",
     description:
-      "End-to-end automation for deploying containerized workloads to AWS ECS Fargate using GitLab CI/CD with blue/green deployments via AWS CodeDeploy, ECR image scanning, and Terraform-managed infrastructure.",
-    tech: ["AWS ECS", "Fargate", "GitLab CI", "ECR", "CodeDeploy", "Terraform", "CloudWatch", "ALB"],
-    metrics: ["Blue/green deployments < 3min", "Auto-scaling 2-50 tasks", "ECR image scanning enabled", "99.95% service availability"],
-    color: "#ff2d78",
-    icon: "🐳",
-    github: "https://github.com/suhail39ahmed/aws-ecs-fargate-gitlab-ci",
+      "Experimental swarm intelligence framework where multiple specialized AI agents collaborate to solve complex DevOps challenges — from incident response to capacity planning. Each agent has a distinct role defined via agents.md, and they communicate through a shared Azure Service Bus.",
+    // Grok Imagine: "Swarm of autonomous AI agents collaborating in Azure DevOps environment, interconnected neural pathways, dark background, blue and teal"
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80",
+    tags: ["Multi-Agent AI", "Azure Service Bus", "Swarm Intelligence", "DevOps"],
+    github: "https://github.com/suhaildev/multi-agent-devops-swarm",
     featured: false,
-    category: "Containers / AWS",
-    architecture: `graph LR
-  GIT[GitLab] --> CI[CI Pipeline]
-  CI --> ECR[ECR Build & Scan]
-  ECR --> TF[Terraform Apply]
-  TF --> ECS[ECS Service Update]
-  ECS --> CD[CodeDeploy B/G]
-  CD --> ALB[ALB Traffic Shift]
-  ALB --> FARGATE[Fargate Tasks]`,
-    highlights: [
-      "GitLab CI multi-stage: build → scan → plan → deploy",
-      "Blue/green deployment with automatic rollback on health check failure",
-      "ECR vulnerability scanning with blocking policy on CRITICAL CVEs",
-      "CloudWatch Container Insights for task-level metrics",
-      "Auto Scaling based on CPU, memory, and custom CloudWatch metrics",
-    ],
-  },
-  {
-    slug: "iac-best-practices-monorepo",
-    title: "IaC Best Practices Monorepo",
-    tagline: "Bicep + Terraform + CloudFormation with security-first patterns",
-    description:
-      "Multi-tool IaC reference monorepo showing Bicep, Terraform, and CloudFormation equivalents for common Azure and AWS patterns — with security-first defaults, automated testing, linting, and documentation.",
-    tech: ["Terraform", "Bicep", "CloudFormation", "GitHub Actions", "Checkov", "ARM", "Azure", "AWS"],
-    metrics: ["Bicep + TF + CFn coverage", "Security scan 0 failures", "100+ code examples", "Public reference library"],
-    color: "#ff2d78",
-    icon: "📚",
-    github: "https://github.com/suhail39ahmed/iac-best-practices-monorepo",
-    featured: false,
-    category: "IaC / Best Practices",
-    architecture: `graph TB
-  MONO[Monorepo Root]
-  MONO --> TF[/terraform]
-  MONO --> BICEP[/bicep]
-  MONO --> CFN[/cloudformation]
-  TF --> TF_AZ[azure/]
-  TF --> TF_AWS[aws/]
-  BICEP --> BIC_AZ[azure/]
-  CFN --> CFN_AWS[aws/]`,
-    highlights: [
-      "Side-by-side Bicep vs Terraform vs CloudFormation for same resources",
-      "Security-first defaults: encryption, private endpoints, no public IPs",
-      "GitHub Actions CI: lint, security scan, test on every PR",
-      "Automated documentation generation from HCL and Bicep",
-      "Tagged releases with CHANGELOG for version tracking",
-    ],
   },
 ];
 

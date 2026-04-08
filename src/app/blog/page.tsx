@@ -3,8 +3,9 @@ import BlogList from "@/components/BlogList";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | Suhail Ahmed — DevOps Engineering Insights",
-  description: "Technical deep-dives on DevSecOps, Terraform, Kubernetes, Azure, and cloud architecture from 9+ years in the field.",
+  title: "Blog — Suhail Ahmed",
+  description:
+    "Technical articles on Azure DevOps, Agentic AI, DevSecOps, and cloud architecture.",
 };
 
 export default function BlogPage() {

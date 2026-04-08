@@ -8,95 +8,72 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 
 export default function BlogPost({ post }: { post: BlogPostType }) {
   return (
-    <div className="min-h-screen pt-20" style={{ background: "var(--bg-primary)" }}>
-      {/* Header */}
-      <div
-        className="border-b"
-        style={{ background: "var(--bg-card)", borderColor: "rgba(0,245,255,0.15)" }}
-      >
-        <div className="max-w-3xl mx-auto px-6 py-10">
-          <Link
-            href="/blog"
-            className="flex items-center gap-2 font-mono text-xs mb-6"
-            style={{ color: "var(--gray-light)" }}
-          >
-            <ArrowLeft size={14} /> cd ../blog
-          </Link>
+    <div className="pt-24 pb-16">
+      <div className="max-w-3xl mx-auto px-6 py-12 md:py-16">
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 hover:text-azure transition-colors mb-8"
+        >
+          <ArrowLeft size={14} /> Back to Blog
+        </Link>
 
-          {/* Tags */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
           <div className="flex flex-wrap gap-2 mb-4">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="font-mono text-xs px-2 py-0.5 rounded"
-                style={{
-                  background: "rgba(0,245,255,0.06)",
-                  border: "1px solid rgba(0,245,255,0.2)",
-                  color: "var(--cyan)",
-                }}
+                className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-azure/8 text-azure dark:bg-azure/10 dark:text-azure-light"
               >
-                #{tag}
+                {tag}
               </span>
             ))}
           </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-display text-2xl md:text-3xl font-black mb-4"
-            style={{ color: "var(--white)", lineHeight: 1.3 }}
-          >
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
             {post.title}
-          </motion.h1>
+          </h1>
 
-          <div className="flex items-center gap-4">
-            <span
-              className="flex items-center gap-1 font-mono text-xs"
-              style={{ color: "var(--gray-light)" }}
-            >
-              <Calendar size={11} />
+          <div className="flex items-center gap-4 mb-10 pb-6 border-b border-slate-200 dark:border-slate-800">
+            <span className="flex items-center gap-1 text-sm text-slate-500 dark:text-slate-500">
+              <Calendar size={14} />
               {new Date(post.date).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
               })}
             </span>
-            <span
-              className="flex items-center gap-1 font-mono text-xs"
-              style={{ color: "var(--gray-light)" }}
-            >
-              <Clock size={11} />
+            <span className="flex items-center gap-1 text-sm text-slate-500 dark:text-slate-500">
+              <Clock size={14} />
               {post.readTime} read
             </span>
-            <span className="font-mono text-xs" style={{ color: "var(--green)" }}>
-              Suhail Ahmed Inayathulla
-            </span>
           </div>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Content */}
-      <div className="max-w-3xl mx-auto px-6 py-12">
         <motion.article
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="prose-cyber"
+          className="prose-blog"
         >
           <MDXRemote source={post.content} />
         </motion.article>
 
-        {/* Footer */}
-        <div
-          className="mt-12 pt-8 flex items-center justify-between"
-          style={{ borderTop: "1px solid rgba(0,245,255,0.1)" }}
-        >
-          <Link href="/blog" className="btn-cyber text-xs py-2 px-4">
-            <ArrowLeft size={12} />
-            <span>All Posts</span>
+        <div className="mt-12 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 rounded-lg hover:border-azure hover:text-azure transition-colors"
+          >
+            <ArrowLeft size={14} />
+            All Posts
           </Link>
-          <Link href="/#contact" className="btn-cyber btn-cyber-magenta text-xs py-2 px-4">
-            <span>Get in Touch</span>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-azure text-white rounded-lg hover:bg-azure-dark transition-colors"
+          >
+            Get in Touch
           </Link>
         </div>
       </div>

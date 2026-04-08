@@ -1,282 +1,99 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Github, ExternalLink, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink } from "lucide-react";
 import type { Project } from "@/lib/projects";
 
 export default function ProjectDetail({ project }: { project: Project }) {
   return (
-    <div className="min-h-screen pt-20" style={{ background: "var(--bg-primary)" }}>
-      {/* Hero bar */}
-      <div
-        className="border-b"
-        style={{
-          background: "var(--bg-card)",
-          borderColor: `${project.color}25`,
-        }}
-      >
-        <div className="max-w-5xl mx-auto px-6 py-8">
-          <Link
-            href="/#projects"
-            className="flex items-center gap-2 font-mono text-xs mb-6 transition-colors hover:opacity-80"
-            style={{ color: "var(--gray-light)" }}
-          >
-            <ArrowLeft size={14} /> cd ../projects
-          </Link>
+    <div className="pt-24 pb-16">
+      <div className="max-w-4xl mx-auto px-6 py-12 md:py-16">
+        <Link
+          href="/projects"
+          className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 hover:text-azure transition-colors mb-8"
+        >
+          <ArrowLeft size={14} /> Back to Projects
+        </Link>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="flex items-start justify-between flex-wrap gap-4 mb-4">
-              <div>
-                <span
-                  className="font-mono text-xs px-2 py-0.5 rounded mb-3 inline-block"
-                  style={{
-                    background: `${project.color}10`,
-                    border: `1px solid ${project.color}30`,
-                    color: project.color,
-                  }}
-                >
-                  {project.category}
-                </span>
-                <h1
-                  className="font-display text-3xl md:text-4xl font-black mb-2"
-                  style={{ color: project.color }}
-                >
-                  <span className="text-4xl mr-3">{project.icon}</span>
-                  {project.title}
-                </h1>
-                <p className="text-base" style={{ color: "var(--gray-light)" }}>
-                  {project.tagline}
-                </p>
-              </div>
-              <div className="flex gap-3">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-cyber text-xs py-2 px-4"
-                >
-                  <Github size={14} />
-                  <span>GitHub</span>
-                </a>
-              </div>
-            </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          {/* Hero image */}
+          <div className="relative aspect-[16/9] rounded-xl overflow-hidden mb-8">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 896px) 100vw, 896px"
+            />
+          </div>
 
-            {/* Tech stack */}
-            <div className="flex flex-wrap gap-2">
-              {project.tech.map((t) => (
-                <span
-                  key={t}
-                  className="font-mono text-xs px-2 py-0.5 rounded"
-                  style={{
-                    background: `${project.color}08`,
-                    border: `1px solid ${project.color}25`,
-                    color: project.color,
-                  }}
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-sm font-medium px-3 py-1 rounded-full bg-azure/8 text-azure dark:bg-azure/10 dark:text-azure-light"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
 
-      <div className="max-w-5xl mx-auto px-6 py-12 grid lg:grid-cols-3 gap-8">
-        {/* Main content */}
-        <div className="lg:col-span-2 space-y-8">
+          {/* Title */}
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+            {project.title}
+          </h1>
+
           {/* Description */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="cyber-card p-6"
-          >
-            <h2
-              className="font-display text-lg font-bold mb-4 tracking-wider"
-              style={{ color: project.color }}
-            >
-              OVERVIEW
-            </h2>
-            <p className="text-sm leading-relaxed" style={{ color: "#a0aec0" }}>
+          <div className="mb-8">
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
               {project.description}
             </p>
-          </motion.section>
+          </div>
 
-          {/* Architecture diagram */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="cyber-card p-6"
-          >
-            <h2
-              className="font-display text-lg font-bold mb-4 tracking-wider"
-              style={{ color: project.color }}
-            >
-              ARCHITECTURE
-            </h2>
-            <div
-              className="rounded p-4 overflow-x-auto"
-              style={{
-                background: "rgba(0,0,0,0.4)",
-                border: `1px solid ${project.color}20`,
-              }}
-            >
-              <div className="font-mono text-xs mb-2" style={{ color: "var(--gray-light)" }}>
-                // mermaid architecture diagram
-              </div>
-              <pre
-                className="font-mono text-xs leading-relaxed whitespace-pre-wrap"
-                style={{ color: project.color }}
-              >
-                {project.architecture}
-              </pre>
-            </div>
-            <p className="font-mono text-xs mt-3" style={{ color: "var(--gray-light)" }}>
-              💡 Render with{" "}
-              <a
-                href="https://mermaid.live"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: project.color }}
-              >
-                mermaid.live
-              </a>{" "}
-              for interactive diagram
-            </p>
-          </motion.section>
-
-          {/* Key highlights */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="cyber-card p-6"
-          >
-            <h2
-              className="font-display text-lg font-bold mb-4 tracking-wider"
-              style={{ color: project.color }}
-            >
-              KEY HIGHLIGHTS
-            </h2>
-            <ul className="space-y-3">
-              {project.highlights.map((h, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 + i * 0.07 }}
-                  className="flex items-start gap-3 text-sm"
-                  style={{ color: "#a0aec0" }}
-                >
-                  <CheckCircle2
-                    size={16}
-                    className="flex-shrink-0 mt-0.5"
-                    style={{ color: project.color }}
-                  />
-                  {h}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.section>
-        </div>
-
-        {/* Sidebar */}
-        <div className="space-y-5">
-          {/* Metrics */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="cyber-card p-5"
-          >
-            <h3
-              className="font-display text-sm font-bold mb-4 tracking-wider"
-              style={{ color: project.color }}
-            >
-              METRICS
-            </h3>
-            <div className="space-y-2">
-              {project.metrics.map((m) => (
-                <div
-                  key={m}
-                  className="font-mono text-xs p-2 rounded"
-                  style={{
-                    background: `${project.color}08`,
-                    border: `1px solid ${project.color}20`,
-                    color: project.color,
-                  }}
-                >
-                  ▸ {m}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Stack */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-            className="cyber-card p-5"
-          >
-            <h3
-              className="font-display text-sm font-bold mb-4 tracking-wider"
-              style={{ color: project.color }}
-            >
-              TECH STACK
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {project.tech.map((t) => (
-                <span
-                  key={t}
-                  className="font-mono text-xs px-2 py-1 rounded"
-                  style={{
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    color: "var(--gray-light)",
-                  }}
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* GitHub CTA */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="cyber-card p-5"
-          >
-            <h3
-              className="font-display text-sm font-bold mb-3 tracking-wider"
-              style={{ color: project.color }}
-            >
-              SOURCE CODE
-            </h3>
+          {/* Links */}
+          <div className="flex items-center gap-4 mb-10 pb-8 border-b border-slate-200 dark:border-slate-800">
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 font-mono text-xs transition-opacity hover:opacity-80"
-              style={{ color: project.color }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors"
             >
-              <Github size={14} />
-              {project.github.replace("https://github.com/", "")}
+              <Github size={16} /> View on GitHub
             </a>
-          </motion.div>
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium rounded-lg hover:border-azure hover:text-azure transition-colors"
+              >
+                <ExternalLink size={16} /> Live Demo
+              </a>
+            )}
+          </div>
+        </motion.div>
 
-          {/* Back */}
-          <Link href="/#projects">
-            <div
-              className="flex items-center gap-2 font-mono text-xs p-3 rounded transition-all hover:opacity-80"
-              style={{ color: "var(--gray-light)", border: "1px solid rgba(255,255,255,0.08)" }}
-            >
-              <ArrowLeft size={12} /> Back to all projects
-            </div>
+        {/* Navigation */}
+        <div className="flex items-center justify-between">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 rounded-lg hover:border-azure hover:text-azure transition-colors"
+          >
+            <ArrowLeft size={14} />
+            All Projects
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-azure text-white rounded-lg hover:bg-azure-dark transition-colors"
+          >
+            Get in Touch
           </Link>
         </div>
       </div>
