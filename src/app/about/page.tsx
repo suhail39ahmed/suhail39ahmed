@@ -155,8 +155,8 @@ export default function AboutPage() {
               {[
                 { value: "10+", label: "Years Experience" },
                 { value: "13+", label: "Cloud Certifications" },
-                { value: "1000+", label: "VMs Managed" },
-                { value: "200+", label: "Cloud Resources Monitored" },
+                { value: "100+", label: "Workflows & Pipelines Automated" },
+                { value: "85%", label: "Ops Overhead Reduced" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div className="text-3xl md:text-4xl font-bold text-azure mb-1">{stat.value}</div>
