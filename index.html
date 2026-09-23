@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Suhail Ahmed — Solutions Architect, Cloud · Data · AI</title>
+    <meta name="description" content="Singapore-based Solutions Architect designing the control plane for cloud, data, and AI on Azure and AWS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="progress" id="progress"></div>
+    <canvas id="field" class="field"></canvas>
+
+    <header class="nav">
+      <a class="logo" href="#top" data-magnetic>SA</a>
+      <nav>
+        <a href="#system">System</a>
+        <a href="#work">Work</a>
+        <a href="#path">Path</a>
+        <a href="#signal">Signal</a>
+      </nav>
+      <a class="nav-cta" href="files/Suhail_Resume_v1.8.pdf" download data-magnetic>Resume</a>
+    </header>
+
+    <main id="top">
+      <section class="cine-banner" id="banner" aria-label="Technology film reel">
+        <video id="banner-video" muted autoplay playsinline></video>
+        <div class="cine-shade"></div>
+        <div class="cine-copy">
+          <p class="cine-kicker" id="cine-kicker">01 / Hardware</p>
+          <h2 id="cine-title">GPU × CPU under load</h2>
+          <p id="cine-sub">Silicon first. Then the model takes the rack.</p>
+        </div>
+        <ol class="cine-chapters" id="cine-chapters">
+          <li class="is-on">GPU / CPU</li>
+          <li>AI</li>
+          <li>Pipelines / MLOps</li>
+        </ol>
+        <p class="cine-credit">Free Mixkit footage · no copyright claim</p>
+      </section>
+
+      <section class="hero">
+        <p class="boot" id="boot">booting control plane<span>.</span></p>
+        <h1>
+          <span class="line reveal-text">Suhail</span>
+          <span class="line reveal-text">Ahmed</span>
+        </h1>
+        <p class="title reveal-up">Solutions Architect — Cloud, Data &amp; AI</p>
+        <p class="lede reveal-up">I design the layer enterprises actually run on: landing zones, data platforms, and governed AI. Azure. AWS. Then I make it operate itself.</p>
+        <div class="hero-cta reveal-up">
+          <a class="btn solid" href="#work" data-magnetic>Inspect the work</a>
+          <a class="btn ghost" href="mailto:suhail39ahmed@gmail.com" data-magnetic>Open a channel</a>
+        </div>
+
+        <div class="hero-stage">
+          <div class="ops-deck">
+            <aside class="telemetry">
+              <p class="panel-label">Hardware fabric</p>
+              <div class="meter" data-meter="cpu">
+                <div class="meter-head"><span>CPU</span><b id="cpu-val">32%</b></div>
+                <div class="meter-track"><i id="cpu-bar"></i></div>
+                <canvas class="wave" id="cpu-wave" width="280" height="36"></canvas>
+              </div>
+              <div class="meter" data-meter="gpu">
+                <div class="meter-head"><span>GPU</span><b id="gpu-val">48%</b></div>
+                <div class="meter-track"><i id="gpu-bar"></i></div>
+                <canvas class="wave" id="gpu-wave" width="280" height="36"></canvas>
+              </div>
+              <div class="meter" data-meter="mem">
+                <div class="meter-head"><span>MEM</span><b id="mem-val">61%</b></div>
+                <div class="meter-track"><i id="mem-bar"></i></div>
+              </div>
+              <div class="meter" data-meter="net">
+                <div class="meter-head"><span>NET</span><b id="net-val">22%</b></div>
+                <div class="meter-track"><i id="net-bar"></i></div>
+              </div>
+              <article class="id-card" data-tilt>
+                <img src="images/myimage_1.png" alt="Suhail Ahmed">
+                <div>
+                  <p>Now online</p>
+                  <strong>Revantage Global</strong>
+                  <span>Singapore · 2026</span>
+                </div>
+              </article>
+            </aside>
+
+            <div class="pipeline" id="pipeline">
+              <div class="pipe-head">
+                <p class="panel-label">release / main</p>
+                <span class="run-id" id="run-id">#1842 · running</span>
+              </div>
+              <div class="stages" id="stages">
+                <div class="stage is-active"><h4>Build</h4>
+                  <div class="job running" data-job="lint"><i></i>lint</div>
+                  <div class="job queued" data-job="compile"><i></i>compile</div>
+                  <div class="job queued" data-job="container"><i></i>container</div>
+                </div>
+                <div class="stage"><h4>Test</h4>
+                  <div class="job queued" data-job="unit"><i></i>unit</div>
+                  <div class="job queued" data-job="e2e"><i></i>e2e</div>
+                  <div class="job queued" data-job="load"><i></i>load</div>
+                </div>
+                <div class="stage"><h4>Security</h4>
+                  <div class="job queued" data-job="sast"><i></i>sast</div>
+                  <div class="job queued" data-job="policy"><i></i>policy</div>
+                  <div class="job queued" data-job="secrets"><i></i>secrets</div>
+                </div>
+                <div class="stage"><h4>Deploy</h4>
+                  <div class="job queued" data-job="staging"><i></i>staging</div>
+                  <div class="job queued" data-job="prod-gate"><i></i>prod-gate</div>
+                </div>
+                <div class="stage"><h4>Observe</h4>
+                  <div class="job queued" data-job="grafana"><i></i>grafana</div>
+                  <div class="job queued" data-job="sentinel"><i></i>sentinel</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="now" id="system">
+        <p class="kicker">01 / Current mission</p>
+        <div class="now-grid">
+          <h2 class="reveal-up">I am building the AI control plane for an enterprise data estate.</h2>
+          <div class="now-copy reveal-up">
+            <p>At Revantage I put Azure AI Foundry in front of Databricks, Snowflake, and Sigma — one gateway to manage, monitor, and govern how the business uses AI.</p>
+            <p>Agents do the analysis Ops used to do by hand. Cursor and MCP stay in the stack only after they pass security, config, and evals.</p>
+          </div>
+        </div>
+        <div class="pillars">
+          <article class="pillar reveal-up">
+            <span>01</span>
+            <h3>Cloud</h3>
+            <p>Hub-and-Spoke, landing zones, Terraform, Bicep, Kubernetes, ECS. Architecture that stays cheap, private, and recoverable.</p>
+          </article>
+          <article class="pillar reveal-up">
+            <span>02</span>
+            <h3>Data</h3>
+            <p>Lakes, pipelines, Databricks, Snowflake, Sigma. Insights that land in the dashboard — not a ticket queue.</p>
+          </article>
+          <article class="pillar reveal-up">
+            <span>03</span>
+            <h3>AI</h3>
+            <p>Foundry as the control plane. Agents with evals. MCP and Cursor used like production software, not toys.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="work" id="work">
+        <p class="kicker">02 / Deployed systems</p>
+        <h2 class="reveal-up">Work that removes humans from the failure path.</h2>
+        <div class="cases">
+          <a class="case reveal-up" href="https://github.com/suhail39ahmed/self-healing-azure-pipelines" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span>CS-01</span><b>−85% MTTR</b></div>
+            <h3>Self-healing Azure pipelines</h3>
+            <p>Agents watch Azure DevOps, detect the break, and remediate against Monitor and Defender before a human opens the incident.</p>
+            <ul><li>Azure DevOps</li><li>MCP</li><li>Defender</li></ul>
+          </a>
+          <a class="case reveal-up" href="https://github.com/suhail39ahmed/autonomous-release-pipeline" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span>CS-02</span><b>Zero-touch</b></div>
+            <h3>Autonomous release path</h3>
+            <p>PR to production without a war room. Security gates and rollbacks are decisions the system makes, on Azure-native services.</p>
+            <ul><li>Azure</li><li>Agentic AI</li><li>Release</li></ul>
+          </a>
+          <a class="case reveal-up" href="https://github.com/suhail39ahmed/azure-infra-sentinel" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span>CS-03</span><b>Pre-prod</b></div>
+            <h3>Infrastructure Sentinel</h3>
+            <p>Continuous audit for drift, cost, and policy. Misconfig dies in the control plane, not in production.</p>
+            <ul><li>Azure Policy</li><li>Governance</li><li>MCP</li></ul>
+          </a>
+          <a class="case reveal-up" href="https://github.com/suhail39ahmed/cursor-claude-mcp-azure" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span>CS-04</span><b>Co-pilot</b></div>
+            <h3>Cursor + Claude + MCP</h3>
+            <p>A ruleset that writes IaC, reviews security, and keeps Azure DevOps consistent — the same way every time.</p>
+            <ul><li>Cursor</li><li>Claude</li><li>IaC</li></ul>
+          </a>
+        </div>
+      </section>
+
+      <section class="path" id="path">
+        <p class="kicker">03 / Trajectory</p>
+        <h2 class="reveal-up">Ten years from private cloud to the AI gateway.</h2>
+        <div class="track">
+          <article class="node reveal-up">
+            <time>2026 →</time>
+            <h3>Solutions Architect — Cloud, Data &amp; AI</h3>
+            <p>Revantage Global · Singapore</p>
+            <p>AI Foundry control plane. Agents on Databricks and Snowflake. Responsible Cursor / MCP adoption.</p>
+          </article>
+          <article class="node reveal-up">
+            <time>2024 — 2026</time>
+            <h3>Senior DevOps Engineer</h3>
+            <p>Revantage Global · Singapore</p>
+            <p>Landing zones, Hub-and-Spoke, Terraform, Bicep, Kubernetes, observability.</p>
+          </article>
+          <article class="node reveal-up">
+            <time>2022 — 2024</time>
+            <h3>Cloud / DevOps Consultant</h3>
+            <p>Accenture Singapore</p>
+            <p>Legacy exits to Azure and AWS. Guardrails that survive a security review.</p>
+          </article>
+          <article class="node reveal-up">
+            <time>2020 — 2022</time>
+            <h3>Cloud / DevOps Engineer</h3>
+            <p>Accenture India</p>
+            <p>IaaS, Terraform, GitLab CI, incident RCA with security.</p>
+          </article>
+          <article class="node reveal-up">
+            <time>2016 — 2020</time>
+            <h3>Technical Lead</h3>
+            <p>Cognizant · Bangalore</p>
+            <p>vRA / vRO automation across 1000+ VMs. The operating system before the public cloud.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="stack">
+        <p class="kicker">04 / Certified surface</p>
+        <div class="stack-row reveal-up">
+          <span>Azure Solutions Architect Expert</span>
+          <span>DevOps Engineer Expert</span>
+          <span>AWS Solutions Architect</span>
+          <span>Terraform Associate 004</span>
+          <span>Databricks Data Engineer</span>
+          <span>SnowPro Core</span>
+          <span>Azure AI Fundamentals</span>
+          <span>OCI Architect Associate</span>
+        </div>
+      </section>
+
+      <section class="frames-lite">
+        <p class="kicker">05 / Presence</p>
+        <div class="strip">
+          <img src="images/myimage_1.png" alt="Studio">
+          <img src="images/soul/studio.png" alt="Soul cinema suit">
+          <img src="images/soul/closeup.png" alt="Soul cinema close-up">
+          <img src="images/soul/window.png" alt="Soul cinema dusk">
+        </div>
+      </section>
+
+      <section class="signal" id="signal">
+        <p class="kicker">06 / Signal</p>
+        <h2 class="reveal-up">If the platform is the product, let’s design it.</h2>
+        <div class="signal-links reveal-up">
+          <a href="mailto:suhail39ahmed@gmail.com">suhail39ahmed@gmail.com</a>
+          <a href="tel:+6583750876">+65 8375 0876</a>
+          <a href="https://www.linkedin.com/in/suhail-ahmed-sg/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/suhail39ahmed/" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <a class="btn solid" href="files/Suhail_Resume_v1.8.pdf" download data-magnetic>Download the brief</a>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
