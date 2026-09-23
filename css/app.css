@@ -338,7 +338,7 @@ h1 {
 .id-card div { padding: 12px 14px; }
 .id-card strong { display: block; margin: 4px 0; }
 
-.now, .work, .path, .stack, .frames-lite, .signal {
+.now, .work, .path, .stack, .signal {
   max-width: 1240px;
   margin: 0 auto;
   padding: 80px 32px 10px;
@@ -420,18 +420,6 @@ h2 {
   font-size: 13px;
 }
 
-.strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 18px; }
-.strip img {
-  height: 280px;
-  width: 100%;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 16px;
-  filter: grayscale(0.2);
-  transition: filter 0.4s ease, transform 0.4s ease;
-}
-.strip img:hover { filter: none; transform: scale(1.02); }
-
 .signal { padding-bottom: 80px; }
 .signal-links { display: grid; gap: 10px; margin: 22px 0 28px; }
 .signal-links a { font-size: 22px; color: var(--blue); }
@@ -445,11 +433,10 @@ h2 {
   .cine-banner { height: 160px; }
   .cine-chapters { display: none; }
   .cine-copy { left: 18px; bottom: 24px; right: 18px; }
-  .now-grid, .pillars, .cases, .node, .strip, .ops-deck, .stages { grid-template-columns: 1fr; }
+  .now-grid, .pillars, .cases, .node, .ops-deck, .stages { grid-template-columns: 1fr; }
   .stage::after { display: none; }
   .id-card { width: 100%; }
   .node time { grid-row: auto; }
-  .strip img { height: 220px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
