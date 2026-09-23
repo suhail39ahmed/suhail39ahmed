@@ -1,6 +1,5 @@
 (function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var cursor = document.getElementById("cursor");
   var progress = document.getElementById("progress");
   var boot = document.getElementById("boot");
 
@@ -194,23 +193,6 @@
     addEventListener("scroll", function () {
       var max = document.documentElement.scrollHeight - innerHeight;
       progress.style.width = (max ? (scrollY / max) * 100 : 0) + "%";
-    });
-
-    if (cursor && !reduce) {
-      addEventListener("mousemove", function (e) {
-        cursor.style.left = e.clientX + "px";
-        cursor.style.top = e.clientY + "px";
-      });
-    }
-
-    document.querySelectorAll("[data-magnetic]").forEach(function (btn) {
-      btn.addEventListener("mousemove", function (e) {
-        var r = btn.getBoundingClientRect();
-        btn.style.transform = "translate(" + (e.clientX - r.left - r.width / 2) * 0.25 + "px," + (e.clientY - r.top - r.height / 2) * 0.25 + "px)";
-      });
-      btn.addEventListener("mouseleave", function () {
-        btn.style.transform = "translate(0,0)";
-      });
     });
 
     document.querySelectorAll("[data-tilt]").forEach(function (card) {
