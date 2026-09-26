@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Suhail Ahmed
 
-## Getting Started
+Azure / DevOps / data-platform engineer based in Singapore.
 
-First, run the development server:
+I work on cloud platforms, CI/CD, and data tooling — mostly Azure, Terraform, Databricks, Snowflake, and Python. I write about what I am learning at [savvysuhail.com](https://savvysuhail.com/).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What is real here
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Pinned work is stuff that actually has code you can open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **[AI-103 study quiz](https://github.com/suhail39ahmed/AI-103_Microsoft_AI_APPS_Foundry)** — practice quiz / lessons for Microsoft AI topics (GitHub Pages)
+- **[Key Vault automation](https://github.com/suhail39ahmed/automation)** — small Python utilities for Azure Key Vault ops
+- **[Hub-and-spoke Terraform](https://github.com/suhail39ahmed/azure-hub-spoke-terraform)** — starter modules for Azure network layout
+- **[Databricks GenAI hackathon](https://github.com/suhail39ahmed/REV-Engers_Databricks_GenAI_Hackathon24)** — team hackathon notebooks (lab artifact)
+- **[Multi-CI playground](https://github.com/suhail39ahmed/github_actions)** — learning demos across GHA / ADO / GitLab CI
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack
 
-## Learn More
+`Azure` · `Terraform` · `Python` · `Databricks` · `Snowflake` · `CI/CD` · `DevOps`
 
-To learn more about Next.js, take a look at the following resources:
+## Currently building
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+A personal **Knowledge Center** that turns my Instagram teaching videos into searchable notes and project material — more soon.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[Website](https://savvysuhail.com/) · [GitHub](https://github.com/suhail39ahmed)
