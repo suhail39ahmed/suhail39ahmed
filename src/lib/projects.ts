@@ -12,6 +12,27 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "ai-automation-portfolio",
+    title: "AI & Automations Portfolio Program",
+    description:
+      "Roadmap of reusable MCP tools, skills, and CLIs for a Solution Architect — AI & Automations: Knowledge Center, pipeline doctor, Foundry eval gate, Azure ops MCP, and more. Offline fixtures first; demos before LinkedIn posts.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
+    tags: ["MCP", "Agents", "Azure AI", "Portfolio"],
+    github: "https://github.com/suhail39ahmed/ai-automation-portfolio",
+    featured: true,
+  },
+  {
+    slug: "kc-mcp",
+    title: "Knowledge Center MCP",
+    description:
+      "MCP-style tools that search and cite a teaching Knowledge Center corpus (sample reel notes included). Built for agents — not a ChatGPT clone UI.",
+    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
+    tags: ["MCP", "RAG", "Knowledge Center"],
+    github: "https://github.com/suhail39ahmed/kc-mcp",
+    featured: true,
+  },
+
+  {
     slug: "ai-103-study-quiz",
     title: "AI-103 Study Quiz — Microsoft AI Apps on Foundry",
     description:
