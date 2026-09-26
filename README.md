@@ -18,9 +18,22 @@ Pinned work is stuff that actually has code you can open:
 
 `Azure` · `Terraform` · `Python` · `Databricks` · `Snowflake` · `CI/CD` · `DevOps`
 
-## Currently building
+## Currently building — AI & Automations portfolio program
 
-A personal **Knowledge Center** that turns my Instagram teaching videos into searchable notes and project material — more soon.
+Reusable MCP tools, skills, and CLIs (offline fixtures first, demos next). Roadmap: [ai-automation-portfolio](https://github.com/suhail39ahmed/ai-automation-portfolio).
+
+| Repo | What it is |
+|------|------------|
+| [kc-mcp](https://github.com/suhail39ahmed/kc-mcp) | Knowledge Center MCP — search/cite teaching notes |
+| [ado-pipeline-doctor](https://github.com/suhail39ahmed/ado-pipeline-doctor) | Failed pipeline log → RCA + guarded remediations |
+| [foundry-eval-gate](https://github.com/suhail39ahmed/foundry-eval-gate) | CI eval gate (faithfulness / tool success / PII) |
+| [azure-ops-mcp](https://github.com/suhail39ahmed/azure-ops-mcp) | Key Vault / ADO ops tools with dry-run + audit |
+| [lakehouse-insights-skill](https://github.com/suhail39ahmed/lakehouse-insights-skill) | Governed metrics catalog → proposed SQL |
+| [iac-guard-mcp](https://github.com/suhail39ahmed/iac-guard-mcp) | Terraform/Bicep diff → policy findings |
+| [clip2lab](https://github.com/suhail39ahmed/clip2lab) | Reel transcript → lab / quiz / skill stub |
+
+Weekly LinkedIn ships only after a runnable demo — not README-only posts.
+
 
 ---
 
