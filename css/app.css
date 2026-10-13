@@ -421,6 +421,29 @@ h2 {
 
 .reveal-up, .reveal-text { will-change: transform, opacity; }
 
+/* production, hackathons, writing */
+.prod .pillar h3 { font-size: 22px; }
+.note { color: var(--fog); font-size: 13px; margin-top: 16px; }
+.note a, .hk a { color: var(--blue); }
+.case-top .tag, .hk .tag {
+  font-size: 12px;
+  border: 1px solid var(--line);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+.hk .tag.live { color: var(--mint); border-color: var(--mint); }
+.case { scroll-margin-top: 90px; }
+.case:target { border-color: var(--mint); }
+.hk-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-top: 28px; }
+.hk {
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(124,179,255,0.06), rgba(255,255,255,0.01));
+}
+.hk h3 { font-family: Syne, sans-serif; font-size: 20px; margin: 14px 0 8px; }
+.hk p { color: var(--fog); font-size: 14px; margin: 4px 0; }
+
 @media (max-width: 900px) {
   .nav nav { display: none; }
   .cine-banner { height: 220px; }
@@ -434,4 +457,5 @@ h2 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .case, .reveal-up, .reveal-text { transition: none !important; }
 }

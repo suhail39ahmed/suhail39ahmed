@@ -3,8 +3,36 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Suhail Ahmed — Learning Path, Cloud · Data · AI</title>
-    <meta name="description" content="Personal portfolio: learning and progressing across Cloud, Data, and AI — including Azure AI-103.">
+    <title>Suhail Ahmed — Solutions Architect, Cloud · Data · AI</title>
+    <meta name="description" content="Suhail Ahmed, Solutions Architect in Singapore. I build and run governed AI on enterprise cloud and data platforms: Azure AI Foundry, Databricks, Snowflake, Terraform, DevSecOps.">
+    <link rel="canonical" href="https://savvysuhail.com/">
+    <meta name="theme-color" content="#0b0f17">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Suhail Ahmed">
+    <meta property="og:title" content="Suhail Ahmed — Solutions Architect, Cloud · Data · AI">
+    <meta property="og:description" content="Governed AI on enterprise cloud and data platforms: Azure AI Foundry gateway, Databricks and Snowflake AI agents, plus open-source labs and hackathon builds.">
+    <meta property="og:url" content="https://savvysuhail.com/">
+    <meta property="og:image" content="https://savvysuhail.com/images/about_me.png">
+    <meta property="og:image:alt" content="Portrait of Suhail Ahmed">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Suhail Ahmed — Solutions Architect, Cloud · Data · AI">
+    <meta name="twitter:description" content="Governed AI on enterprise cloud and data platforms. Production work, GitHub projects, hackathons.">
+    <meta name="twitter:image" content="https://savvysuhail.com/images/about_me.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Suhail Ahmed",
+      "url": "https://savvysuhail.com/",
+      "image": "https://savvysuhail.com/images/about_me.png",
+      "jobTitle": "Solutions Architect — Cloud, Data & AI",
+      "worksFor": { "@type": "Organization", "name": "Revantage Global" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Singapore", "addressCountry": "SG" },
+      "email": "mailto:suhail39ahmed@gmail.com",
+      "knowsAbout": ["Azure AI Foundry", "Databricks", "Snowflake", "Terraform", "Azure", "AWS", "DevSecOps", "LLM routing", "RAG"],
+      "sameAs": ["https://github.com/suhail39ahmed", "https://www.linkedin.com/in/suhail-ahmed-sg/"]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -18,7 +46,9 @@
       <a class="logo" href="#top">SA</a>
       <nav>
         <a href="#system">System</a>
-        <a href="#work">Work</a>
+        <a href="#production">Production</a>
+        <a href="#work">Projects</a>
+        <a href="#hackathons">Hackathons</a>
         <a href="#path">Path</a>
         <a href="#signal">Signal</a>
       </nav>
@@ -27,7 +57,7 @@
 
     <main id="top">
       <section class="cine-banner" id="banner" aria-label="Technology film reel">
-        <video id="banner-video" muted autoplay playsinline></video>
+        <video id="banner-video" muted playsinline preload="none" poster="images/bg_1.jpg" aria-hidden="true"></video>
         <div class="cine-shade"></div>
         <div class="cine-copy">
           <p class="cine-kicker" id="cine-kicker">01 / Hardware</p>
@@ -48,15 +78,15 @@
           <span class="line reveal-text">Suhail</span>
           <span class="line reveal-text">Ahmed</span>
         </h1>
-        <p class="title reveal-up">Learning Path — Cloud, Data &amp; AI</p>
-        <p class="lede reveal-up">I am learning the layer that enterprises run on: landing zones, data platforms, and governed AI. Azure. AWS. Foundry. Each project is progress, not a finished claim.</p>
+        <p class="title reveal-up">Solutions Architect — Cloud, Data &amp; AI</p>
+        <p class="lede reveal-up">I design and run the layer enterprises depend on: landing zones, data platforms, and governed AI. Azure. AWS. Foundry. Databricks. Snowflake. Ten years in infrastructure, now shipping AI into production.</p>
         <div class="hero-cta reveal-up">
-          <a class="btn solid" href="#work">Inspect the work</a>
+          <a class="btn solid" href="#production">See production work</a>
           <a class="btn ghost" href="mailto:suhail39ahmed@gmail.com">Open a channel</a>
         </div>
 
         <div class="hero-stage">
-          <div class="ops-deck">
+          <div class="ops-deck" aria-hidden="true">
             <aside class="telemetry">
               <p class="panel-label">Hardware fabric</p>
               <div class="meter" data-meter="cpu">
@@ -78,11 +108,11 @@
                 <div class="meter-track"><i id="net-bar"></i></div>
               </div>
               <article class="id-card" data-tilt>
-                <img src="images/myimage_1.png" alt="Suhail Ahmed">
+                <img src="images/myimage_1.png" alt="Portrait of Suhail Ahmed" width="64" height="64" loading="lazy">
                 <div>
-                  <p>In progress</p>
+                  <p>Solutions Architect</p>
                   <strong>Cloud · Data · AI</strong>
-                  <span>Singapore · learning</span>
+                  <span>Singapore · Revantage Global</span>
                 </div>
               </article>
             </aside>
@@ -123,67 +153,136 @@
       </section>
 
       <section class="now" id="system">
-        <p class="kicker">01 / Current mission</p>
+        <p class="kicker">01 / Focus</p>
         <div class="now-grid">
-          <h2 class="reveal-up">I am learning how AI apps and agents sit on a real cloud and data estate.</h2>
+          <h2 class="reveal-up">I put AI apps and agents onto real cloud and data estates, governed and measured.</h2>
           <div class="now-copy reveal-up">
-            <p>Progress so far: Azure AI-103 — Developing AI Apps and Agents on Azure — completed. I am working through Foundry, agents, evals, and how those pieces connect to Databricks, Snowflake, and Sigma.</p>
-            <p>Cursor and MCP are part of the practice stack. I treat them as things to learn securely — configuration, reviews, and responsible use — not as a production claim.</p>
+            <p>Azure AI-103 (Developing AI Apps and Agents on Azure) certified. Day to day I connect Azure AI Foundry, agents, and evals to Databricks, Snowflake, and Sigma.</p>
+            <p>I evaluate Cursor and MCP for the team with security, configuration, and responsible use first. Side projects and hackathons are where I test ideas before they reach production.</p>
           </div>
         </div>
         <div class="pillars">
           <article class="pillar reveal-up">
             <span>01</span>
             <h3>Cloud</h3>
-            <p>Deepening Hub-and-Spoke, landing zones, Terraform, Bicep, Kubernetes, and ECS — the paths I already walked, now with more architecture judgment.</p>
+            <p>Hub-and-Spoke landing zones, Terraform, Bicep, Kubernetes, and ECS across Azure and AWS — designed, built, and operated.</p>
           </article>
           <article class="pillar reveal-up">
             <span>02</span>
             <h3>Data</h3>
-            <p>Practicing lakes, pipelines, Databricks, Snowflake, and Sigma so insights can move from a notebook to a dashboard.</p>
+            <p>Databricks, Snowflake, and Sigma platforms with CI/CD, so insights move from a notebook to a dashboard.</p>
           </article>
           <article class="pillar reveal-up">
             <span>03</span>
             <h3>AI</h3>
-            <p>AI-103 done. Next: Foundry, agents, evals, and MLOps — learning to build, measure, and govern, not just demo.</p>
+            <p>Azure AI Foundry as a governed gateway, AI agents on the data platform, evals and operational readiness — built to measure and govern, not just demo.</p>
           </article>
         </div>
       </section>
 
+      <section class="prod" id="production">
+        <p class="kicker">02 / In production at Revantage Global</p>
+        <h2 class="reveal-up">What I run, not just what I demo.</h2>
+        <div class="pillars">
+          <article class="pillar reveal-up" id="foundry-ai-gateway">
+            <span>P-01</span>
+            <h3>Azure AI Foundry AI gateway</h3>
+            <p>Implemented Azure AI Foundry as the gateway to manage, monitor, and govern the company’s AI solutions: one place for model access, oversight, and control.</p>
+          </article>
+          <article class="pillar reveal-up" id="data-ai-agents">
+            <span>P-02</span>
+            <h3>AI agents on Databricks, Snowflake &amp; Sigma</h3>
+            <p>Designed AI agents on the data platform that cut manual analysis for Ops and business teams, and enabled AI for analytics and operational insights.</p>
+          </article>
+          <article class="pillar reveal-up">
+            <span>P-03</span>
+            <h3>Readiness &amp; responsible tooling</h3>
+            <p>Support AI application build-out with evals, testing, and operational readiness; evaluate Cursor and MCP with security and configuration first.</p>
+          </article>
+        </div>
+        <p class="note">Scope only. Internal details and metrics stay with the employer.</p>
+      </section>
+
       <section class="work" id="work">
-        <p class="kicker">02 / Practice systems</p>
-        <h2 class="reveal-up">Labs where I learn pipelines, agents, and recovery.</h2>
+        <p class="kicker">03 / Projects</p>
+        <h2 class="reveal-up">Open-source labs and hackathon builds.</h2>
         <div class="cases">
-          <a class="case reveal-up" href="https://github.com/suhail39ahmed/self-healing-azure-pipelines" target="_blank" rel="noopener" data-tilt>
-            <div class="case-top"><span>CS-01</span><b>−85% MTTR</b></div>
-            <h3>Self-healing Azure pipelines</h3>
-            <p>A lab for agents that watch Azure DevOps, detect a break, and practice remediation with Monitor and Defender.</p>
-            <ul><li>Azure DevOps</li><li>MCP</li><li>Defender</li></ul>
+          <a class="case reveal-up" id="llm-auto-router" href="https://github.com/suhail39ahmed/llm-auto-router" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span class="tag">Lab</span><b>98% routing · ~27–29% cheaper</b></div>
+            <h3>LLM auto-router on Azure AI Foundry</h3>
+            <p>Routes each prompt to the cheapest model that can handle it. 98% routing accuracy on 100 labelled prompts vs 62% for keyword rules, and about 27–29% lower cost than sending everything to gpt-5.4 (measured in the repo; 98% is optimistic until a held-out split is added).</p>
+            <ul><li>Azure AI Foundry</li><li>Python</li><li>Evals</li></ul>
           </a>
-          <a class="case reveal-up" href="https://github.com/suhail39ahmed/autonomous-release-pipeline" target="_blank" rel="noopener" data-tilt>
-            <div class="case-top"><span>CS-02</span><b>Zero-touch</b></div>
-            <h3>Autonomous release path</h3>
-            <p>A practice path from PR to production — security gates and rollbacks as something I am learning to design, not a live factory floor.</p>
-            <ul><li>Azure</li><li>Agentic AI</li><li>Release</li></ul>
+          <a class="case reveal-up" id="production-grade-rag" href="https://github.com/suhail39ahmed/production_grade_rag" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span class="tag">Lab</span><b>Phases 1–7</b></div>
+            <h3>Production-grade RAG</h3>
+            <p>A RAG build taken through seven phases, with a walkthrough, architecture diagram, and demo video.</p>
+            <ul><li>RAG</li><li>Python</li><li>Retrieval</li></ul>
           </a>
-          <a class="case reveal-up" href="https://github.com/suhail39ahmed/azure-infra-sentinel" target="_blank" rel="noopener" data-tilt>
-            <div class="case-top"><span>CS-03</span><b>Pre-prod</b></div>
-            <h3>Infrastructure Sentinel</h3>
-            <p>A learning build for drift, cost, and policy checks — so misconfig is caught before I would ever trust it in production.</p>
-            <ul><li>Azure Policy</li><li>Governance</li><li>MCP</li></ul>
+          <a class="case reveal-up" id="ember" href="https://github.com/suhail39ahmed/ember-fire-commander" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span class="tag">Hackathon</span><b>AI Builder Cup 2026</b></div>
+            <h3>EMBER — weather-aware fire triage</h3>
+            <p>Bahasa-first AI fire commander for village brigades during Southeast Asian haze fires: ranks satellite detections by spread risk, with a volunteer app and supervisor console. In progress.</p>
+            <ul><li>Gemini Live</li><li>ADK</li><li>Cloud Run</li><li>Firestore</li></ul>
           </a>
-          <a class="case reveal-up" href="https://github.com/suhail39ahmed/cursor-claude-mcp-azure" target="_blank" rel="noopener" data-tilt>
-            <div class="case-top"><span>CS-04</span><b>Co-pilot</b></div>
-            <h3>Cursor + Claude + MCP</h3>
-            <p>Practice rulesets for IaC, security review, and consistent Azure DevOps — iterating until the pattern is reliable.</p>
-            <ul><li>Cursor</li><li>Claude</li><li>IaC</li></ul>
+          <a class="case reveal-up" id="fraud-policy-copilot" href="https://github.com/suhail39ahmed/fraud-policy-copilot" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span class="tag">Hackathon</span><b>Submitted</b></div>
+            <h3>Fraud policy copilot</h3>
+            <p>Snowflake CoCo CLI fraud case copilot: transaction in, policy match, risk score with citations. Risk / Fraud / Regulatory track.</p>
+            <ul><li>Snowflake</li><li>CoCo CLI</li><li>Python</li></ul>
           </a>
+          <a class="case reveal-up" id="foundry-eval-gate" href="https://github.com/suhail39ahmed/foundry-eval-gate" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span class="tag">Lab</span><b>CI gate</b></div>
+            <h3>Foundry eval gate</h3>
+            <p>A CI eval gate that checks agent traces for faithfulness, tool success, and PII leaks before a change ships.</p>
+            <ul><li>Evals</li><li>CI/CD</li><li>Agents</li></ul>
+          </a>
+          <a class="case reveal-up" id="ado-pipeline-doctor" href="https://github.com/suhail39ahmed/ado-pipeline-doctor" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span class="tag">Lab</span><b>Human-approved</b></div>
+            <h3>ADO pipeline doctor</h3>
+            <p>Turns failed Azure Pipelines and GitHub Actions logs into structured RCA JSON, with human approval required before any fix.</p>
+            <ul><li>Azure DevOps</li><li>GitHub Actions</li><li>LLM</li></ul>
+          </a>
+          <a class="case reveal-up" id="mcp-tools" href="https://github.com/suhail39ahmed/iac-guard-mcp" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span class="tag">Lab</span><b>MCP toolkit</b></div>
+            <h3>MCP-style ops tools</h3>
+            <p>iac-guard-mcp (Terraform/Bicep diff review), azure-ops-mcp (Key Vault compare, ADO diagnose, dry-run + audit), lakehouse-insights-skill, and kc-mcp.</p>
+            <ul><li>MCP</li><li>IaC</li><li>Azure</li></ul>
+          </a>
+          <a class="case reveal-up" id="infra-iac" href="https://github.com/suhail39ahmed/azure-hub-spoke-terraform" target="_blank" rel="noopener" data-tilt>
+            <div class="case-top"><span class="tag">Lab</span><b>IaC</b></div>
+            <h3>Infrastructure as code</h3>
+            <p>Hub-and-spoke Terraform modules for Azure networking, Python Key Vault automation, and multi-CI demos across GitHub Actions, Azure DevOps, and GitLab.</p>
+            <ul><li>Terraform</li><li>Azure</li><li>Python</li><li>CI/CD</li></ul>
+          </a>
+        </div>
+        <p class="note">More on <a href="https://github.com/suhail39ahmed" target="_blank" rel="noopener">GitHub</a>.</p>
+      </section>
+
+      <section class="hackathons" id="hackathons">
+        <p class="kicker">04 / Hackathons</p>
+        <h2 class="reveal-up">AI hackathons, 2026.</h2>
+        <div class="hk-list">
+          <article class="hk reveal-up"><span class="tag live">In progress</span><h3>Google Cloud AI Builder Cup 2026</h3><p>Google Cloud · Hack2skill · submission due 18 Oct 2026</p><p>Project: <a href="#ember">EMBER — weather-aware fire triage</a></p></article>
+          <article class="hk reveal-up"><span class="tag">Submitted</span><h3>Snowflake CoCo CLI Hackathon — GCC Edition</h3><p>Snowflake · Hack2skill · Sep–Oct 2026</p><p>Project: <a href="#fraud-policy-copilot">Fraud policy copilot</a></p></article>
+          <article class="hk reveal-up"><span class="tag">Participating</span><h3>Nebius x NVIDIA Global AI Hackathon</h3><p>Nebius x NVIDIA · Devpost · Oct 2026</p></article>
+          <article class="hk reveal-up"><span class="tag">Participating</span><h3>Build with AI: Code for Communities — Second Edition</h3><p>Hack2skill · Sep 2026</p></article>
+          <article class="hk reveal-up"><span class="tag">Participating</span><h3>HACKATHON X FIT-FEST 2026</h3><p>FIT-FEST · Hack2skill · Sep 2026</p></article>
         </div>
       </section>
 
+      <section class="writing" id="writing">
+        <p class="kicker">05 / Writing</p>
+        <h2 class="reveal-up">Notes from the build.</h2>
+        <div class="hk-list">
+          <article class="hk reveal-up"><span class="tag">LinkedIn · coming soon</span><h3>Routing prompts to the cheapest capable model</h3><p>How the LLM auto-router beat keyword rules. Project: <a href="#llm-auto-router">LLM auto-router</a></p></article>
+        </div>
+        <p class="note">Posts on <a href="https://www.linkedin.com/in/suhail-ahmed-sg/" target="_blank" rel="noopener">LinkedIn</a>; each links back to its project card here.</p>
+      </section>
+
       <section class="path" id="path">
-        <p class="kicker">03 / Trajectory</p>
-        <h2 class="reveal-up">Ten years in infrastructure. Now adding AI apps and agents.</h2>
+        <p class="kicker">06 / Trajectory</p>
+        <h2 class="reveal-up">Ten years in infrastructure. Now shipping AI apps and agents.</h2>
         <div class="track">
           <article class="node reveal-up">
             <time>2026 →</time>
@@ -242,7 +341,7 @@
       </section>
 
       <section class="stack">
-        <p class="kicker">04 / Certified surface</p>
+        <p class="kicker">07 / Certified surface</p>
         <div class="stack-row reveal-up">
           <span>Azure Solutions Architect Expert</span>
           <span>DevOps Engineer Expert</span>
@@ -257,8 +356,8 @@
       </section>
 
       <section class="signal" id="signal">
-        <p class="kicker">05 / Signal</p>
-        <h2 class="reveal-up">If you are learning the same stack, let’s compare notes.</h2>
+        <p class="kicker">08 / Signal</p>
+        <h2 class="reveal-up">Building governed AI on cloud and data? Let’s talk.</h2>
         <div class="signal-links reveal-up">
           <a href="mailto:suhail39ahmed@gmail.com">suhail39ahmed@gmail.com</a>
           <a href="tel:+6583750876">+65 8375 0876</a>

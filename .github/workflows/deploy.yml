@@ -24,7 +24,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p out
-          cp index.html CNAME out/
+          cp index.html CNAME robots.txt sitemap.xml out/
           cp -r css js images files out/
 
       - name: Setup Pages

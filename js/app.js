@@ -248,6 +248,10 @@
         dot.classList.toggle("is-on", n === i);
       });
     }
+    if (reduce) {
+      // Reduced motion: keep the poster frame, no autoplay.
+      return;
+    }
     video.addEventListener("ended", function () { show(i + 1); });
     show(0);
   }
