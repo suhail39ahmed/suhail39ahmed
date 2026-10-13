@@ -1,26 +1,42 @@
 # Suhail Ahmed
 
-Azure / DevOps / data-platform engineer based in Singapore.
+**Solutions Architect — Cloud, Data & AI** at Revantage Global, Singapore.
+10+ years designing and running enterprise platforms on Azure and AWS; now putting governed AI into production.
 
-I work on cloud platforms, CI/CD, and data tooling — mostly Azure, Terraform, Databricks, Snowflake, and Python. I write about what I am learning at [savvysuhail.com](https://savvysuhail.com/).
+Portfolio: **[savvysuhail.com](https://savvysuhail.com/)** · [LinkedIn](https://www.linkedin.com/in/suhail-ahmed-sg/)
 
-## What is real here
+## In production at Revantage Global
 
-Pinned work is stuff that actually has code you can open:
+Scope only; internal details and metrics stay with the employer. ([details](https://savvysuhail.com/#production))
 
-- **[AI-103 study quiz](https://github.com/suhail39ahmed/AI-103_Microsoft_AI_APPS_Foundry)** — practice quiz / lessons for Microsoft AI topics (GitHub Pages)
-- **[Key Vault automation](https://github.com/suhail39ahmed/automation)** — small Python utilities for Azure Key Vault ops
-- **[Hub-and-spoke Terraform](https://github.com/suhail39ahmed/azure-hub-spoke-terraform)** — starter modules for Azure network layout
-- **[Databricks GenAI hackathon](https://github.com/suhail39ahmed/REV-Engers_Databricks_GenAI_Hackathon24)** — team hackathon notebooks (lab artifact)
-- **[Multi-CI playground](https://github.com/suhail39ahmed/github_actions)** — learning demos across GHA / ADO / GitLab CI
+- **Azure AI Foundry AI gateway**: one governed entry point to manage, monitor and control AI solutions.
+- **AI agents on Databricks, Snowflake & Sigma**: agents that cut manual analysis for Ops and business teams.
+- **AI readiness**: evals, testing and operational readiness for AI apps; secure evaluation of Cursor and MCP.
 
-## Stack
+## Flagship projects
 
-`Azure` · `Terraform` · `Python` · `Databricks` · `Snowflake` · `CI/CD` · `DevOps`
+| Project | What it is | Type |
+|---|---|---|
+| [llm-auto-router](https://github.com/suhail39ahmed/llm-auto-router) ([card](https://savvysuhail.com/#llm-auto-router)) | Routes each prompt to the cheapest capable model on Azure AI Foundry. 98% routing accuracy on 100 labelled prompts vs 62% for keyword rules; ~27–29% cheaper than all-gpt-5.4 (98% is optimistic until a held-out split is added). | Lab |
+| [production_grade_rag](https://github.com/suhail39ahmed/production_grade_rag) ([card](https://savvysuhail.com/#production-grade-rag)) | RAG built through seven phases, with walkthrough, architecture diagram and demo. | Lab |
+| EMBER ([card](https://savvysuhail.com/#ember)) | Weather-aware wildfire triage for village brigades in SE Asian haze fires (Gemini Live, ADK, Cloud Run, Firestore). Repo currently private. | Hackathon |
+| [fraud-policy-copilot](https://github.com/suhail39ahmed/fraud-policy-copilot) ([card](https://savvysuhail.com/#fraud-policy-copilot)) | Snowflake CoCo CLI fraud case copilot: transaction → policy match → risk score with citations. | Hackathon |
+| [foundry-eval-gate](https://github.com/suhail39ahmed/foundry-eval-gate) ([card](https://savvysuhail.com/#foundry-eval-gate)) | CI eval gate on agent traces: faithfulness, tool success, PII leak. | Lab |
+| [ado-pipeline-doctor](https://github.com/suhail39ahmed/ado-pipeline-doctor) ([card](https://savvysuhail.com/#ado-pipeline-doctor)) | Failed Azure Pipelines / GitHub Actions logs → RCA JSON, human approval required. | Lab |
 
-## Currently building — AI & Automations portfolio program
+## Hackathons 2026
 
-Reusable MCP tools, skills, and CLIs (offline fixtures first, demos next). Roadmap: [ai-automation-portfolio](https://github.com/suhail39ahmed/ai-automation-portfolio).
+([on the site](https://savvysuhail.com/#hackathons))
+
+- **Google Cloud AI Builder Cup 2026** (Hack2skill): EMBER, in progress, submission due 18 Oct 2026.
+- **Snowflake CoCo CLI Hackathon — GCC Edition** (Hack2skill): fraud-policy-copilot, submitted.
+- **Nebius x NVIDIA Global AI Hackathon** (Devpost): participating.
+- **Build with AI: Code for Communities — Second Edition** (Hack2skill): participating.
+- **HACKATHON X FIT-FEST 2026** (Hack2skill): participating.
+
+## MCP & automation toolkit
+
+Reusable MCP tools, skills and CLIs (offline fixtures first, demos next). Roadmap: [ai-automation-portfolio](https://github.com/suhail39ahmed/ai-automation-portfolio).
 
 | Repo | What it is |
 |------|------------|
@@ -32,9 +48,14 @@ Reusable MCP tools, skills, and CLIs (offline fixtures first, demos next). Roadm
 | [iac-guard-mcp](https://github.com/suhail39ahmed/iac-guard-mcp) | Terraform/Bicep diff → policy findings |
 | [clip2lab](https://github.com/suhail39ahmed/clip2lab) | Reel transcript → lab / quiz / skill stub |
 
-Weekly LinkedIn ships only after a runnable demo — not README-only posts.
+## Infrastructure & certifications
 
+[azure-hub-spoke-terraform](https://github.com/suhail39ahmed/azure-hub-spoke-terraform) · [automation](https://github.com/suhail39ahmed/automation) · [github_actions](https://github.com/suhail39ahmed/github_actions) · [AI-103 study quiz](https://github.com/suhail39ahmed/AI-103_Microsoft_AI_APPS_Foundry)
+
+Azure Solutions Architect Expert · DevOps Engineer Expert · AI-103 Azure AI Apps and Agents · AWS Solutions Architect · Terraform Associate (004) · Databricks Data Engineer · SnowPro Core
+
+`Azure` · `Azure AI Foundry` · `Terraform` · `Python` · `Databricks` · `Snowflake` · `MCP` · `CI/CD`
 
 ---
 
-[Website](https://savvysuhail.com/) · [GitHub](https://github.com/suhail39ahmed)
+[Website](https://savvysuhail.com/) · [LinkedIn](https://www.linkedin.com/in/suhail-ahmed-sg/) · [GitHub](https://github.com/suhail39ahmed)
