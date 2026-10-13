@@ -24,7 +24,7 @@ Scope only; internal details and metrics stay with the employer. ([details](http
 | [foundry-eval-gate](https://github.com/suhail39ahmed/foundry-eval-gate) ([card](https://savvysuhail.com/#foundry-eval-gate)) | CI eval gate on agent traces: faithfulness, tool success, PII leak. | Lab |
 | [ado-pipeline-doctor](https://github.com/suhail39ahmed/ado-pipeline-doctor) ([card](https://savvysuhail.com/#ado-pipeline-doctor)) | Failed Azure Pipelines / GitHub Actions logs → RCA JSON, human approval required. | Lab |
 
-## Hackathons 2026
+## Hackathons
 
 ([on the site](https://savvysuhail.com/#hackathons))
 
@@ -33,6 +33,7 @@ Scope only; internal details and metrics stay with the employer. ([details](http
 - **Nebius x NVIDIA Global AI Hackathon** (Devpost): participating.
 - **Build with AI: Code for Communities — Second Edition** (Hack2skill): participating.
 - **HACKATHON X FIT-FEST 2026** (Hack2skill): participating.
+- **Databricks GenAI Hackathon 2024**, team REV-Engers: RAG experiments on Databricks (table setup, CSV/PDF ingestion, RAG chain agent model, model GUI). Completed (2024). [Notebooks](https://github.com/suhail39ahmed/REV-Engers_Databricks_GenAI_Hackathon24)
 
 ## MCP & automation toolkit
 
