@@ -1,7 +1,7 @@
 # Suhail Ahmed
 
 **Solutions Architect — Cloud, Data & AI** at Revantage Global, Singapore.
-10+ years designing and running enterprise platforms on Azure and AWS; now putting governed AI into production.
+10+ years building enterprise platforms on Azure and AWS; today I run governed AI in production on Azure AI Foundry, Databricks, Snowflake and Sigma.
 
 Portfolio: **[savvysuhail.com](https://savvysuhail.com/)** · [LinkedIn](https://www.linkedin.com/in/suhail-ahmed-sg/)
 
@@ -19,7 +19,7 @@ Scope only; internal details and metrics stay with the employer. ([details](http
 |---|---|---|
 | [llm-auto-router](https://github.com/suhail39ahmed/llm-auto-router) ([card](https://savvysuhail.com/#llm-auto-router)) | Routes each prompt to the cheapest capable model on Azure AI Foundry. 98% routing accuracy on 100 labelled prompts vs 62% for keyword rules; ~27–29% cheaper than all-gpt-5.4 (98% is optimistic until a held-out split is added). | Lab |
 | [production_grade_rag](https://github.com/suhail39ahmed/production_grade_rag) ([card](https://savvysuhail.com/#production-grade-rag)) | RAG built through seven phases, with walkthrough, architecture diagram and demo. | Lab |
-| EMBER ([card](https://savvysuhail.com/#ember)) | Weather-aware wildfire triage for village brigades in SE Asian haze fires (Gemini Live, ADK, Cloud Run, Firestore). Repo currently private. | Hackathon |
+| [ember-fire-commander](https://github.com/suhail39ahmed/ember-fire-commander) ([card](https://savvysuhail.com/#ember)) | EMBER: weather-aware wildfire triage for village brigades in SE Asian haze fires (Gemini Live, ADK, Cloud Run, Firestore). | Hackathon |
 | [fraud-policy-copilot](https://github.com/suhail39ahmed/fraud-policy-copilot) ([card](https://savvysuhail.com/#fraud-policy-copilot)) | Snowflake CoCo CLI fraud case copilot: transaction → policy match → risk score with citations. | Hackathon |
 | [foundry-eval-gate](https://github.com/suhail39ahmed/foundry-eval-gate) ([card](https://savvysuhail.com/#foundry-eval-gate)) | CI eval gate on agent traces: faithfulness, tool success, PII leak. | Lab |
 | [ado-pipeline-doctor](https://github.com/suhail39ahmed/ado-pipeline-doctor) ([card](https://savvysuhail.com/#ado-pipeline-doctor)) | Failed Azure Pipelines / GitHub Actions logs → RCA JSON, human approval required. | Lab |
@@ -28,7 +28,7 @@ Scope only; internal details and metrics stay with the employer. ([details](http
 
 ([on the site](https://savvysuhail.com/#hackathons))
 
-- **Google Cloud AI Builder Cup 2026** (Hack2skill): EMBER, in progress, submission due 18 Oct 2026.
+- **Google Cloud AI Builder Cup 2026** (Hack2skill): EMBER, submitted 18 Oct 2026; evaluation runs to 6 Nov.
 - **Snowflake CoCo CLI Hackathon — GCC Edition** (Hack2skill): fraud-policy-copilot, submitted.
 - **Nebius x NVIDIA Global AI Hackathon** (Devpost): participating.
 - **Build with AI: Code for Communities — Second Edition** (Hack2skill): participating.

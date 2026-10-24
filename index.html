@@ -25,6 +25,7 @@
       "name": "Suhail Ahmed",
       "url": "https://savvysuhail.com/",
       "image": "https://savvysuhail.com/images/about_me.png",
+      "description": "Solutions Architect for Cloud, Data & AI at Revantage Global, Singapore. 10+ years on Azure and AWS; runs an Azure AI Foundry gateway and AI agents on Databricks, Snowflake and Sigma in production.",
       "jobTitle": "Solutions Architect — Cloud, Data & AI",
       "worksFor": { "@type": "Organization", "name": "Revantage Global" },
       "address": { "@type": "PostalAddress", "addressLocality": "Singapore", "addressCountry": "SG" },
@@ -45,7 +46,7 @@
     <header class="nav">
       <a class="logo" href="#top">SA</a>
       <nav>
-        <a href="#system">System</a>
+        <a href="#about">About</a>
         <a href="#production">Production</a>
         <a href="#work">Projects</a>
         <a href="#hackathons">Hackathons</a>
@@ -79,7 +80,7 @@
           <span class="line reveal-text">Ahmed</span>
         </h1>
         <p class="title reveal-up">Solutions Architect — Cloud, Data &amp; AI</p>
-        <p class="lede reveal-up">I design and run the layer enterprises depend on: landing zones, data platforms, and governed AI. Azure. AWS. Foundry. Databricks. Snowflake. Ten years in infrastructure, now shipping AI into production.</p>
+        <p class="lede reveal-up">Solutions Architect for Cloud, Data &amp; AI at Revantage Global, Singapore. 10+ years building enterprise platforms on Azure and AWS; today I run governed AI in production on Azure AI Foundry, Databricks, Snowflake, and Sigma.</p>
         <div class="hero-cta reveal-up">
           <a class="btn solid" href="#production">See production work</a>
           <a class="btn ghost" href="mailto:suhail39ahmed@gmail.com">Open a channel</a>
@@ -152,31 +153,48 @@
         </div>
       </section>
 
-      <section class="now" id="system">
-        <p class="kicker">01 / Focus</p>
+      <section class="now about" id="about">
+        <p class="kicker">01 / About</p>
         <div class="now-grid">
           <h2 class="reveal-up">I put AI apps and agents onto real cloud and data estates, governed and measured.</h2>
-          <div class="now-copy reveal-up">
-            <p>Azure AI-103 (Developing AI Apps and Agents on Azure) certified. Day to day I connect Azure AI Foundry, agents, and evals to Databricks, Snowflake, and Sigma.</p>
-            <p>I evaluate Cursor and MCP for the team with security, configuration, and responsible use first. Side projects and hackathons are where I test ideas before they reach production.</p>
+          <div class="bio reveal-up">
+            <div class="bio-tabs" role="tablist" aria-label="Bio length">
+              <button type="button" role="tab" id="tab-short" aria-controls="bio-short" aria-selected="true">30 seconds</button>
+              <button type="button" role="tab" id="tab-long" aria-controls="bio-long" aria-selected="false" tabindex="-1">2 minutes</button>
+              <button type="button" role="tab" id="tab-rec" aria-controls="bio-rec" aria-selected="false" tabindex="-1">For recruiters</button>
+            </div>
+            <div class="bio-panel" role="tabpanel" id="bio-short" aria-labelledby="tab-short">
+              <h3 class="bio-h">In 30 seconds</h3>
+              <p>I’m a Solutions Architect for Cloud, Data &amp; AI at Revantage Global in Singapore. I’ve spent 10+ years building enterprise platforms on Azure and AWS. Today I run governed AI in production: an Azure AI Foundry gateway, and AI agents on Databricks, Snowflake, and Sigma.</p>
+            </div>
+            <div class="bio-panel" role="tabpanel" id="bio-long" aria-labelledby="tab-long">
+              <h3 class="bio-h">In 2 minutes</h3>
+              <p>I started in infrastructure: vRealize automation across 1000+ VMs at Cognizant, then cloud migrations, landing zones, and Terraform/GitLab pipelines at Accenture in Bangalore and Singapore.</p>
+              <p>At Revantage Global I moved from Senior DevOps Engineer, designing Hub-and-Spoke architectures, IaC, Kubernetes, and observability, to Solutions Architect for Cloud, Data &amp; AI. I implemented Azure AI Foundry as the gateway that manages, monitors, and governs our AI solutions, and I design AI agents on Databricks, Snowflake, and Sigma that cut manual analysis for Ops and business teams. I also run evals and operational-readiness checks, and I evaluate Cursor and MCP with security and configuration first.</p>
+              <p>Outside work I build open-source labs like an LLM auto-router, a production-grade RAG, and MCP tools, and I enter AI hackathons to test ideas before they reach production.</p>
+            </div>
+            <div class="bio-panel" role="tabpanel" id="bio-rec" aria-labelledby="tab-rec">
+              <h3 class="bio-h">For recruiters</h3>
+              <ul class="rec-list">
+                <li><b>Role:</b> Solutions Architect, Cloud, Data &amp; AI · Revantage Global · Singapore (since May 2026)</li>
+                <li><b>Experience:</b> 10+ years across Cognizant, Accenture, and Revantage Global</li>
+                <li><b>In production:</b> Azure AI Foundry AI gateway; AI agents on Databricks, Snowflake, and Sigma</li>
+                <li><b>Core stack:</b> Azure, AWS, Azure AI Foundry, Databricks, Snowflake, Terraform, Bicep, Kubernetes, Python, CI/CD</li>
+                <li><b>Certifications:</b> Azure Solutions Architect Expert, DevOps Engineer Expert, AI-103, AWS SA, Terraform, Databricks, SnowPro Core, and more</li>
+                <li><a href="files/Suhail_Resume_v1.8.pdf" download>Download resume (PDF)</a> · <a href="https://www.linkedin.com/in/suhail-ahmed-sg/" target="_blank" rel="noopener">LinkedIn</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="pillars">
-          <article class="pillar reveal-up">
-            <span>01</span>
-            <h3>Cloud</h3>
-            <p>Hub-and-Spoke landing zones, Terraform, Bicep, Kubernetes, and ECS across Azure and AWS — designed, built, and operated.</p>
-          </article>
-          <article class="pillar reveal-up">
-            <span>02</span>
-            <h3>Data</h3>
-            <p>Databricks, Snowflake, and Sigma platforms with CI/CD, so insights move from a notebook to a dashboard.</p>
-          </article>
-          <article class="pillar reveal-up">
-            <span>03</span>
-            <h3>AI</h3>
-            <p>Azure AI Foundry as a governed gateway, AI agents on the data platform, evals and operational readiness — built to measure and govern, not just demo.</p>
-          </article>
+        <div class="stats" aria-label="At a glance">
+          <div class="stat"><b><span class="count" data-count="10">10</span>+</b><span>years in infrastructure, cloud &amp; data</span></div>
+          <div class="stat"><b><span class="count" data-count="9">9</span></b><span>certifications listed below</span></div>
+          <div class="stat"><b><span class="count" data-count="20">20</span></b><span>public GitHub repos</span></div>
+        </div>
+        <div class="skillmap">
+          <h3 class="skillmap-h" id="skillmap-h">Stack map: pick a skill to see where I use it</h3>
+          <div class="skills" role="group" aria-labelledby="skillmap-h"><button type="button" class="skill" data-skill="foundry" aria-pressed="false">Azure AI Foundry</button><button type="button" class="skill" data-skill="agents" aria-pressed="false">AI agents</button><button type="button" class="skill" data-skill="databricks" aria-pressed="false">Databricks</button><button type="button" class="skill" data-skill="snowflake" aria-pressed="false">Snowflake</button><button type="button" class="skill" data-skill="sigma" aria-pressed="false">Sigma</button><button type="button" class="skill" data-skill="rag" aria-pressed="false">RAG &amp; retrieval</button><button type="button" class="skill" data-skill="evals" aria-pressed="false">Evals</button><button type="button" class="skill" data-skill="mcp" aria-pressed="false">MCP</button><button type="button" class="skill" data-skill="terraform" aria-pressed="false">Terraform / IaC</button><button type="button" class="skill" data-skill="cicd" aria-pressed="false">CI/CD &amp; DevOps</button><button type="button" class="skill" data-skill="gcp" aria-pressed="false">Google Cloud / Gemini</button><button type="button" class="skill" data-skill="python" aria-pressed="false">Python</button></div>
+          <p class="skill-out" id="skill-out" aria-live="polite">Select a skill to highlight the production work and projects that use it.</p>
         </div>
       </section>
 
@@ -184,17 +202,17 @@
         <p class="kicker">02 / In production at Revantage Global</p>
         <h2 class="reveal-up">What I run, not just what I demo.</h2>
         <div class="pillars">
-          <article class="pillar reveal-up" id="foundry-ai-gateway">
+          <article class="pillar reveal-up" id="foundry-ai-gateway" data-skills="foundry agents evals">
             <span>P-01</span>
             <h3>Azure AI Foundry AI gateway</h3>
             <p>Implemented Azure AI Foundry as the gateway to manage, monitor, and govern the company’s AI solutions: one place for model access, oversight, and control.</p>
           </article>
-          <article class="pillar reveal-up" id="data-ai-agents">
+          <article class="pillar reveal-up" id="data-ai-agents" data-skills="agents databricks snowflake sigma">
             <span>P-02</span>
             <h3>AI agents on Databricks, Snowflake &amp; Sigma</h3>
             <p>Designed AI agents on the data platform that cut manual analysis for Ops and business teams, and enabled AI for analytics and operational insights.</p>
           </article>
-          <article class="pillar reveal-up">
+          <article class="pillar reveal-up" id="ai-readiness" data-skills="evals mcp cicd">
             <span>P-03</span>
             <h3>Readiness &amp; responsible tooling</h3>
             <p>Support AI application build-out with evals, testing, and operational readiness; evaluate Cursor and MCP with security and configuration first.</p>
@@ -207,49 +225,49 @@
         <p class="kicker">03 / Projects</p>
         <h2 class="reveal-up">Open-source labs and hackathon builds.</h2>
         <div class="cases">
-          <a class="case reveal-up" id="llm-auto-router" href="https://github.com/suhail39ahmed/llm-auto-router" target="_blank" rel="noopener" data-tilt>
+          <a class="case reveal-up" id="llm-auto-router" data-skills="foundry evals python" href="https://github.com/suhail39ahmed/llm-auto-router" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>98% routing · ~27–29% cheaper</b></div>
             <h3>LLM auto-router on Azure AI Foundry</h3>
             <p>Routes each prompt to the cheapest model that can handle it. 98% routing accuracy on 100 labelled prompts vs 62% for keyword rules, and about 27–29% lower cost than sending everything to gpt-5.4 (measured in the repo; 98% is optimistic until a held-out split is added).</p>
             <ul><li>Azure AI Foundry</li><li>Python</li><li>Evals</li></ul>
           </a>
-          <a class="case reveal-up" id="production-grade-rag" href="https://github.com/suhail39ahmed/production_grade_rag" target="_blank" rel="noopener" data-tilt>
+          <a class="case reveal-up" id="production-grade-rag" data-skills="rag python evals" href="https://github.com/suhail39ahmed/production_grade_rag" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>Phases 1–7</b></div>
             <h3>Production-grade RAG</h3>
             <p>A RAG build taken through seven phases, with a walkthrough, architecture diagram, and demo video.</p>
             <ul><li>RAG</li><li>Python</li><li>Retrieval</li></ul>
           </a>
-          <article class="case reveal-up" id="ember" data-tilt>
+          <a class="case reveal-up" id="ember" href="https://github.com/suhail39ahmed/ember-fire-commander" target="_blank" rel="noopener" data-skills="gcp agents terraform python" data-tilt>
             <div class="case-top"><span class="tag">Hackathon</span><b>AI Builder Cup 2026</b></div>
             <h3>EMBER — weather-aware fire triage</h3>
-            <p>Bahasa-first AI fire commander for village brigades during Southeast Asian haze fires: ranks satellite detections by spread risk, with a volunteer app and supervisor console. In progress; repo is currently private.</p>
+            <p>Bahasa-first AI fire commander for village brigades during Southeast Asian haze fires: ranks satellite detections by spread risk, with a volunteer app and supervisor console. Submitted; judging runs to 6 Nov 2026.</p>
             <ul><li>Gemini Live</li><li>ADK</li><li>Cloud Run</li><li>Firestore</li></ul>
-          </article>
-          <a class="case reveal-up" id="fraud-policy-copilot" href="https://github.com/suhail39ahmed/fraud-policy-copilot" target="_blank" rel="noopener" data-tilt>
+          </a>
+          <a class="case reveal-up" id="fraud-policy-copilot" data-skills="snowflake agents rag python" href="https://github.com/suhail39ahmed/fraud-policy-copilot" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Hackathon</span><b>Submitted</b></div>
             <h3>Fraud policy copilot</h3>
             <p>Snowflake CoCo CLI fraud case copilot: transaction in, policy match, risk score with citations. Risk / Fraud / Regulatory track.</p>
             <ul><li>Snowflake</li><li>CoCo CLI</li><li>Python</li></ul>
           </a>
-          <a class="case reveal-up" id="foundry-eval-gate" href="https://github.com/suhail39ahmed/foundry-eval-gate" target="_blank" rel="noopener" data-tilt>
+          <a class="case reveal-up" id="foundry-eval-gate" data-skills="evals agents cicd python" href="https://github.com/suhail39ahmed/foundry-eval-gate" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>CI gate</b></div>
             <h3>Foundry eval gate</h3>
             <p>A CI eval gate that checks agent traces for faithfulness, tool success, and PII leaks before a change ships.</p>
             <ul><li>Evals</li><li>CI/CD</li><li>Agents</li></ul>
           </a>
-          <a class="case reveal-up" id="ado-pipeline-doctor" href="https://github.com/suhail39ahmed/ado-pipeline-doctor" target="_blank" rel="noopener" data-tilt>
+          <a class="case reveal-up" id="ado-pipeline-doctor" data-skills="cicd agents python" href="https://github.com/suhail39ahmed/ado-pipeline-doctor" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>Human-approved</b></div>
             <h3>ADO pipeline doctor</h3>
             <p>Turns failed Azure Pipelines and GitHub Actions logs into structured RCA JSON, with human approval required before any fix.</p>
             <ul><li>Azure DevOps</li><li>GitHub Actions</li><li>LLM</li></ul>
           </a>
-          <a class="case reveal-up" id="mcp-tools" href="https://github.com/suhail39ahmed/iac-guard-mcp" target="_blank" rel="noopener" data-tilt>
+          <a class="case reveal-up" id="mcp-tools" data-skills="mcp terraform python" href="https://github.com/suhail39ahmed/iac-guard-mcp" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>MCP toolkit</b></div>
             <h3>MCP-style ops tools</h3>
             <p>iac-guard-mcp (Terraform/Bicep diff review), azure-ops-mcp (Key Vault compare, ADO diagnose, dry-run + audit), lakehouse-insights-skill, and kc-mcp.</p>
             <ul><li>MCP</li><li>IaC</li><li>Azure</li></ul>
           </a>
-          <a class="case reveal-up" id="infra-iac" href="https://github.com/suhail39ahmed/azure-hub-spoke-terraform" target="_blank" rel="noopener" data-tilt>
+          <a class="case reveal-up" id="infra-iac" data-skills="terraform cicd python" href="https://github.com/suhail39ahmed/azure-hub-spoke-terraform" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>IaC</b></div>
             <h3>Infrastructure as code</h3>
             <p>Hub-and-spoke Terraform modules for Azure networking, Python Key Vault automation, and multi-CI demos across GitHub Actions, Azure DevOps, and GitLab.</p>
@@ -263,12 +281,12 @@
         <p class="kicker">04 / Hackathons</p>
         <h2 class="reveal-up">AI hackathons.</h2>
         <div class="hk-list">
-          <article class="hk reveal-up"><span class="tag live">In progress</span><h3>Google Cloud AI Builder Cup 2026</h3><p>Google Cloud · Hack2skill · submission due 18 Oct 2026</p><p>Project: <a href="#ember">EMBER — weather-aware fire triage</a></p></article>
+          <article class="hk reveal-up"><span class="tag live">Submitted</span><h3>Google Cloud AI Builder Cup 2026</h3><p>Google Cloud · Hack2skill · submitted 18 Oct 2026 · evaluation 19 Oct – 6 Nov</p><p>Project: <a href="#ember">EMBER — weather-aware fire triage</a></p></article>
           <article class="hk reveal-up"><span class="tag">Submitted</span><h3>Snowflake CoCo CLI Hackathon — GCC Edition</h3><p>Snowflake · Hack2skill · Sep–Oct 2026</p><p>Project: <a href="#fraud-policy-copilot">Fraud policy copilot</a></p></article>
           <article class="hk reveal-up"><span class="tag">Participating</span><h3>Nebius x NVIDIA Global AI Hackathon</h3><p>Nebius x NVIDIA · Devpost · Oct 2026</p></article>
           <article class="hk reveal-up"><span class="tag">Participating</span><h3>Build with AI: Code for Communities — Second Edition</h3><p>Hack2skill · Sep 2026</p></article>
           <article class="hk reveal-up"><span class="tag">Participating</span><h3>HACKATHON X FIT-FEST 2026</h3><p>FIT-FEST · Hack2skill · Sep 2026</p></article>
-          <article class="hk reveal-up" id="rev-engers-2024"><span class="tag">Completed (2024)</span><h3>Databricks GenAI Hackathon 2024 — team REV-Engers</h3><p>Time-boxed team GenAI hackathon · 2024</p><p>RAG experiments on Databricks: table setup, CSV/PDF document ingestion, a RAG chain agent model, and a model GUI. <a href="https://github.com/suhail39ahmed/REV-Engers_Databricks_GenAI_Hackathon24" target="_blank" rel="noopener">Notebooks on GitHub</a></p></article>
+          <article class="hk reveal-up" id="rev-engers-2024" data-skills="databricks rag python"><span class="tag">Completed (2024)</span><h3>Databricks GenAI Hackathon 2024 — team REV-Engers</h3><p>Time-boxed team GenAI hackathon · 2024</p><p>RAG experiments on Databricks: table setup, CSV/PDF document ingestion, a RAG chain agent model, and a model GUI. <a href="https://github.com/suhail39ahmed/REV-Engers_Databricks_GenAI_Hackathon24" target="_blank" rel="noopener">Notebooks on GitHub</a></p></article>
         </div>
       </section>
 
@@ -284,11 +302,13 @@
       <section class="path" id="path">
         <p class="kicker">06 / Trajectory</p>
         <h2 class="reveal-up">Ten years in infrastructure. Now shipping AI apps and agents.</h2>
+        <p class="note">Open any role to see what I did there.</p>
         <div class="track">
           <article class="node reveal-up">
             <time>2026 →</time>
             <h3>Solutions Architect — Cloud, Data &amp; AI</h3>
             <p>Revantage Global · Singapore</p>
+            <details class="more" open><summary>Responsibilities</summary>
             <ul class="duties">
               <li>Enable AI across Databricks, Snowflake, and Sigma for analytics and operational insights.</li>
               <li>Design AI agents that cut manual analysis for Ops and business teams.</li>
@@ -296,47 +316,56 @@
               <li>Evaluate Cursor and MCP with a focus on security, configuration, and responsible use.</li>
               <li>Support AI application build-out, evals, testing, and operational readiness.</li>
             </ul>
+            </details>
           </article>
           <article class="node reveal-up">
             <time>2024 — 2026</time>
             <h3>Senior DevOps Engineer</h3>
             <p>Revantage Global · Singapore</p>
+            <details class="more"><summary>Responsibilities</summary>
             <ul class="duties">
               <li>Design enterprise Azure and AWS architectures, including Hub-and-Spoke landing zones.</li>
               <li>Build IaC and CI/CD with Terraform, Bicep, Azure DevOps, and GitLab.</li>
               <li>Run Kubernetes, Docker, and ECS/Fargate for availability and cost.</li>
               <li>Implement Prometheus, Grafana, observability, and cloud security controls.</li>
             </ul>
+            </details>
           </article>
           <article class="node reveal-up">
             <time>2022 — 2024</time>
             <h3>Cloud / DevOps Consultant</h3>
             <p>Accenture Singapore</p>
+            <details class="more"><summary>Responsibilities</summary>
             <ul class="duties">
               <li>Migrate complex legacy applications to Azure and AWS with resilient, cost-aware designs.</li>
               <li>Build secure landing zones with Terraform and GitLab CI/CD to cyber standards.</li>
               <li>Deliver cloud security and compliance projects with guardrails on Azure workloads.</li>
             </ul>
+            </details>
           </article>
           <article class="node reveal-up">
             <time>2020 — 2022</time>
             <h3>Cloud / DevOps Engineer</h3>
             <p>Accenture India · Bangalore</p>
+            <details class="more"><summary>Responsibilities</summary>
             <ul class="duties">
               <li>Deploy IaaS on AWS and Azure using Terraform and GitLab CI/CD.</li>
               <li>Execute application migrations and performance optimizations.</li>
               <li>Investigate incidents and work remediations with compliance and security teams.</li>
             </ul>
+            </details>
           </article>
           <article class="node reveal-up">
             <time>2016 — 2020</time>
             <h3>Technical Lead</h3>
             <p>Cognizant · Bangalore</p>
+            <details class="more"><summary>Responsibilities</summary>
             <ul class="duties">
               <li>Automate cloud management with vRealize Automation and Orchestrator across 1000+ VMs.</li>
               <li>Integrate vRO with CouchDB and manage ESXi, HA, DRS, and migrations.</li>
               <li>Run Agile delivery and Bitbucket workflows; training that lifted team skills.</li>
             </ul>
+            </details>
           </article>
         </div>
       </section>
@@ -372,5 +401,6 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/about.js"></script>
   </body>
 </html>

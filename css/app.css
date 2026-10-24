@@ -444,6 +444,46 @@ h2 {
 .hk h3 { font-family: Syne, sans-serif; font-size: 20px; margin: 14px 0 8px; }
 .hk p { color: var(--fog); font-size: 14px; margin: 4px 0; }
 
+/* About: bio tabs, stats, stack map, timeline */
+.bio-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.bio-tabs button, .skill {
+  font: inherit; font-size: 13px; color: var(--fog); background: transparent;
+  border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.bio-tabs button[aria-selected="true"], .skill[aria-pressed="true"] {
+  color: var(--ink); background: var(--mint); border-color: var(--mint);
+}
+.bio-tabs button:hover, .skill:hover { color: var(--ice); border-color: rgba(124,179,255,0.45); }
+.bio-tabs button[aria-selected="true"]:hover, .skill[aria-pressed="true"]:hover { color: var(--ink); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.bio-panel p { color: var(--fog); margin-bottom: 12px; line-height: 1.65; }
+.bio-h { font-size: 14px; color: var(--blue); margin: 0 0 8px; }
+.js .bio-tabs ~ .bio-panel .bio-h { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.bio-tabs { display: none; }
+.js .bio-tabs { display: flex; }
+.rec-list li { color: var(--fog); margin: 8px 0; line-height: 1.5; }
+.rec-list b { color: var(--ice); font-weight: 600; }
+.rec-list a, .skill-out a { color: var(--blue); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 36px 0 28px; }
+.stat { padding: 20px; border: 1px solid var(--line); border-radius: 20px; }
+.stat b { display: block; white-space: nowrap; font-family: Syne, sans-serif; font-size: 44px; color: var(--mint); line-height: 1; }
+.stat > span { display: block; color: var(--fog); font-size: 13px; margin-top: 8px; }
+.skillmap-h { font-size: 16px; margin-bottom: 14px; }
+.skills { display: flex; flex-wrap: wrap; gap: 8px; }
+.skillmap .skills, .skill-out { display: none; }
+.js .skillmap .skills { display: flex; }
+.js .skill-out { display: block; color: var(--fog); font-size: 14px; margin-top: 14px; min-height: 1.5em; }
+.skillmap { display: none; margin-bottom: 32px; }
+.js .skillmap { display: block; }
+.skill-filter [data-skills] { opacity: .35; transition: opacity .3s ease, border-color .3s ease; }
+.skill-filter [data-skills].is-hit { opacity: 1; border-color: var(--mint); }
+.pillar, .hk { scroll-margin-top: 90px; }
+details.more summary { cursor: pointer; color: var(--blue); font-size: 14px; margin-top: 6px; list-style: none; }
+details.more summary::-webkit-details-marker { display: none; }
+details.more summary::before { content: "+ "; color: var(--mint); }
+details.more[open] summary::before { content: "− "; }
+
 @media (max-width: 900px) {
   .nav nav { display: none; }
   .cine-banner { height: 220px; }
@@ -453,9 +493,12 @@ h2 {
   .stage::after { display: none; }
   .id-card { width: 100%; }
   .node time { grid-row: auto; }
+  .stats { grid-template-columns: 1fr; }
+  .stat b { font-size: 36px; }
+  h1 { word-break: break-word; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .case, .reveal-up, .reveal-text { transition: none !important; }
+  .case, .reveal-up, .reveal-text, .skill, .bio-tabs button, .skill-filter [data-skills] { transition: none !important; }
 }
