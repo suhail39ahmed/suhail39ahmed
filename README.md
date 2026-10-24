@@ -1,8 +1,8 @@
 # Suhail Ahmed
 
-I build **AI agents, LLM routers and RAG systems** on cloud and data platforms, and share what I'm building, breaking and learning.
+I **design and build AI agents, LLM routers and RAG systems** on cloud and data platforms: architecture first, then code, then measurement. Here's what I'm designing, building, breaking and learning.
 
-10+ years of cloud and infra (Azure, AWS, Terraform, Kubernetes) under the hood. Solutions Architect by day, Singapore.
+10+ years of cloud and infra (Azure, AWS, Terraform, Kubernetes) under the hood. Solutions Architect · Singapore.
 
 Portfolio: **[savvysuhail.com](https://savvysuhail.com/)** · [LinkedIn](https://www.linkedin.com/in/suhail-ahmed-sg/)
 
@@ -12,13 +12,13 @@ Portfolio: **[savvysuhail.com](https://savvysuhail.com/)** · [LinkedIn](https:/
 - **llm-auto-router**: adding a held-out test split so the 98% gets an honest check.
 - **Writing**: first post on routing prompts to the cheapest capable model.
 
-## Flagship projects
+## Flagship projects (designed & built)
 
 | Project | What it is | Type |
 |---|---|---|
-| [llm-auto-router](https://github.com/suhail39ahmed/llm-auto-router) ([card](https://savvysuhail.com/#llm-auto-router)) | Routes each prompt to the cheapest capable model on Azure AI Foundry. 98% routing accuracy on 100 labelled prompts vs 62% for keyword rules; ~27–29% cheaper than all-gpt-5.4 (98% is optimistic until a held-out split is added). | Lab |
-| [production_grade_rag](https://github.com/suhail39ahmed/production_grade_rag) ([card](https://savvysuhail.com/#production-grade-rag)) | RAG built through seven phases, with walkthrough, architecture diagram and demo. | Lab |
-| [ember-fire-commander](https://github.com/suhail39ahmed/ember-fire-commander) ([card](https://savvysuhail.com/#ember)) | EMBER: weather-aware wildfire triage for village brigades in SE Asian haze fires (Gemini Live, ADK, Cloud Run, Firestore). | Hackathon |
+| [llm-auto-router](https://github.com/suhail39ahmed/llm-auto-router) ([card](https://savvysuhail.com/#llm-auto-router)) | Routes each prompt to the cheapest capable model on Azure AI Foundry. 98% routing accuracy on 100 labelled prompts vs 62% for keyword rules; ~27–29% cheaper than all-gpt-5.4 (98% is optimistic until a held-out split is added). **Design:** LLM classifier picks one of 4 tiers; JSON validated against policy rules, invalid output falls back to the strongest model. | Lab |
+| [production_grade_rag](https://github.com/suhail39ahmed/production_grade_rag) ([card](https://savvysuhail.com/#production-grade-rag)) | RAG built through seven phases, with walkthrough, architecture diagram and demo. **Design:** hybrid BM25 + vector search, cross-encoder rerank to top 5, CI eval gate on every PR. | Lab |
+| [ember-fire-commander](https://github.com/suhail39ahmed/ember-fire-commander) ([card](https://savvysuhail.com/#ember)) | EMBER: weather-aware wildfire triage for village brigades in SE Asian haze fires (Gemini Live, ADK, Cloud Run, Firestore). **Design:** agents fuse many phones into one incident; a human supervisor approves high-stakes calls; WITHDRAW safety rule is deterministic code. | Hackathon |
 | [fraud-policy-copilot](https://github.com/suhail39ahmed/fraud-policy-copilot) ([card](https://savvysuhail.com/#fraud-policy-copilot)) | Snowflake CoCo CLI fraud case copilot: transaction → policy match → risk score with citations. | Hackathon |
 | [foundry-eval-gate](https://github.com/suhail39ahmed/foundry-eval-gate) ([card](https://savvysuhail.com/#foundry-eval-gate)) | CI eval gate on agent traces: faithfulness, tool success, PII leak. | Lab |
 | [ado-pipeline-doctor](https://github.com/suhail39ahmed/ado-pipeline-doctor) ([card](https://savvysuhail.com/#ado-pipeline-doctor)) | Failed Azure Pipelines / GitHub Actions logs → RCA JSON, human approval required. | Lab |

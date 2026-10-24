@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Suhail Ahmed — I build AI agents, LLM routers &amp; RAG on cloud and data</title>
-    <meta name="description" content="I build AI agents, LLM routers and RAG systems on cloud and data platforms. What I'm building, breaking and learning: open-source labs, hackathon builds and notes.">
+    <title>Suhail Ahmed — I design and build AI agents, LLM routers &amp; RAG on cloud and data</title>
+    <meta name="description" content="I design and build AI agents, LLM routers and RAG systems on cloud and data platforms. Architecture first, then code, then measurement: open-source labs, hackathon builds and notes.">
     <link rel="canonical" href="https://savvysuhail.com/">
     <meta name="theme-color" content="#0b0f17">
     <meta property="og:type" content="profile">
     <meta property="og:site_name" content="Suhail Ahmed">
-    <meta property="og:title" content="Suhail Ahmed — I build AI agents, LLM routers &amp; RAG on cloud and data">
-    <meta property="og:description" content="I build AI agents, LLM routers and RAG systems on cloud and data platforms. What I'm building, breaking and learning: open-source labs, hackathon builds and notes.">
+    <meta property="og:title" content="Suhail Ahmed — I design and build AI agents, LLM routers &amp; RAG on cloud and data">
+    <meta property="og:description" content="I design and build AI agents, LLM routers and RAG systems on cloud and data platforms. Architecture first, then code, then measurement: open-source labs, hackathon builds and notes.">
     <meta property="og:url" content="https://savvysuhail.com/">
     <meta property="og:image" content="https://savvysuhail.com/images/about_me.png">
     <meta property="og:image:alt" content="Portrait of Suhail Ahmed">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Suhail Ahmed — I build AI agents, LLM routers &amp; RAG on cloud and data">
-    <meta name="twitter:description" content="AI agents, LLM routers and RAG on cloud and data. Projects, hackathons and notes from the build.">
+    <meta name="twitter:title" content="Suhail Ahmed — I design and build AI agents, LLM routers &amp; RAG on cloud and data">
+    <meta name="twitter:description" content="I design and build AI agents, LLM routers and RAG on cloud and data. Projects, hackathons and notes.">
     <meta name="twitter:image" content="https://savvysuhail.com/images/about_me.png">
     <script type="application/ld+json">
     {
@@ -25,11 +25,11 @@
       "name": "Suhail Ahmed",
       "url": "https://savvysuhail.com/",
       "image": "https://savvysuhail.com/images/about_me.png",
-      "description": "Builder of AI agents, LLM routers and RAG systems on cloud and data platforms. 10+ years on Azure and AWS; open-source labs and AI hackathon builds.",
+      "description": "Solutions architect and builder: designs and builds AI agents, LLM routers and RAG systems on cloud and data platforms. 10+ years on Azure and AWS; open-source labs and AI hackathon builds.",
       "jobTitle": "Solutions Architect",
       "address": { "@type": "PostalAddress", "addressLocality": "Singapore", "addressCountry": "SG" },
       "email": "mailto:suhail39ahmed@gmail.com",
-      "knowsAbout": ["AI agents", "Azure AI Foundry", "Databricks", "Snowflake", "Terraform", "Azure", "AWS", "DevSecOps", "LLM routing", "RAG"],
+      "knowsAbout": ["Solution architecture", "AI agents", "Azure AI Foundry", "Databricks", "Snowflake", "Terraform", "Azure", "AWS", "DevSecOps", "LLM routing", "RAG"],
       "sameAs": ["https://github.com/suhail39ahmed", "https://www.linkedin.com/in/suhail-ahmed-sg/"]
     }
     </script>
@@ -77,11 +77,11 @@
           <span class="line reveal-text">Suhail</span>
           <span class="line reveal-text">Ahmed</span>
         </h1>
-        <p class="title reveal-up">I build AI agents, LLM routers &amp; RAG systems on cloud and data platforms.</p>
-        <p class="lede reveal-up">This is where I share what I’m building, breaking and learning: open-source labs, hackathon builds, and notes for fellow tinkerers. 10+ years of cloud and infra under the hood.</p>
-        <p class="subtitle reveal-up">Solutions Architect by day · Singapore</p>
+        <p class="title reveal-up">I design and build AI agents, LLM routers &amp; RAG systems on cloud and data platforms.</p>
+        <p class="lede reveal-up">I sketch the architecture first, then build it, then measure whether it actually works. This is where I share what I’m designing, building, breaking and learning: open-source labs, hackathon builds, and notes for fellow tinkerers. 10+ years of cloud and infra under the hood.</p>
+        <p class="subtitle reveal-up">Solutions Architect · Singapore</p>
         <div class="hero-cta reveal-up">
-          <a class="btn solid" href="#work">See what I’m building</a>
+          <a class="btn solid" href="#work">See what I’ve designed &amp; built</a>
           <a class="btn ghost" href="#signal">Swap notes</a>
         </div>
 
@@ -110,7 +110,7 @@
               <article class="id-card" data-tilt>
                 <img src="images/myimage_1.png" alt="Portrait of Suhail Ahmed" width="64" height="64" loading="lazy">
                 <div>
-                  <p>Builder</p>
+                  <p>Architect · Builder</p>
                   <strong>Cloud · Data · AI</strong>
                   <span>Singapore · AI · Cloud · Data</span>
                 </div>
@@ -170,54 +170,63 @@
 
       <section class="work" id="work">
         <p class="kicker">01 / Projects</p>
-        <h2 class="reveal-up">Things I’ve built and shipped to GitHub.</h2>
+        <h2 class="reveal-up">Things I’ve designed and built.</h2>
+        <p class="note">Each card has the key design decision, straight from the repo’s README.</p>
         <div class="cases">
           <a class="case reveal-up" id="llm-auto-router" data-skills="foundry evals python" href="https://github.com/suhail39ahmed/llm-auto-router" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>98% routing · ~27–29% cheaper</b></div>
             <h3>LLM auto-router on Azure AI Foundry</h3>
             <p>Routes each prompt to the cheapest model that can handle it. 98% routing accuracy on 100 labelled prompts vs 62% for keyword rules, and about 27–29% lower cost than sending everything to gpt-5.4 (measured in the repo; 98% is optimistic until a held-out split is added).</p>
+            <p class="design"><b>Design:</b> An LLM classifier (gpt-5-mini) picks one of four model tiers; its JSON is validated against policy rules, and invalid output falls back to the strongest model. A 100-prompt golden set drives the tuning loop.</p>
             <ul><li>Azure AI Foundry</li><li>Python</li><li>Evals</li></ul>
           </a>
           <a class="case reveal-up" id="production-grade-rag" data-skills="rag python evals" href="https://github.com/suhail39ahmed/production_grade_rag" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>Phases 1–7</b></div>
             <h3>Production-grade RAG</h3>
             <p>A RAG build taken through seven phases, with a walkthrough, architecture diagram, and demo video.</p>
+            <p class="design"><b>Design:</b> Hybrid BM25 + vector search (alpha 0.5, top 30), a cross-encoder reranker keeps the best 5, superseded docs are filtered out, and a CI eval gate fails any PR that drops retrieval quality.</p>
             <ul><li>RAG</li><li>Python</li><li>Retrieval</li></ul>
           </a>
           <a class="case reveal-up" id="ember" href="https://github.com/suhail39ahmed/ember-fire-commander" target="_blank" rel="noopener" data-skills="gcp agents terraform python" data-tilt>
             <div class="case-top"><span class="tag">Hackathon</span><b>AI Builder Cup 2026</b></div>
             <h3>EMBER — weather-aware fire triage</h3>
             <p>Bahasa-first AI fire commander for village brigades during Southeast Asian haze fires: ranks satellite detections by spread risk, with a volunteer app and supervisor console. Submitted; awaiting results.</p>
+            <p class="design"><b>Design:</b> Agents fuse reports from many phones into one shared incident; a human supervisor approves every high-stakes call, and the WITHDRAW-upwind safety rule is deterministic code, not model output.</p>
             <ul><li>Gemini Live</li><li>ADK</li><li>Cloud Run</li><li>Firestore</li></ul>
           </a>
           <a class="case reveal-up" id="fraud-policy-copilot" data-skills="snowflake agents rag python" href="https://github.com/suhail39ahmed/fraud-policy-copilot" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Hackathon</span><b>Submitted</b></div>
             <h3>Fraud policy copilot</h3>
             <p>Snowflake CoCo CLI fraud case copilot: transaction in, policy match, risk score with citations. Risk / Fraud / Regulatory track.</p>
+            <p class="design"><b>Design:</b> Streamlit in Snowflake: transaction id → customer context → rule matches → risk score with policy citations, then a case and a native Snowflake alert trail.</p>
             <ul><li>Snowflake</li><li>CoCo CLI</li><li>Python</li></ul>
           </a>
           <a class="case reveal-up" id="foundry-eval-gate" data-skills="evals agents cicd python" href="https://github.com/suhail39ahmed/foundry-eval-gate" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>CI gate</b></div>
             <h3>Foundry eval gate</h3>
             <p>A CI eval gate that checks agent traces for faithfulness, tool success, and PII leaks before a change ships.</p>
+            <p class="design"><b>Design:</b> Deterministic, fixture-first checks on JSON traces that exit non-zero, so GitHub Actions or Azure DevOps can block the merge.</p>
             <ul><li>Evals</li><li>CI/CD</li><li>Agents</li></ul>
           </a>
           <a class="case reveal-up" id="ado-pipeline-doctor" data-skills="cicd agents python" href="https://github.com/suhail39ahmed/ado-pipeline-doctor" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>Human-approved</b></div>
             <h3>ADO pipeline doctor</h3>
             <p>Turns failed Azure Pipelines and GitHub Actions logs into structured RCA JSON, with human approval required before any fix.</p>
+            <p class="design"><b>Design:</b> Logs become structured RCA JSON with an explicit human_approval_required flag, so it’s safe to wire into an agent.</p>
             <ul><li>Azure DevOps</li><li>GitHub Actions</li><li>LLM</li></ul>
           </a>
           <a class="case reveal-up" id="mcp-tools" data-skills="mcp terraform python" href="https://github.com/suhail39ahmed/iac-guard-mcp" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>MCP toolkit</b></div>
             <h3>MCP-style ops tools</h3>
             <p>iac-guard-mcp (Terraform/Bicep diff review), azure-ops-mcp (Key Vault compare, ADO diagnose, dry-run + audit), lakehouse-insights-skill, and kc-mcp.</p>
+            <p class="design"><b>Design:</b> iac-guard uses Checkov when available and falls back to built-in regex policies, returning structured findings JSON that agents can cite.</p>
             <ul><li>MCP</li><li>IaC</li><li>Azure</li></ul>
           </a>
           <a class="case reveal-up" id="infra-iac" data-skills="terraform cicd python" href="https://github.com/suhail39ahmed/azure-hub-spoke-terraform" target="_blank" rel="noopener" data-tilt>
             <div class="case-top"><span class="tag">Lab</span><b>IaC</b></div>
             <h3>Infrastructure as code</h3>
             <p>Hub-and-spoke Terraform modules for Azure networking, Python Key Vault automation, and multi-CI demos across GitHub Actions, Azure DevOps, and GitLab.</p>
+            <p class="design"><b>Design:</b> Separate hub and spoke Terraform modules plus an example that wires them together: a foundation to extend, not a full landing zone.</p>
             <ul><li>Terraform</li><li>Azure</li><li>Python</li><li>CI/CD</li></ul>
           </a>
         </div>
@@ -246,7 +255,7 @@
       <section class="now about" id="about">
         <p class="kicker">04 / About</p>
         <div class="now-grid">
-          <h2 class="reveal-up">Hi, I’m Suhail. I like taking AI ideas from a notebook to something that actually runs.</h2>
+          <h2 class="reveal-up">Hi, I’m Suhail. I design AI systems, then build them until they actually run.</h2>
           <div class="bio reveal-up">
             <div class="bio-tabs" role="tablist" aria-label="Bio length">
               <button type="button" role="tab" id="tab-short" aria-controls="bio-short" aria-selected="true">30 seconds</button>
@@ -255,18 +264,19 @@
             </div>
             <div class="bio-panel" role="tabpanel" id="bio-short" aria-labelledby="tab-short">
               <h3 class="bio-h">In 30 seconds</h3>
-              <p>I build AI agents, LLM routers and RAG systems on cloud and data platforms. I’ve spent 10+ years in cloud and infra on Azure and AWS, and these days I spend my time on agents, evals and making models cheaper to run. Some of it runs in production at my day job; the rest lives on GitHub.</p>
+              <p>I’m a solutions architect who still writes the code. I design and build AI agents, LLM routers and RAG systems on cloud and data platforms, after 10+ years in cloud and infra on Azure and AWS. These days it’s agents, evals and making models cheaper to run. Some of it runs in production at my day job; the rest lives on GitHub.</p>
             </div>
             <div class="bio-panel" role="tabpanel" id="bio-long" aria-labelledby="tab-long">
               <h3 class="bio-h">In 2 minutes</h3>
               <p>I started out automating VMs by the thousand, then moved into cloud migrations, landing zones and Terraform pipelines, then DevOps: Kubernetes, observability and lots of IaC.</p>
-              <p>Now I work on the AI layer. At my day job that means an Azure AI Foundry gateway that governs how AI gets used, and AI agents on Databricks, Snowflake and Sigma that save people from manual analysis. I care about evals and operational readiness more than demos.</p>
-              <p>On my own time I build things to learn: an LLM auto-router that picks the cheapest model that can do the job, a production-grade RAG, MCP tools for ops, and hackathon builds like EMBER. If it breaks, I write down why.</p>
+              <p>Now I design and build the AI layer. At my day job that means an Azure AI Foundry gateway that governs how AI gets used, and AI agents on Databricks, Snowflake and Sigma that save people from manual analysis. I care about evals and operational readiness more than demos.</p>
+              <p>On my own time I design and build things to learn, starting from an architecture diagram: an LLM auto-router that picks the cheapest model that can do the job, a production-grade RAG, MCP tools for ops, and hackathon builds like EMBER. If it breaks, I write down why.</p>
             </div>
             <div class="bio-panel" role="tabpanel" id="bio-rec" aria-labelledby="tab-rec">
               <h3 class="bio-h">TL;DR for builders</h3>
               <ul class="rec-list">
-                <li><b>Builds:</b> AI agents, LLM routing, RAG, evals, MCP tools</li>
+                <li><b>Designs &amp; builds:</b> AI agents, LLM routing, RAG, evals, MCP tools</li>
+                <li><b>How:</b> architecture first, then code, then evals to check it works</li>
                 <li><b>Runs on:</b> Azure AI Foundry, Databricks, Snowflake, Google Cloud / Gemini</li>
                 <li><b>Under the hood:</b> 10+ years of Azure, AWS, Terraform, Kubernetes and CI/CD</li>
                 <li><b>Right now:</b> waiting on AI Builder Cup results; adding a held-out eval to the LLM auto-router</li>
@@ -293,7 +303,7 @@
           <article class="pillar reveal-up" id="foundry-ai-gateway" data-skills="foundry agents evals">
             <span>P-01</span>
             <h3>Azure AI Foundry AI gateway</h3>
-            <p>An Azure AI Foundry gateway I implemented to manage, monitor and govern AI solutions: one place for model access, oversight and control.</p>
+            <p>An Azure AI Foundry gateway I designed and implemented to manage, monitor and govern AI solutions: one place for model access, oversight and control.</p>
           </article>
           <article class="pillar reveal-up" id="data-ai-agents" data-skills="agents databricks snowflake sigma">
             <span>P-02</span>
@@ -395,7 +405,7 @@
       </section>
       <section class="signal" id="signal">
         <p class="kicker">08 / Contact</p>
-        <h2 class="reveal-up">Building something similar? Let’s swap notes.</h2>
+        <h2 class="reveal-up">Designing or building something similar? Let’s swap notes.</h2>
         <div class="signal-links reveal-up">
           <a href="mailto:suhail39ahmed@gmail.com">suhail39ahmed@gmail.com</a>
           <a href="tel:+6583750876">+65 8375 0876</a>

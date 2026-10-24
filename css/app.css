@@ -500,6 +500,9 @@ details.career[open] > summary .note::before { content: "− "; }
 details.career[open] > summary .note { font-size: 0; }
 details.career[open] > summary .note::after { content: "Hide career path"; font-size: 13px; }
 
+.case p.design { margin-top: 12px; font-size: 13px; line-height: 1.5; color: #c9d2e0; border-left: 2px solid var(--mint); padding-left: 10px; }
+.case p.design b { color: var(--mint); font-family: "JetBrains Mono", monospace; font-weight: 500; }
+
 @media (max-width: 900px) {
   .nav nav { display: none; }
   .cine-banner { height: 220px; }
