@@ -325,7 +325,7 @@ h1 {
 .id-card div { padding: 12px 14px; }
 .id-card strong { display: block; margin: 4px 0; }
 
-.now, .work, .path, .stack, .signal {
+.now, .work, .path, .stack, .signal, .prod, .hackathons, .writing, .nowbuilding {
   max-width: 1240px;
   margin: 0 auto;
   padding: 80px 32px 10px;
@@ -484,6 +484,22 @@ details.more summary::-webkit-details-marker { display: none; }
 details.more summary::before { content: "+ "; color: var(--mint); }
 details.more[open] summary::before { content: "− "; }
 
+/* Builder voice: subtitle, now strip, career path */
+.subtitle { color: var(--fog); font-family: "JetBrains Mono", monospace; font-size: 13px; margin-top: 10px; }
+.nowbuilding { padding-top: 40px; padding-bottom: 20px; }
+.now-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; list-style: none; }
+.now-strip li { display: flex; gap: 10px; align-items: baseline; padding: 14px 16px; border: 1px solid var(--line); border-radius: 16px; color: var(--fog); font-size: 14px; line-height: 1.45; }
+.now-strip a { color: var(--ice); font-weight: 600; }
+.now-strip .dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 0 rgba(103,240,180,.6); animation: pulse 2.4s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(103,240,180,.55); } 70% { box-shadow: 0 0 0 8px rgba(103,240,180,0); } 100% { box-shadow: 0 0 0 0 rgba(103,240,180,0); } }
+details.career > summary { cursor: pointer; list-style: none; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; }
+details.career > summary::-webkit-details-marker { display: none; }
+.career-h { font-family: Syne, sans-serif; font-size: clamp(24px, 4vw, 40px); }
+details.career > summary .note::before { content: "+ "; color: var(--mint); }
+details.career[open] > summary .note::before { content: "− "; }
+details.career[open] > summary .note { font-size: 0; }
+details.career[open] > summary .note::after { content: "Hide career path"; font-size: 13px; }
+
 @media (max-width: 900px) {
   .nav nav { display: none; }
   .cine-banner { height: 220px; }
@@ -493,7 +509,7 @@ details.more[open] summary::before { content: "− "; }
   .stage::after { display: none; }
   .id-card { width: 100%; }
   .node time { grid-row: auto; }
-  .stats { grid-template-columns: 1fr; }
+  .stats, .now-strip { grid-template-columns: 1fr; }
   .stat b { font-size: 36px; }
   h1 { word-break: break-word; }
 }
@@ -501,4 +517,5 @@ details.more[open] summary::before { content: "− "; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .case, .reveal-up, .reveal-text, .skill, .bio-tabs button, .skill-filter [data-skills] { transition: none !important; }
+  .now-strip .dot { animation: none; }
 }

@@ -1,17 +1,16 @@
 # Suhail Ahmed
 
-**Solutions Architect — Cloud, Data & AI** at Revantage Global, Singapore.
-10+ years building enterprise platforms on Azure and AWS; today I run governed AI in production on Azure AI Foundry, Databricks, Snowflake and Sigma.
+I build **AI agents, LLM routers and RAG systems** on cloud and data platforms, and share what I'm building, breaking and learning.
+
+10+ years of cloud and infra (Azure, AWS, Terraform, Kubernetes) under the hood. Solutions Architect by day, Singapore.
 
 Portfolio: **[savvysuhail.com](https://savvysuhail.com/)** · [LinkedIn](https://www.linkedin.com/in/suhail-ahmed-sg/)
 
-## In production at Revantage Global
+## Now building / tinkering
 
-Scope only; internal details and metrics stay with the employer. ([details](https://savvysuhail.com/#production))
-
-- **Azure AI Foundry AI gateway**: one governed entry point to manage, monitor and control AI solutions.
-- **AI agents on Databricks, Snowflake & Sigma**: agents that cut manual analysis for Ops and business teams.
-- **AI readiness**: evals, testing and operational readiness for AI apps; secure evaluation of Cursor and MCP.
+- **AI Builder Cup 2026**: EMBER submitted, awaiting results.
+- **llm-auto-router**: adding a held-out test split so the 98% gets an honest check.
+- **Writing**: first post on routing prompts to the cheapest capable model.
 
 ## Flagship projects
 
@@ -24,11 +23,18 @@ Scope only; internal details and metrics stay with the employer. ([details](http
 | [foundry-eval-gate](https://github.com/suhail39ahmed/foundry-eval-gate) ([card](https://savvysuhail.com/#foundry-eval-gate)) | CI eval gate on agent traces: faithfulness, tool success, PII leak. | Lab |
 | [ado-pipeline-doctor](https://github.com/suhail39ahmed/ado-pipeline-doctor) ([card](https://savvysuhail.com/#ado-pipeline-doctor)) | Failed Azure Pipelines / GitHub Actions logs → RCA JSON, human approval required. | Lab |
 
+## Running in production (day job)
+
+Scope only; details and numbers stay at work. ([details](https://savvysuhail.com/#production))
+
+- An **Azure AI Foundry gateway** that manages, monitors and governs AI solutions.
+- **AI agents on Databricks, Snowflake & Sigma** that cut manual analysis for ops and business teams.
+
 ## Hackathons
 
 ([on the site](https://savvysuhail.com/#hackathons))
 
-- **Google Cloud AI Builder Cup 2026** (Hack2skill): EMBER, submitted 18 Oct 2026; evaluation runs to 6 Nov.
+- **Google Cloud AI Builder Cup 2026** (Hack2skill): EMBER, submitted · awaiting results.
 - **Snowflake CoCo CLI Hackathon — GCC Edition** (Hack2skill): fraud-policy-copilot, submitted.
 - **Nebius x NVIDIA Global AI Hackathon** (Devpost): participating.
 - **Build with AI: Code for Communities — Second Edition** (Hack2skill): participating.
