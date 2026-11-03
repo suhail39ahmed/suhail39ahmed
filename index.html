@@ -194,11 +194,24 @@
             <p class="design"><b>Design:</b> Agents fuse reports from many phones into one shared incident; a human supervisor approves every high-stakes call, and the WITHDRAW-upwind safety rule is deterministic code, not model output.</p>
             <ul><li>Gemini Live</li><li>ADK</li><li>Cloud Run</li><li>Firestore</li></ul>
           </a>
-          <a class="case reveal-up" id="fraud-policy-copilot" data-skills="snowflake agents rag python" href="https://github.com/suhail39ahmed/fraud-policy-copilot" target="_blank" rel="noopener" data-tilt>
+          <a class="case reveal-up" id="lakeshift" href="https://github.com/suhail39ahmed/lakeshift" target="_blank" rel="noopener" data-skills="snowflake agents python" data-tilt>
             <div class="case-top"><span class="tag">Hackathon</span><b>Submitted</b></div>
+            <h3>LakeShift &mdash; PL/SQL to Snowflake, proven</h3>
+            <p>Translates legacy Oracle PL/SQL to Snowflake SQL with NVIDIA Nemotron on Nebius Token Factory, then proves every result row by row. On the recorded run: 6/6 objects proven equal, 5,685 rows compared. Nebius x NVIDIA hackathon; submitted.</p>
+            <p class="design"><b>Design:</b> Planner &rarr; parallel Nemotron Nano translators &rarr; a verifier that diffs Oracle vs Snowflake row by row; failures go to a docs-only researcher and a fixer that escalates Nano, then Super, then Ultra until the verifier passes.</p>
+            <ul><li>Nemotron</li><li>Nebius</li><li>Snowflake</li><li>Oracle</li></ul>
+          </a>
+          <a class="case reveal-up" id="agentic-procurement" href="https://github.com/suhail39ahmed/agentic-procurement" target="_blank" rel="noopener" data-skills="agents" data-tilt>
+            <div class="case-top"><span class="tag">Hackathon</span><b>Building</b></div>
+            <h3>Agentic Procurement &mdash; agents that negotiate and pay</h3>
+            <p>A buyer agent negotiates with seller agents and pays on PayPal: agentic procurement and payables for small businesses. PayPal AI Hackathon; building, submissions close Nov 12.</p>
+            <p class="design"><b>Design:</b> Agents negotiate, but money moves through PayPal authorize-then-capture: funds are held on agreement and captured only once the deal is confirmed, so an agent never pays without a settled order.</p>
+            <ul><li>TypeScript</li><li>PayPal</li><li>Agents</li></ul>
+          </a>          <a class="case reveal-up" id="fraud-policy-copilot" data-skills="snowflake agents rag python" href="fraud-policy-copilot/" data-tilt>
+            <div class="case-top"><span class="tag">Write-up</span><b>Read the write-up &rarr;</b></div>
             <h3>Fraud policy copilot</h3>
-            <p>Snowflake CoCo CLI fraud case copilot: transaction in, policy match, risk score with citations. Risk / Fraud / Regulatory track.</p>
-            <p class="design"><b>Design:</b> Streamlit in Snowflake: transaction id → customer context → rule matches → risk score with policy citations, then a case and a native Snowflake alert trail.</p>
+            <p>What you can build with Snowflake CoCo CLI + Cortex: flagged transaction in, policy-cited risk decision, fraud-ring map, case and native alert trail out. Read the write-up.</p>
+            <p class="design"><b>Design:</b> Streamlit in Snowflake: transaction id &rarr; customer context &rarr; rule matches &rarr; risk score with policy citations, then a case and a native Snowflake alert trail.</p>
             <ul><li>Snowflake</li><li>CoCo CLI</li><li>Python</li></ul>
           </a>
           <a class="case reveal-up" id="foundry-eval-gate" data-skills="evals agents cicd python" href="https://github.com/suhail39ahmed/foundry-eval-gate" target="_blank" rel="noopener" data-tilt>
@@ -237,8 +250,9 @@
         <h2 class="reveal-up">Where I build under a deadline.</h2>
         <div class="hk-list">
           <article class="hk reveal-up"><span class="tag live">Submitted · awaiting results</span><h3>Google Cloud AI Builder Cup 2026</h3><p>Google Cloud · Hack2skill · submitted 18 Oct 2026 · evaluation 19 Oct – 6 Nov</p><p>Project: <a href="#ember">EMBER — weather-aware fire triage</a></p></article>
-          <article class="hk reveal-up"><span class="tag">Submitted</span><h3>Snowflake CoCo CLI Hackathon — GCC Edition</h3><p>Snowflake · Hack2skill · Sep–Oct 2026</p><p>Project: <a href="#fraud-policy-copilot">Fraud policy copilot</a></p></article>
-          <article class="hk reveal-up"><span class="tag">Participating</span><h3>Nebius x NVIDIA Global AI Hackathon</h3><p>Nebius x NVIDIA · Devpost · Oct 2026</p></article>
+          <article class="hk reveal-up"><span class="tag">Submitted</span><h3>Nebius x NVIDIA Global AI Hackathon</h3><p>Nebius x NVIDIA · Devpost · Oct 2026</p><p>Project: <a href="#lakeshift">LakeShift - PL/SQL to Snowflake, proven</a> &middot; <a href="https://lakeshift-nebius-nemotron.streamlit.app/" target="_blank" rel="noopener">Live demo</a></p></article>
+          <article class="hk reveal-up"><span class="tag live">Building &middot; due 12 Nov</span><h3>PayPal AI Hackathon 2026</h3><p>PayPal &middot; Nov 2026 &middot; submissions close 12 Nov</p><p>Project: <a href="#agentic-procurement">Agentic Procurement - agents that negotiate and pay</a></p></article>
+          <article class="hk reveal-up"><span class="tag">Participating</span><h3>Future Health Digital Innovation Challenge</h3><p>Registered Oct 2026</p></article>
           <article class="hk reveal-up"><span class="tag">Participating</span><h3>Build with AI: Code for Communities — Second Edition</h3><p>Hack2skill · Sep 2026</p></article>
           <article class="hk reveal-up"><span class="tag">Participating</span><h3>HACKATHON X FIT-FEST 2026</h3><p>FIT-FEST · Hack2skill · Sep 2026</p></article>
           <article class="hk reveal-up" id="rev-engers-2024" data-skills="databricks rag python"><span class="tag">Completed (2024)</span><h3>Databricks GenAI Hackathon 2024 — team REV-Engers</h3><p>Time-boxed team GenAI hackathon · 2024</p><p>RAG experiments on Databricks: table setup, CSV/PDF document ingestion, a RAG chain agent model, and a model GUI. <a href="https://github.com/suhail39ahmed/REV-Engers_Databricks_GenAI_Hackathon24" target="_blank" rel="noopener">Notebooks on GitHub</a></p></article>
@@ -288,7 +302,7 @@
         <div class="stats" aria-label="At a glance">
           <div class="stat"><b><span class="count" data-count="10">10</span>+</b><span>years in infrastructure, cloud &amp; data</span></div>
           <div class="stat"><b><span class="count" data-count="9">9</span></b><span>certifications</span></div>
-          <div class="stat"><b><span class="count" data-count="20">20</span></b><span>public GitHub repos</span></div>
+          <div class="stat"><b><span class="count" data-count="21">21</span></b><span>public GitHub repos</span></div>
         </div>
         <div class="skillmap">
           <h3 class="skillmap-h" id="skillmap-h">Stack I play with: tap one to see where it shows up</h3>

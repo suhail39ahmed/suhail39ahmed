@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What you can build with Snowflake CoCo CLI (+ Cortex) - Suhail Ahmed</title>
+    <meta name="description" content="A fraud policy copilot built inside Snowflake: transaction id in, policy-cited risk decision, fraud-ring map, case and native alert trail out. Design, CoCo CLI skills, Cortex and lessons learned.">
+    <link rel="canonical" href="https://savvysuhail.com/fraud-policy-copilot/">
+    <meta name="theme-color" content="#0b0f17">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Suhail Ahmed">
+    <meta property="og:title" content="What you can build with Snowflake CoCo CLI (+ Cortex)">
+    <meta property="og:description" content="Flagged transaction to policy-cited decision, fraud-ring map, case and Snowflake Alert trail, all inside Snowflake. How I designed and built a fraud policy copilot.">
+    <meta property="og:url" content="https://savvysuhail.com/fraud-policy-copilot/">
+    <meta property="og:image" content="https://savvysuhail.com/images/about_me.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What you can build with Snowflake CoCo CLI (+ Cortex)">
+    <meta name="twitter:description" content="A fraud policy copilot built entirely inside Snowflake: skills, Cortex, Streamlit in Snowflake and native Alerts.">
+    <meta name="twitter:image" content="https://savvysuhail.com/images/about_me.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/app.css">
+    <style>
+      .post { max-width: 860px; margin: 0 auto; padding: 120px 24px 80px; line-height: 1.7; }
+      .post h1 { font-family: Syne, sans-serif; font-size: clamp(32px, 5vw, 52px); line-height: 1.1; margin: 14px 0 18px; }
+      .post h2 { font-family: Syne, sans-serif; font-size: 26px; margin: 48px 0 12px; }
+      .post p, .post li { color: var(--fog, #c9d2e0); }
+      .post ul, .post ol { padding-left: 22px; margin: 10px 0; }
+      .post code, .post pre { font-family: "JetBrains Mono", monospace; font-size: 13px; }
+      .post code { background: rgba(255,255,255,.06); padding: 1px 6px; border-radius: 4px; }
+      .post pre { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 10px; padding: 16px; overflow-x: auto; }
+      .post table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+      .post th, .post td { text-align: left; padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .post .meta { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--mint, #6ee7b7); }
+      .post .back { display: inline-block; margin-bottom: 8px; color: var(--mint, #6ee7b7); text-decoration: none; }
+      .video-wrap { position: relative; width: 100%; padding-top: 56.25%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
+      .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+      .flow { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+      .flow div { border: 1px solid rgba(255,255,255,.14); border-left: 3px solid var(--mint, #6ee7b7); border-radius: 8px; padding: 10px 14px; background: rgba(255,255,255,.03); font-size: 14px; }
+      .flow div b { font-family: "JetBrains Mono", monospace; font-weight: 500; color: var(--mint, #6ee7b7); }
+      .flow .arrow { border: 0; background: none; padding: 0 0 0 18px; color: var(--fog, #8892a6); }
+      .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <a class="logo" href="/">SA</a>
+      <nav>
+        <a href="/#work">Projects</a>
+        <a href="/#hackathons">Hackathons</a>
+        <a href="/#writing">Writing</a>
+        <a href="/#about">About</a>
+        <a href="/#signal">Contact</a>
+      </nav>
+      <a class="nav-cta" href="https://github.com/suhail39ahmed/fraud-policy-copilot" target="_blank" rel="noopener">Repo</a>
+    </header>
+
+    <main class="post">
+      <a class="back" href="/#fraud-policy-copilot">&larr; Back to projects</a>
+      <p class="meta">Technical write-up &middot; Snowflake &middot; CoCo CLI &middot; Cortex &middot; Streamlit in Snowflake</p>
+      <h1>What you can build with Snowflake CoCo CLI (+ Cortex)</h1>
+      <p>I wanted to see how far you can get when the whole thing lives inside Snowflake: the data, the rules, the app, the audit trail and the alerting. So I designed and built a <b>fraud policy copilot</b>. You give it a flagged transaction id, and it gives back a risk score, the policy rules that fired (with citations), recommended next actions, a fraud-ring map, a case, and a native Snowflake alert trail. No external services.</p>
+
+      <h2>The problem</h2>
+      <p>Fraud analysts burn time hunting AML / KYC policy text for every alert. The decision itself is often quick; finding and citing the right rule, pulling customer context, and leaving an audit trail is what eats the day. I wanted a flow that goes from <i>flagged transaction</i> to <i>policy-cited decision</i> in one step, and keeps every review on record.</p>
+
+      <h2>Watch it run</h2>
+      <!-- COCO_VIDEO_ID: YouTube video id 5t6cmuguZ9Q (unlisted); swap here if it changes -->
+      <div class="video-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/5t6cmuguZ9Q" title="Fraud Policy Copilot demo: Snowflake CoCo CLI + Cortex" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <h2>The design</h2>
+      <p>I split the logic into small, modular skills and chained them, so each step is testable on its own and the same decision logic can run from the CLI or the app:</p>
+      <div class="flow" role="img" aria-label="Architecture flow">
+        <div><b>Transaction id</b> &mdash; e.g. T2005</div><div class="arrow">&darr;</div>
+        <div><b>get_case_context</b> &mdash; customer + recent transactions</div><div class="arrow">&darr;</div>
+        <div><b>match_policy</b> &mdash; score against AML-style rules (+ demo geo list)</div><div class="arrow">&darr;</div>
+        <div><b>explain_decision / suggest_next_actions</b> &mdash; citations, recommendation, analyst next steps</div><div class="arrow">&darr;</div>
+        <div><b>REVIEW_AUDIT</b> &mdash; every review written to a table</div><div class="arrow">&darr;</div>
+        <div><b>Snowflake Alert</b> (score &ge; 70) &rarr; <b>CASE_EVENTS</b></div><div class="arrow">&darr;</div>
+        <div><b>map_fraud_ring / Cases UI</b> &mdash; shared device / IBAN / phone / merchant links, status workflow</div>
+      </div>
+      <table>
+        <tr><th>Skill</th><th>Role</th></tr>
+        <tr><td><code>get_case_context</code></td><td>Customer + recent transactions</td></tr>
+        <tr><td><code>match_policy</code></td><td>Score against AML-style rules</td></tr>
+        <tr><td><code>explain_decision</code></td><td>Citations + recommendation</td></tr>
+        <tr><td><code>suggest_next_actions</code></td><td>Analyst next steps</td></tr>
+        <tr><td><code>map_fraud_ring</code></td><td>Shared device / IBAN / phone / merchant links</td></tr>
+      </table>
+      <p>The rules are plain SQL. <code>match_policy</code> checks rules like large cross-border wires, wires from young accounts, large ATM cash, structuring (two or more small transactions in the 24 hours before a large wire), demo high-risk geographies and personal accounts sending large wires. Each fired rule adds points, the score is capped at 100, and the output is a JSON object with the rule code, title, severity and the rule text itself, so the citation travels with the decision.</p>
+
+      <h2>How CoCo CLI and Cortex fit in</h2>
+      <ul>
+        <li><b>CoCo CLI skills:</b> each step lives under <code>skills/</code> as its own <code>SKILL.md</code>, and the <code>fraud_case_review</code> workflow chains <code>get_case_context &rarr; match_policy &rarr; explain_decision</code> end to end from the CLI.</li>
+        <li><b>Cortex:</b> <code>explain_decision</code> can call <code>SNOWFLAKE.CORTEX.COMPLETE</code> to write the analyst-facing narrative from the matched rules. If Cortex isn't enabled on your account, it falls back to a static narrative, so the decision never depends on the LLM.</li>
+        <li><b>Streamlit in Snowflake:</b> the app (<code>app/streamlit_app.py</code>) mirrors the same decision logic with four tabs: Review, Fraud ring, Cases and Alerts. It uses <code>get_active_session()</code>, so there are no secrets to manage.</li>
+        <li><b>Native Snowflake Alert:</b> <code>FRAUD_HIGH_RISK_ALERT</code> watches the <code>HIGH_RISK_REVIEWS_24H</code> view (score &ge; 70) and writes <code>ALERT_HIGH_RISK</code> events into <code>CASE_EVENTS</code>. Monitoring is a real platform object, not just a red banner in the UI.</li>
+      </ul>
+
+      <h2>Why it matters</h2>
+      <ul>
+        <li><b>Everything stays in Snowflake.</b> Data, rules, app, audit and alerting run in one governed place, so there's no data leaving the platform.</li>
+        <li><b>Decisions are explainable.</b> Scores come from deterministic SQL rules, and every fired rule is cited with its text. The LLM writes the explanation; it doesn't make the call.</li>
+        <li><b>Modular by design.</b> Skills are small and composable, so you can swap a rule set, add a skill, or run the same chain from the CLI or the app.</li>
+        <li><b>Auditable by default.</b> Every review lands in <code>REVIEW_AUDIT</code>, and cases carry status transitions and comments.</li>
+        <li><b>Beyond single transactions.</b> The fraud-ring view links customers through shared devices and IBANs, which is where a lot of real fraud hides.</li>
+      </ul>
+
+      <h2>Run it yourself</h2>
+      <ol>
+        <li>In a Snowflake worksheet (<code>ACCOUNTADMIN</code>, warehouse <code>COMPUTE_WH</code>):
+<pre>USE DATABASE FRAUD_COPILOT;
+USE SCHEMA DEMO;</pre>
+          Then run <code>sql/01</code> &rarr; <code>02</code> &rarr; <code>03</code> &rarr; <code>04</code> &rarr; <code>05</code> in order.</li>
+        <li>Check the alert:
+<pre>SHOW ALERTS LIKE 'FRAUD_HIGH_RISK_ALERT';
+ALTER ALERT FRAUD_HIGH_RISK_ALERT RESUME;   -- if suspended
+EXECUTE ALERT FRAUD_HIGH_RISK_ALERT;        -- fire once without waiting</pre>
+          If <code>CREATE ALERT</code> isn't available on your trial, there's a Task fallback at the bottom of <code>sql/03_audit_and_alert.sql</code>.</li>
+        <li>Create a Streamlit app on <code>FRAUD_COPILOT.DEMO</code> with entry file <code>app/streamlit_app.py</code> (Git sync or paste).</li>
+        <li>Try it: review <code>T2005</code> (structuring, high score) and open a case, compare with <code>T2001</code> (wire + geo) and <code>T1001</code> (clean control), map the ring for <code>C005</code>, then check the Cases and Alerts tabs.</li>
+      </ol>
+
+      <h2>What I learned</h2>
+      <ul>
+        <li><b>Keep the decision deterministic and let the LLM explain.</b> Rules in SQL plus a Cortex narrative with a fallback gave me something I could trust and still read like a human wrote it.</li>
+        <li><b>Use the platform's own primitives.</b> A native Alert and an audit table turned a demo into something that behaves like an operational system.</li>
+        <li><b>Small skills beat one big prompt.</b> Splitting context, matching, explaining and next actions made each piece easy to test and reuse.</li>
+        <li><b>Be honest about scope.</b> Sanctions screening uses a demo country list (<code>CY</code>, <code>IR</code>, <code>KP</code>, <code>RU</code>) instead of a fake live feed. It's a prototype on small sample data, not a production sanctions product, and saying so up front keeps the design conversation real.</li>
+      </ul>
+
+      <div class="cta">
+        <a class="btn" href="https://github.com/suhail39ahmed/fraud-policy-copilot" target="_blank" rel="noopener">View the repo on GitHub</a>
+        <a class="btn" href="/#signal">Building something similar? Let's talk</a>
+      </div>
+    </main>
+  </body>
+</html>
