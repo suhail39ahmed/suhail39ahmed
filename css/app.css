@@ -522,3 +522,9 @@ details.career[open] > summary .note::after { content: "Hide career path"; font-
   .case, .reveal-up, .reveal-text, .skill, .bio-tabs button, .skill-filter [data-skills] { transition: none !important; }
   .now-strip .dot { animation: none; }
 }
+
+/* Project card thumbnails */
+.case-thumb{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.08);margin:0 0 14px;background:#0b0b10;transition:transform .3s ease,box-shadow .3s ease}
+.case:hover .case-thumb{transform:scale(1.015);box-shadow:0 8px 28px rgba(124,92,255,.18)}
+@media (max-width:600px){.case-thumb{border-radius:10px;margin-bottom:12px}}
+@media (prefers-reduced-motion:reduce){.case-thumb{transition:none}.case:hover .case-thumb{transform:none}}

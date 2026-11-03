@@ -174,6 +174,7 @@
         <p class="note">Each card has the key design decision, straight from the repo’s README.</p>
         <div class="cases">
           <a class="case reveal-up" id="llm-auto-router" data-skills="foundry evals python" href="https://github.com/suhail39ahmed/llm-auto-router" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/llm-auto-router.jpg" alt="LLM Auto-Router cover: one prompt routed to the cheapest capable model tier" width="1200" height="630" loading="lazy" decoding="async">
             <div class="case-top"><span class="tag">Lab</span><b>98% routing · ~27–29% cheaper</b></div>
             <h3>LLM auto-router on Azure AI Foundry</h3>
             <p>Routes each prompt to the cheapest model that can handle it. 98% routing accuracy on 100 labelled prompts vs 62% for keyword rules, and about 27–29% lower cost than sending everything to gpt-5.4 (measured in the repo; 98% is optimistic until a held-out split is added).</p>
@@ -181,6 +182,7 @@
             <ul><li>Azure AI Foundry</li><li>Python</li><li>Evals</li></ul>
           </a>
           <a class="case reveal-up" id="production-grade-rag" data-skills="rag python evals" href="https://github.com/suhail39ahmed/production_grade_rag" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/production_grade_rag.jpg" alt="Production-Grade RAG cover: documents, search and a quality-gate shield" width="1200" height="630" loading="lazy" decoding="async">
             <div class="case-top"><span class="tag">Lab</span><b>Phases 1–7</b></div>
             <h3>Production-grade RAG</h3>
             <p>A RAG build taken through seven phases, with a walkthrough, architecture diagram, and demo video.</p>
@@ -188,6 +190,7 @@
             <ul><li>RAG</li><li>Python</li><li>Retrieval</li></ul>
           </a>
           <a class="case reveal-up" id="ember" href="https://github.com/suhail39ahmed/ember-fire-commander" target="_blank" rel="noopener" data-skills="gcp agents terraform python" data-tilt>
+            <img class="case-thumb" src="images/projects/ember-fire-commander.jpg" alt="EMBER cover: volunteer phones feeding one shared fire incident" width="1200" height="630" loading="lazy" decoding="async">
             <div class="case-top"><span class="tag">Hackathon</span><b>AI Builder Cup 2026</b></div>
             <h3>EMBER — weather-aware fire triage</h3>
             <p>Bahasa-first AI fire commander for village brigades during Southeast Asian haze fires: ranks satellite detections by spread risk, with a volunteer app and supervisor console. Submitted; awaiting results.</p>
@@ -195,6 +198,7 @@
             <ul><li>Gemini Live</li><li>ADK</li><li>Cloud Run</li><li>Firestore</li></ul>
           </a>
           <a class="case reveal-up" id="lakeshift" href="https://github.com/suhail39ahmed/lakeshift" target="_blank" rel="noopener" data-skills="snowflake agents python" data-tilt>
+            <img class="case-thumb" src="images/projects/lakeshift.jpg" alt="LakeShift cover: Oracle to Snowflake migration verified row by row" width="1200" height="630" loading="lazy" decoding="async">
             <div class="case-top"><span class="tag">Hackathon</span><b>Submitted</b></div>
             <h3>LakeShift &mdash; PL/SQL to Snowflake, proven</h3>
             <p>Translates legacy Oracle PL/SQL to Snowflake SQL with NVIDIA Nemotron on Nebius Token Factory, then proves every result row by row. On the recorded run: 6/6 objects proven equal, 5,685 rows compared. Nebius x NVIDIA hackathon; submitted.</p>
@@ -202,12 +206,14 @@
             <ul><li>Nemotron</li><li>Nebius</li><li>Snowflake</li><li>Oracle</li></ul>
           </a>
           <a class="case reveal-up" id="agentic-procurement" href="https://github.com/suhail39ahmed/agentic-procurement" target="_blank" rel="noopener" data-skills="agents" data-tilt>
+            <img class="case-thumb" src="images/projects/agentic-procurement.jpg" alt="Agentic Procurement cover: two agents negotiating with a locked payment card" width="1200" height="630" loading="lazy" decoding="async">
             <div class="case-top"><span class="tag">Hackathon</span><b>Building</b></div>
             <h3>Agentic Procurement &mdash; agents that negotiate and pay</h3>
             <p>A buyer agent negotiates with seller agents and pays on PayPal: agentic procurement and payables for small businesses. PayPal AI Hackathon; building, submissions close Nov 12.</p>
             <p class="design"><b>Design:</b> Agents negotiate, but money moves through PayPal authorize-then-capture: funds are held on agreement and captured only once the deal is confirmed, so an agent never pays without a settled order.</p>
             <ul><li>TypeScript</li><li>PayPal</li><li>Agents</li></ul>
           </a>          <a class="case reveal-up" id="fraud-policy-copilot" data-skills="snowflake agents rag python" href="fraud-policy-copilot/" data-tilt>
+            <img class="case-thumb" src="images/projects/fraud-policy-copilot.jpg" alt="Fraud Policy Copilot cover: Snowflake CoCo CLI and Cortex" width="1200" height="630" loading="lazy" decoding="async">
             <div class="case-top"><span class="tag">Write-up</span><b>Read the write-up &rarr;</b></div>
             <h3>Fraud policy copilot</h3>
             <p>What you can build with Snowflake CoCo CLI + Cortex: flagged transaction in, policy-cited risk decision, fraud-ring map, case and native alert trail out. Read the write-up.</p>
@@ -215,6 +221,7 @@
             <ul><li>Snowflake</li><li>CoCo CLI</li><li>Python</li></ul>
           </a>
           <a class="case reveal-up" id="foundry-eval-gate" data-skills="evals agents cicd python" href="https://github.com/suhail39ahmed/foundry-eval-gate" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/foundry-eval-gate.jpg" alt="Foundry Eval Gate cover: a CI gate blocking bad agent changes" width="1200" height="630" loading="lazy" decoding="async">
             <div class="case-top"><span class="tag">Lab</span><b>CI gate</b></div>
             <h3>Foundry eval gate</h3>
             <p>A CI eval gate that checks agent traces for faithfulness, tool success, and PII leaks before a change ships.</p>
@@ -222,6 +229,7 @@
             <ul><li>Evals</li><li>CI/CD</li><li>Agents</li></ul>
           </a>
           <a class="case reveal-up" id="ado-pipeline-doctor" data-skills="cicd agents python" href="https://github.com/suhail39ahmed/ado-pipeline-doctor" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/ado-pipeline-doctor.jpg" alt="ADO Pipeline Doctor cover: a broken pipeline stage diagnosed" width="1200" height="630" loading="lazy" decoding="async">
             <div class="case-top"><span class="tag">Lab</span><b>Human-approved</b></div>
             <h3>ADO pipeline doctor</h3>
             <p>Turns failed Azure Pipelines and GitHub Actions logs into structured RCA JSON, with human approval required before any fix.</p>
@@ -229,6 +237,7 @@
             <ul><li>Azure DevOps</li><li>GitHub Actions</li><li>LLM</li></ul>
           </a>
           <a class="case reveal-up" id="mcp-tools" data-skills="mcp terraform python" href="https://github.com/suhail39ahmed/iac-guard-mcp" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/iac-guard-mcp.jpg" alt="IaC Guard MCP cover: infrastructure diff review with a shield" width="1200" height="630" loading="lazy" decoding="async">
             <div class="case-top"><span class="tag">Lab</span><b>MCP toolkit</b></div>
             <h3>MCP-style ops tools</h3>
             <p>iac-guard-mcp (Terraform/Bicep diff review), azure-ops-mcp (Key Vault compare, ADO diagnose, dry-run + audit), lakehouse-insights-skill, and kc-mcp.</p>
@@ -236,6 +245,7 @@
             <ul><li>MCP</li><li>IaC</li><li>Azure</li></ul>
           </a>
           <a class="case reveal-up" id="infra-iac" data-skills="terraform cicd python" href="https://github.com/suhail39ahmed/azure-hub-spoke-terraform" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/azure-hub-spoke-terraform.jpg" alt="Azure Hub-and-Spoke cover: a hub network connected to spokes" width="1200" height="630" loading="lazy" decoding="async">
             <div class="case-top"><span class="tag">Lab</span><b>IaC</b></div>
             <h3>Infrastructure as code</h3>
             <p>Hub-and-spoke Terraform modules for Azure networking, Python Key Vault automation, and multi-CI demos across GitHub Actions, Azure DevOps, and GitLab.</p>
