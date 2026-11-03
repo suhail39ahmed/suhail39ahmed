@@ -35,7 +35,7 @@
       .post .meta { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--mint, #6ee7b7); }
       .post .back { display: inline-block; margin-bottom: 8px; color: var(--mint, #6ee7b7); text-decoration: none; }
       .video-wrap { position: relative; width: 100%; padding-top: 56.25%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
-      .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+      .video-wrap iframe, .video-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
       .flow { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
       .flow div { border: 1px solid rgba(255,255,255,.14); border-left: 3px solid var(--mint, #6ee7b7); border-radius: 8px; padding: 10px 14px; background: rgba(255,255,255,.03); font-size: 14px; }
       .flow div b { font-family: "JetBrains Mono", monospace; font-weight: 500; color: var(--mint, #6ee7b7); }
@@ -68,8 +68,9 @@
       <h2>Watch it run</h2>
       <!-- COCO_VIDEO_ID: YouTube video id 5t6cmuguZ9Q (unlisted); swap here if it changes -->
       <div class="video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/5t6cmuguZ9Q" title="Fraud Policy Copilot demo: Snowflake CoCo CLI + Cortex" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <video controls preload="metadata" playsinline poster="/fraud-policy-copilot/poster.jpg"><source src="/fraud-policy-copilot/demo.mp4" type="video/mp4">Your browser can't play this video. <a href="https://youtu.be/5t6cmuguZ9Q">Watch it on YouTube</a>.</video>
       </div>
+      <p class="meta">Prefer YouTube? <a href="https://youtu.be/5t6cmuguZ9Q" target="_blank" rel="noopener">Watch it there</a>.</p>
 
       <h2>The design</h2>
       <p>I split the logic into small, modular skills and chained them, so each step is testable on its own and the same decision logic can run from the CLI or the app:</p>
