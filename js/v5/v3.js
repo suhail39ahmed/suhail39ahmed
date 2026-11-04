@@ -5,7 +5,9 @@ const loader=$('.loader');setTimeout(()=>loader.classList.add('out'),RM?0:1150);
 $$('h2').forEach(h=>{if(h.querySelector('br'))return;h.innerHTML=h.textContent.split(' ').map(w=>`<span class="w"><span>${w}</span></span>`).join(' ');h.classList.add('split')});
 // second marquee
 const m=$('.marquee');if(m){const c=m.cloneNode(true);c.classList.add('m2');c.setAttribute('aria-hidden','true');c.querySelector('.track').style.animationDirection='reverse';m.after(c)}
-if(RM||!window.gsap){$$('h2.split').forEach(h=>h.classList.add('in'));return}
+if(!RM&&window.gsap&&window.ScrollTrigger)document.documentElement.classList.add('anim');
+setTimeout(()=>document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in')),3500);
+if(RM||!window.gsap||!window.ScrollTrigger||!window.Lenis){$$('h2.split').forEach(h=>h.classList.add('in'));return}
 gsap.registerPlugin(ScrollTrigger);
 // Lenis
 const lenis=new Lenis({lerp:.09,smoothWheel:true});
@@ -16,8 +18,9 @@ const W=$$('.bigword');W.forEach(w=>{w.innerHTML=[...w.textContent].map(c=>c==='
 gsap.set(W,{opacity:1});
 const tl=gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom bottom',scrub:1}});
 W.forEach((w,i)=>{const ch=$$('.ch',w);
- if(i===0){gsap.from(ch,{opacity:0,yPercent:120,rotateX:-95,z:-600,ease:'power3.out',stagger:{each:.035,from:'center'},duration:1.1,delay:1.1});tl.set(ch,{opacity:1},0)}else tl.fromTo(ch,{opacity:0,yPercent:120,rotateX:-95,z:-600},{opacity:1,yPercent:0,rotateX:0,z:0,ease:'power3.out',stagger:{each:.035,from:'center'},duration:1},i*2);
-   tl.to(ch,{opacity:0,z:700,rotateX:70,yPercent:-60,scale:1.6,ease:'power2.in',stagger:{each:.025,from:'edges'},duration:1},i*2+1.15)});
+ if(i===0){gsap.from(ch,{opacity:0,yPercent:120,rotateX:-95,z:-600,ease:'power3.out',stagger:{each:.035,from:'center'},duration:1.1,delay:1.1});tl.set(ch,{opacity:1},0)}
+ else tl.fromTo(ch,{opacity:0,yPercent:120,rotateX:-95,z:-600},{opacity:1,yPercent:0,rotateX:0,z:0,ease:'power3.out',stagger:{each:.035,from:'center'},duration:1},i*2);
+   if(i<W.length-1)tl.to(ch,{opacity:0,z:700,rotateX:70,yPercent:-60,scale:1.6,ease:'power2.in',stagger:{each:.025,from:'edges'},duration:1},i*2+1.15)});
 tl.to('.hero-copy',{opacity:0,y:-60,duration:1.2},.2).to('.tag',{opacity:0,duration:1},.2);
 gsap.to('.prog',{});ScrollTrigger.create({trigger:'.hero',start:'top top',end:'bottom bottom',onUpdate:s=>{window.heroP=s.progress;const k=Math.min(3,Math.floor(s.progress*4));$$('.prog i').forEach((d,j)=>d.classList.toggle('on',j===k))}});
 // horizontal featured
@@ -35,8 +38,8 @@ gsap.from('.hero-copy > *',{y:40,opacity:0,stagger:.1,duration:1,delay:1.2,ease:
 // heading word reveals (scrubbed)
 $$('h2.split').forEach(h=>{h.classList.add('in');gsap.fromTo($$('.w>span',h),{y:0,yPercent:110,rotateX:-80,opacity:0},{y:0,yPercent:0,rotateX:0,opacity:1,stagger:.06,ease:'power3.out',duration:1,scrollTrigger:{trigger:h,start:'top 88%',end:'top 55%',scrub:1}})});
 // section scrub transitions
-$$('section').forEach(s=>{if(s.id==='work')return;gsap.fromTo(s,{opacity:.25,scale:.96},{opacity:1,scale:1,ease:'none',scrollTrigger:{trigger:s,start:'top bottom',end:'top 55%',scrub:true}})});
-$$('.pillar,.row,.prod>div').forEach(c=>gsap.fromTo(c,{y:90,rotateX:25,opacity:0,transformPerspective:900},{y:0,rotateX:0,opacity:1,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 95%',end:'top 65%',scrub:1}}));
+$$('section').forEach(s=>{if(s.id==='work')return;gsap.fromTo(s,{scale:.97},{scale:1,ease:'none',scrollTrigger:{trigger:s,start:'top bottom',end:'top 55%',scrub:true}})});
+$$('.pillar,.row,.prod>div').forEach(c=>gsap.fromTo(c,{y:90,rotateX:25,opacity:.15,transformPerspective:900},{y:0,rotateX:0,opacity:1,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 95%',end:'top 65%',scrub:1}}));
 gsap.to('.marquee .track',{});$$('.marquee').forEach((mq,i)=>gsap.fromTo(mq,{xPercent:i?6:-6},{xPercent:i?-6:6,ease:'none',scrollTrigger:{trigger:mq,start:'top bottom',end:'bottom top',scrub:true}}));
 const ap=$('.about-photo');if(ap)gsap.fromTo(ap,{yPercent:15,scale:.92},{yPercent:-10,scale:1,ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'bottom top',scrub:true}});
 
@@ -64,7 +67,7 @@ if(FINE){const a=$('.cur'),b=$('.cur2');const ax=gsap.quickTo(a,'x',{duration:.0
 }
 const mouse={x:0,y:0};
 // WebGL background (lazy)
-const lowPower=(navigator.hardwareConcurrency||4)<4||(navigator.deviceMemory&&navigator.deviceMemory<4);
+const lowPower=(()=>{try{const c=document.createElement('canvas');return !(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return true}})();
 if(!lowPower){(window.requestIdleCallback||setTimeout)(()=>import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js').then(T=>{try{
  const cv=$('#gl'),r=new T.WebGLRenderer({canvas:cv,antialias:false,alpha:true,powerPreference:'low-power'});r.setPixelRatio(Math.min(devicePixelRatio,MOB?1:1.5));
  const sc=new T.Scene(),cam=new T.PerspectiveCamera(60,1,.1,100);cam.position.z=6;
@@ -107,17 +110,18 @@ if(!lowPower){(window.requestIdleCallback||setTimeout)(()=>import('https://cdn.j
  window.__morph=(t)=>{const hp=window.heroP||0,f=Math.min(2.999,Math.max(0,hp*4-.5)),i=Math.floor(f),e=f-i,k=e<.55?0:Math.min(1,(e-.55)/.4),ke=k*k*(3-2*k),A=S[i],B=S[Math.min(3,i+1)];
   const mx=mouse.x*7/sw,my=-mouse.y*4.2/sw;
   for(let j=0;j<M*3;j+=3){let x=A[j]+(B[j]-A[j])*ke,y=A[j+1]+(B[j+1]-A[j+1])*ke,z=A[j+2]+(B[j+2]-A[j+2])*ke;
-   const w=Math.sin(t*1.3+j*.013)*.03;x+=w;y+=Math.cos(t*1.1+j*.007)*.03;
+   const w=Math.sin(t*1.6+j*.013)*.06;x+=w;y+=Math.cos(t*1.3+j*.007)*.06;z+=Math.sin(t*.9+j*.011)*.06;
    const dx=x-mx,dy=y-(my-morph.position.y/sw),d2=dx*dx+dy*dy;if(d2<.8){const fo=(.8-d2)*.6;x+=dx*fo;y+=dy*fo}
    cur[j]+=(x-cur[j])*.12;cur[j+1]+=(y-cur[j+1])*.12;cur[j+2]+=(z-cur[j+2])*.12}
   mg.attributes.position.needsUpdate=true;
-  morph.rotation.y=Math.sin(t*.25)*.35+mouse.x*.5;morph.rotation.x=mouse.y*.25;
-  const vis=Math.max(0,1-Math.max(0,(scrollY-(document.querySelector('.hero').offsetHeight-innerHeight*1.2))/(innerHeight*.6)));mm.opacity=vis*Math.min(1,.7+hp*7);morph.visible=vis>0.01;
+  morph.rotation.y=Math.sin(t*.45)*.6+mouse.x*.6;morph.rotation.x=Math.sin(t*.4)*.18+mouse.y*.3;morph.scale.setScalar(sw*(1+Math.sin(t*1.3)*.05));
+  const vis=Math.max(0,1-Math.max(0,(scrollY-(document.querySelector('.hero').offsetHeight-innerHeight*.9))/(innerHeight*.7)));mm.opacity=vis*Math.min(1,.7+hp*7);morph.visible=vis>0.01;
   morph.position.y=MOB?.1:-.95;morph.position.z=cam.position.z-6;};
  const rs=()=>{r.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()};rs();addEventListener('resize',rs);
  const clock=new T.Clock();let vis=true;document.addEventListener('visibilitychange',()=>vis=!document.hidden);
  gsap.ticker.add(()=>{if(!vis)return;const t=clock.getElapsedTime(),sy=scrollY/innerHeight;U.t.value=t;U.s.value=sy;U.m.value.lerp(new T.Vector2(mouse.x,mouse.y),.05);
   pts.rotation.y=t*.03+mouse.x*.3;pts.rotation.x=mouse.y*.2;pts.position.y=sy*.4;cam.position.z=6-Math.min(sy,8)*.12;window.__morph(t);r.render(sc,cam)});
  cv.classList.add('on');cv.parentElement.classList.add('gl');}catch(e){console.info('webgl off',e.message)}}).catch(()=>{}),{timeout:1500})}
+setInterval(()=>{document.querySelectorAll('.pillar,.row,.prod>div,section,h2 .w>span').forEach(e=>{const r=e.getBoundingClientRect();if(r.top<innerHeight*.8&&r.bottom>0&&+getComputedStyle(e).opacity<.6)gsap.to(e,{opacity:1,y:0,yPercent:0,rotateX:0,duration:.4})})},1500);
 ScrollTrigger.sort();ScrollTrigger.refresh();addEventListener('load',()=>ScrollTrigger.refresh());document.fonts&&document.fonts.ready.then(()=>ScrollTrigger.refresh());
 })();
