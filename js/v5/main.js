@@ -1,13 +1,13 @@
 (()=>{const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 // scroll-driven hero words
 const hero=document.querySelector('.hero'),W=[...document.querySelectorAll('.bigword')],D=[...document.querySelectorAll('.prog i')];
-function upd(){if(RM){W.forEach(w=>w.classList.add('on'));return}const r=hero.getBoundingClientRect(),t=Math.min(.999,Math.max(0,-r.top/(hero.offsetHeight-innerHeight)));const i=Math.floor(t*W.length);D.forEach((d,k)=>d.classList.toggle('on',k===i))}
+function upd(){if(!hero)return;if(RM){W.forEach(w=>w.classList.add('on'));return}const r=hero.getBoundingClientRect(),t=Math.min(.999,Math.max(0,-r.top/(hero.offsetHeight-innerHeight)));const i=Math.floor(t*W.length);D.forEach((d,k)=>d.classList.toggle('on',k===i))}
 addEventListener('scroll',upd,{passive:true});upd();
 // reveal
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 // terminal
-const out=document.getElementById('out'),inp=document.getElementById('cmd');
+const out=document.getElementById('out'),inp=document.getElementById('cmd');if(!out){bindFilters();return}
 const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const say=(h)=>{out.insertAdjacentHTML('beforeend',h+'\n');out.scrollTop=out.scrollHeight};
 const C={
@@ -38,5 +38,5 @@ if(c==='clear'){out.innerHTML='';return}if(c==='router'){say(router(a.join(' '))
 say(C[c.toLowerCase()]?C[c.toLowerCase()]():`command not found: ${esc(c)} — try <span class="k">help</span>`)}
 document.getElementById('tf').addEventListener('submit',e=>{e.preventDefault();run(inp.value);inp.value=''});
 document.querySelectorAll('.hints button').forEach(b=>b.addEventListener('click',()=>run(b.textContent)));
-document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{const f=b.dataset.f;document.querySelectorAll('.filters button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.card').forEach(c=>{c.hidden=!(f==='all'||c.dataset.tags.split(' ').includes(f))})}));
+function bindFilters(){document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{const f=b.dataset.f;document.querySelectorAll('.filters button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.card').forEach(c=>{c.hidden=!(f==='all'||c.dataset.tags.split(' ').includes(f))})}))}bindFilters();
 say('welcome to savvysuhail.com — type <span class="k">help</span> to start.');})();

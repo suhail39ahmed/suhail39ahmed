@@ -25,7 +25,7 @@ jobs:
         run: |
           mkdir -p out
           cp index.html CNAME robots.txt sitemap.xml out/
-          cp -r css js images files fraud-policy-copilot out/
+          cp -r css js images files fraud-policy-copilot projects hackathons about out/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

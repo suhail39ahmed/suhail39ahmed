@@ -46,7 +46,7 @@ a{text-decoration-color:var(--gold)}
 .about-grid{grid-template-columns:1.5fr 1fr}
 .about-ava{width:240px;height:240px;justify-self:center;margin:0}
 @media (max-width:820px){.about-ava{width:180px;height:180px}}
-@media (prefers-reduced-motion:reduce){.ava{width:46px;height:46px;left:28px;top:9px}.rt{animation:none}}
+
 /* v5.1 robustness + type */
 .hero{height:340vh}
 html:not(.anim) .reveal{opacity:1!important;transform:none!important}
@@ -64,7 +64,6 @@ h2{font-size:clamp(2.4rem,5.4vw,4.6rem);line-height:1}
  .bigword{position:relative!important;top:auto!important;opacity:1!important;transform:none!important;font-size:clamp(2rem,5.5vw,4.4rem)!important}
  .hero-copy{position:relative;top:auto!important;bottom:auto!important}.prog{display:none}
  .reveal,.w>span{opacity:1!important;transform:none!important}
- .ava{transform:none!important}
 }
 /* featured prominence */
 #work h2{font-size:clamp(2.8rem,6.5vw,5.6rem)}
