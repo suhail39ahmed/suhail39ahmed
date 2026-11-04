@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Suhail Ahmed — I design and build AI agents, LLM routers &amp; RAG on cloud and data</title>
+    <meta name="description" content="I design and build AI agents, LLM routers and RAG systems on cloud and data platforms. Architecture first, then code, then measurement: open-source labs, hackathon builds and notes.">
+    <link rel="canonical" href="https://savvysuhail.com/">
+    <meta name="theme-color" content="#0b0f17">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Suhail Ahmed">
+    <meta property="og:title" content="Suhail Ahmed — I design and build AI agents, LLM routers &amp; RAG on cloud and data">
+    <meta property="og:description" content="I design and build AI agents, LLM routers and RAG systems on cloud and data platforms. Architecture first, then code, then measurement: open-source labs, hackathon builds and notes.">
+    <meta property="og:url" content="https://savvysuhail.com/">
+    <meta property="og:image" content="https://savvysuhail.com/images/about_me.png">
+    <meta property="og:image:alt" content="Portrait of Suhail Ahmed">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Suhail Ahmed — I design and build AI agents, LLM routers &amp; RAG on cloud and data">
+    <meta name="twitter:description" content="I design and build AI agents, LLM routers and RAG on cloud and data. Projects, hackathons and notes.">
+    <meta name="twitter:image" content="https://savvysuhail.com/images/about_me.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Suhail Ahmed",
+      "url": "https://savvysuhail.com/",
+      "image": "https://savvysuhail.com/images/about_me.png",
+      "description": "Solutions architect and builder: designs and builds AI agents, LLM routers and RAG systems on cloud and data platforms. 10+ years on Azure and AWS; open-source labs and AI hackathon builds.",
+      "jobTitle": "Solutions Architect",
+      "address": { "@type": "PostalAddress", "addressLocality": "Singapore", "addressCountry": "SG" },
+      "email": "mailto:suhail39ahmed@gmail.com",
+      "knowsAbout": ["Solution architecture", "AI agents", "Azure AI Foundry", "Databricks", "Snowflake", "Terraform", "Azure", "AWS", "DevSecOps", "LLM routing", "RAG"],
+      "sameAs": ["https://github.com/suhail39ahmed", "https://www.linkedin.com/in/suhail-ahmed-sg/"]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+    <div class="progress" id="progress"></div>
+    <canvas id="field" class="field"></canvas>
+
+    <header class="nav">
+      <a class="logo" href="#top">SA</a>
+      <nav>
+        <a href="#work">Projects</a>
+        <a href="#hackathons">Hackathons</a>
+        <a href="#writing">Writing</a>
+        <a href="#about">About</a>
+        <a href="#signal">Contact</a>
+      </nav>
+      <a class="nav-cta" href="files/Suhail_Resume_v1.8.pdf" download>Resume</a>
+    </header>
+
+    <main id="top">
+      <section class="cine-banner" id="banner" aria-label="Technology film reel">
+        <video id="banner-video" muted playsinline preload="none" poster="images/bg_1.jpg" aria-hidden="true"></video>
+        <div class="cine-shade"></div>
+        <div class="cine-copy">
+          <p class="cine-kicker" id="cine-kicker">01 / Hardware</p>
+          <h2 id="cine-title">GPU × CPU under load</h2>
+          <p id="cine-sub">Silicon first. Then the model takes the rack.</p>
+        </div>
+        <ol class="cine-chapters" id="cine-chapters">
+          <li class="is-on">GPU / CPU</li>
+          <li>AI</li>
+          <li>Pipelines / MLOps</li>
+        </ol>
+        <p class="cine-credit">Free Mixkit footage · no copyright claim</p>
+      </section>
+
+      <section class="hero">
+        <p class="boot" id="boot">booting control plane<span>.</span></p>
+        <h1>
+          <span class="line reveal-text">Suhail</span>
+          <span class="line reveal-text">Ahmed</span>
+        </h1>
+        <p class="title reveal-up">I design and build AI agents, LLM routers &amp; RAG systems on cloud and data platforms.</p>
+        <p class="lede reveal-up">I sketch the architecture first, then build it, then measure whether it actually works. This is where I share what I’m designing, building, breaking and learning: open-source labs, hackathon builds, and notes for fellow tinkerers. 10+ years of cloud and infra under the hood.</p>
+        <p class="subtitle reveal-up">Solutions Architect · Singapore</p>
+        <div class="hero-cta reveal-up">
+          <a class="btn solid" href="#work">See what I’ve designed &amp; built</a>
+          <a class="btn ghost" href="#signal">Swap notes</a>
+        </div>
+
+        <div class="hero-stage">
+          <div class="ops-deck" aria-hidden="true">
+            <aside class="telemetry">
+              <p class="panel-label">Hardware fabric</p>
+              <div class="meter" data-meter="cpu">
+                <div class="meter-head"><span>CPU</span><b id="cpu-val">32%</b></div>
+                <div class="meter-track"><i id="cpu-bar"></i></div>
+                <canvas class="wave" id="cpu-wave" width="280" height="36"></canvas>
+              </div>
+              <div class="meter" data-meter="gpu">
+                <div class="meter-head"><span>GPU</span><b id="gpu-val">48%</b></div>
+                <div class="meter-track"><i id="gpu-bar"></i></div>
+                <canvas class="wave" id="gpu-wave" width="280" height="36"></canvas>
+              </div>
+              <div class="meter" data-meter="mem">
+                <div class="meter-head"><span>MEM</span><b id="mem-val">61%</b></div>
+                <div class="meter-track"><i id="mem-bar"></i></div>
+              </div>
+              <div class="meter" data-meter="net">
+                <div class="meter-head"><span>NET</span><b id="net-val">22%</b></div>
+                <div class="meter-track"><i id="net-bar"></i></div>
+              </div>
+              <article class="id-card" data-tilt>
+                <img src="images/myimage_1.png" alt="Portrait of Suhail Ahmed" width="64" height="64" loading="lazy">
+                <div>
+                  <p>Architect · Builder</p>
+                  <strong>Cloud · Data · AI</strong>
+                  <span>Singapore · AI · Cloud · Data</span>
+                </div>
+              </article>
+            </aside>
+
+            <div class="pipeline" id="pipeline">
+              <div class="pipe-head">
+                <p class="panel-label">release / main</p>
+                <span class="run-id" id="run-id">#1842 · running</span>
+              </div>
+              <div class="stages" id="stages">
+                <div class="stage is-active"><h4>Build</h4>
+                  <div class="job running" data-job="lint"><i></i>lint</div>
+                  <div class="job queued" data-job="compile"><i></i>compile</div>
+                  <div class="job queued" data-job="container"><i></i>container</div>
+                </div>
+                <div class="stage"><h4>Test</h4>
+                  <div class="job queued" data-job="unit"><i></i>unit</div>
+                  <div class="job queued" data-job="e2e"><i></i>e2e</div>
+                  <div class="job queued" data-job="load"><i></i>load</div>
+                </div>
+                <div class="stage"><h4>Security</h4>
+                  <div class="job queued" data-job="sast"><i></i>sast</div>
+                  <div class="job queued" data-job="policy"><i></i>policy</div>
+                  <div class="job queued" data-job="secrets"><i></i>secrets</div>
+                </div>
+                <div class="stage"><h4>Deploy</h4>
+                  <div class="job queued" data-job="staging"><i></i>staging</div>
+                  <div class="job queued" data-job="prod-gate"><i></i>prod-gate</div>
+                </div>
+                <div class="stage"><h4>Observe</h4>
+                  <div class="job queued" data-job="grafana"><i></i>grafana</div>
+                  <div class="job queued" data-job="sentinel"><i></i>sentinel</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+      <section class="nowbuilding" id="now" aria-label="Now building">
+        <p class="kicker">Now building / tinkering</p>
+        <ul class="now-strip">
+          <li><span class="dot" aria-hidden="true"></span><span><a href="#hackathons">AI Builder Cup 2026</a>: EMBER submitted, awaiting results</span></li>
+          <li><span class="dot" aria-hidden="true"></span><span><a href="#llm-auto-router">llm-auto-router</a>: held-out test split next, so the 98% gets an honest check</span></li>
+          <li><span class="dot" aria-hidden="true"></span><span><a href="#writing">Writing</a>: first post on routing prompts to the cheapest capable model</span></li>
+        </ul>
+      </section>
+
+      <section class="work" id="work">
+        <p class="kicker">01 / Projects</p>
+        <h2 class="reveal-up">Things I’ve designed and built.</h2>
+        <p class="note">Each card has the key design decision, straight from the repo’s README.</p>
+        <div class="cases">
+          <a class="case reveal-up" id="llm-auto-router" data-skills="foundry evals python" href="https://github.com/suhail39ahmed/llm-auto-router" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/llm-auto-router.jpg" alt="LLM Auto-Router cover: one prompt routed to the cheapest capable model tier" width="1200" height="630" loading="lazy" decoding="async">
+            <div class="case-top"><span class="tag">Lab</span><b>98% routing · ~27–29% cheaper</b></div>
+            <h3>LLM auto-router on Azure AI Foundry</h3>
+            <p>Routes each prompt to the cheapest model that can handle it. 98% routing accuracy on 100 labelled prompts vs 62% for keyword rules, and about 27–29% lower cost than sending everything to gpt-5.4 (measured in the repo; 98% is optimistic until a held-out split is added).</p>
+            <p class="design"><b>Design:</b> An LLM classifier (gpt-5-mini) picks one of four model tiers; its JSON is validated against policy rules, and invalid output falls back to the strongest model. A 100-prompt golden set drives the tuning loop.</p>
+            <ul><li>Azure AI Foundry</li><li>Python</li><li>Evals</li></ul>
+          </a>
+          <a class="case reveal-up" id="production-grade-rag" data-skills="rag python evals" href="https://github.com/suhail39ahmed/production_grade_rag" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/production_grade_rag.jpg" alt="Production-Grade RAG cover: documents, search and a quality-gate shield" width="1200" height="630" loading="lazy" decoding="async">
+            <div class="case-top"><span class="tag">Lab</span><b>Phases 1–7</b></div>
+            <h3>Production-grade RAG</h3>
+            <p>A RAG build taken through seven phases, with a walkthrough, architecture diagram, and demo video.</p>
+            <p class="design"><b>Design:</b> Hybrid BM25 + vector search (alpha 0.5, top 30), a cross-encoder reranker keeps the best 5, superseded docs are filtered out, and a CI eval gate fails any PR that drops retrieval quality.</p>
+            <ul><li>RAG</li><li>Python</li><li>Retrieval</li></ul>
+          </a>
+          <a class="case reveal-up" id="ember" href="https://github.com/suhail39ahmed/ember-fire-commander" target="_blank" rel="noopener" data-skills="gcp agents terraform python" data-tilt>
+            <img class="case-thumb" src="images/projects/ember-fire-commander.jpg" alt="EMBER cover: volunteer phones feeding one shared fire incident" width="1200" height="630" loading="lazy" decoding="async">
+            <div class="case-top"><span class="tag">Hackathon</span><b>AI Builder Cup 2026</b></div>
+            <h3>EMBER — weather-aware fire triage</h3>
+            <p>Bahasa-first AI fire commander for village brigades during Southeast Asian haze fires: ranks satellite detections by spread risk, with a volunteer app and supervisor console. Submitted; awaiting results.</p>
+            <p class="design"><b>Design:</b> Agents fuse reports from many phones into one shared incident; a human supervisor approves every high-stakes call, and the WITHDRAW-upwind safety rule is deterministic code, not model output.</p>
+            <ul><li>Gemini Live</li><li>ADK</li><li>Cloud Run</li><li>Firestore</li></ul>
+          </a>
+          <a class="case reveal-up" id="lakeshift" href="https://github.com/suhail39ahmed/lakeshift" target="_blank" rel="noopener" data-skills="snowflake agents python" data-tilt>
+            <img class="case-thumb" src="images/projects/lakeshift.jpg" alt="LakeShift cover: Oracle to Snowflake migration verified row by row" width="1200" height="630" loading="lazy" decoding="async">
+            <div class="case-top"><span class="tag">Hackathon</span><b>Submitted</b></div>
+            <h3>LakeShift &mdash; PL/SQL to Snowflake, proven</h3>
+            <p>Translates legacy Oracle PL/SQL to Snowflake SQL with NVIDIA Nemotron on Nebius Token Factory, then proves every result row by row. On the recorded run: 6/6 objects proven equal, 5,685 rows compared. Nebius x NVIDIA hackathon; submitted.</p>
+            <p class="design"><b>Design:</b> Planner &rarr; parallel Nemotron Nano translators &rarr; a verifier that diffs Oracle vs Snowflake row by row; failures go to a docs-only researcher and a fixer that escalates Nano, then Super, then Ultra until the verifier passes.</p>
+            <ul><li>Nemotron</li><li>Nebius</li><li>Snowflake</li><li>Oracle</li></ul>
+          </a>
+          <a class="case reveal-up" id="agentic-procurement" href="https://github.com/suhail39ahmed/agentic-procurement" target="_blank" rel="noopener" data-skills="agents" data-tilt>
+            <img class="case-thumb" src="images/projects/agentic-procurement.jpg" alt="Agentic Procurement cover: two agents negotiating with a locked payment card" width="1200" height="630" loading="lazy" decoding="async">
+            <div class="case-top"><span class="tag">Hackathon</span><b>Building</b></div>
+            <h3>Agentic Procurement &mdash; agents that negotiate and pay</h3>
+            <p>A buyer agent negotiates with seller agents and pays on PayPal: agentic procurement and payables for small businesses. PayPal AI Hackathon; building, submissions close Nov 12.</p>
+            <p class="design"><b>Design:</b> Agents negotiate, but money moves through PayPal authorize-then-capture: funds are held on agreement and captured only once the deal is confirmed, so an agent never pays without a settled order.</p>
+            <ul><li>TypeScript</li><li>PayPal</li><li>Agents</li></ul>
+          </a>          <a class="case reveal-up" id="fraud-policy-copilot" data-skills="snowflake agents rag python" href="fraud-policy-copilot/" data-tilt>
+            <img class="case-thumb" src="images/projects/fraud-policy-copilot.jpg" alt="Fraud Policy Copilot cover: Snowflake CoCo CLI and Cortex" width="1200" height="630" loading="lazy" decoding="async">
+            <div class="case-top"><span class="tag">Write-up</span><b>Read the write-up &rarr;</b></div>
+            <h3>Fraud policy copilot</h3>
+            <p>What you can build with Snowflake CoCo CLI + Cortex: flagged transaction in, policy-cited risk decision, fraud-ring map, case and native alert trail out. Read the write-up.</p>
+            <p class="design"><b>Design:</b> Streamlit in Snowflake: transaction id &rarr; customer context &rarr; rule matches &rarr; risk score with policy citations, then a case and a native Snowflake alert trail.</p>
+            <ul><li>Snowflake</li><li>CoCo CLI</li><li>Python</li></ul>
+          </a>
+          <a class="case reveal-up" id="foundry-eval-gate" data-skills="evals agents cicd python" href="https://github.com/suhail39ahmed/foundry-eval-gate" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/foundry-eval-gate.jpg" alt="Foundry Eval Gate cover: a CI gate blocking bad agent changes" width="1200" height="630" loading="lazy" decoding="async">
+            <div class="case-top"><span class="tag">Lab</span><b>CI gate</b></div>
+            <h3>Foundry eval gate</h3>
+            <p>A CI eval gate that checks agent traces for faithfulness, tool success, and PII leaks before a change ships.</p>
+            <p class="design"><b>Design:</b> Deterministic, fixture-first checks on JSON traces that exit non-zero, so GitHub Actions or Azure DevOps can block the merge.</p>
+            <ul><li>Evals</li><li>CI/CD</li><li>Agents</li></ul>
+          </a>
+          <a class="case reveal-up" id="ado-pipeline-doctor" data-skills="cicd agents python" href="https://github.com/suhail39ahmed/ado-pipeline-doctor" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/ado-pipeline-doctor.jpg" alt="ADO Pipeline Doctor cover: a broken pipeline stage diagnosed" width="1200" height="630" loading="lazy" decoding="async">
+            <div class="case-top"><span class="tag">Lab</span><b>Human-approved</b></div>
+            <h3>ADO pipeline doctor</h3>
+            <p>Turns failed Azure Pipelines and GitHub Actions logs into structured RCA JSON, with human approval required before any fix.</p>
+            <p class="design"><b>Design:</b> Logs become structured RCA JSON with an explicit human_approval_required flag, so it’s safe to wire into an agent.</p>
+            <ul><li>Azure DevOps</li><li>GitHub Actions</li><li>LLM</li></ul>
+          </a>
+          <a class="case reveal-up" id="mcp-tools" data-skills="mcp terraform python" href="https://github.com/suhail39ahmed/iac-guard-mcp" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/iac-guard-mcp.jpg" alt="IaC Guard MCP cover: infrastructure diff review with a shield" width="1200" height="630" loading="lazy" decoding="async">
+            <div class="case-top"><span class="tag">Lab</span><b>MCP toolkit</b></div>
+            <h3>MCP-style ops tools</h3>
+            <p>iac-guard-mcp (Terraform/Bicep diff review), azure-ops-mcp (Key Vault compare, ADO diagnose, dry-run + audit), lakehouse-insights-skill, and kc-mcp.</p>
+            <p class="design"><b>Design:</b> iac-guard uses Checkov when available and falls back to built-in regex policies, returning structured findings JSON that agents can cite.</p>
+            <ul><li>MCP</li><li>IaC</li><li>Azure</li></ul>
+          </a>
+          <a class="case reveal-up" id="infra-iac" data-skills="terraform cicd python" href="https://github.com/suhail39ahmed/azure-hub-spoke-terraform" target="_blank" rel="noopener" data-tilt>
+            <img class="case-thumb" src="images/projects/azure-hub-spoke-terraform.jpg" alt="Azure Hub-and-Spoke cover: a hub network connected to spokes" width="1200" height="630" loading="lazy" decoding="async">
+            <div class="case-top"><span class="tag">Lab</span><b>IaC</b></div>
+            <h3>Infrastructure as code</h3>
+            <p>Hub-and-spoke Terraform modules for Azure networking, Python Key Vault automation, and multi-CI demos across GitHub Actions, Azure DevOps, and GitLab.</p>
+            <p class="design"><b>Design:</b> Separate hub and spoke Terraform modules plus an example that wires them together: a foundation to extend, not a full landing zone.</p>
+            <ul><li>Terraform</li><li>Azure</li><li>Python</li><li>CI/CD</li></ul>
+          </a>
+        </div>
+        <p class="note">More on <a href="https://github.com/suhail39ahmed" target="_blank" rel="noopener">GitHub</a>.</p>
+      </section>
+      <section class="hackathons" id="hackathons">
+        <p class="kicker">02 / Hackathons</p>
+        <h2 class="reveal-up">Where I build under a deadline.</h2>
+        <div class="hk-list">
+          <article class="hk reveal-up"><span class="tag live">Submitted · awaiting results</span><h3>Google Cloud AI Builder Cup 2026</h3><p>Google Cloud · Hack2skill · submitted 18 Oct 2026 · evaluation 19 Oct – 6 Nov</p><p>Project: <a href="#ember">EMBER — weather-aware fire triage</a></p></article>
+          <article class="hk reveal-up"><span class="tag">Submitted</span><h3>Nebius x NVIDIA Global AI Hackathon</h3><p>Nebius x NVIDIA · Devpost · Oct 2026</p><p>Project: <a href="#lakeshift">LakeShift - PL/SQL to Snowflake, proven</a> &middot; <a href="https://lakeshift-nebius-nemotron.streamlit.app/" target="_blank" rel="noopener">Live demo</a></p></article>
+          <article class="hk reveal-up"><span class="tag live">Building &middot; due 12 Nov</span><h3>PayPal AI Hackathon 2026</h3><p>PayPal &middot; Nov 2026 &middot; submissions close 12 Nov</p><p>Project: <a href="#agentic-procurement">Agentic Procurement - agents that negotiate and pay</a></p></article>
+          <article class="hk reveal-up"><span class="tag">Participating</span><h3>Future Health Digital Innovation Challenge</h3><p>Registered Oct 2026</p></article>
+          <article class="hk reveal-up" id="rev-engers-2024" data-skills="databricks rag python"><span class="tag">Completed (2024)</span><h3>Databricks GenAI Hackathon 2024 — team REV-Engers</h3><p>Time-boxed team GenAI hackathon · 2024</p><p>RAG experiments on Databricks: table setup, CSV/PDF document ingestion, a RAG chain agent model, and a model GUI. <a href="https://github.com/suhail39ahmed/REV-Engers_Databricks_GenAI_Hackathon24" target="_blank" rel="noopener">Notebooks on GitHub</a></p></article>
+        </div>
+      </section>
+      <section class="writing" id="writing">
+        <p class="kicker">03 / Writing</p>
+        <h2 class="reveal-up">Notes from the build, for fellow builders.</h2>
+        <div class="hk-list">
+          <article class="hk reveal-up"><span class="tag live">Write-up &middot; new</span><h3>What you can build with Snowflake CoCo CLI (+ Cortex)</h3><p>Fraud Policy Copilot: from a flagged transaction to a policy-cited decision, with the demo video. <a href="/fraud-policy-copilot/">Read the write-up</a></p></article>
+          <article class="hk reveal-up"><span class="tag">LinkedIn · coming soon</span><h3>Routing prompts to the cheapest capable model</h3><p>How the LLM auto-router beat keyword rules. Project: <a href="#llm-auto-router">LLM auto-router</a></p></article>
+        </div>
+        <p class="note">Posts on <a href="https://www.linkedin.com/in/suhail-ahmed-sg/" target="_blank" rel="noopener">LinkedIn</a>; each links back to its project card here.</p>
+      </section>
+      <section class="now about" id="about">
+        <p class="kicker">04 / About</p>
+        <div class="now-grid">
+          <h2 class="reveal-up">Hi, I’m Suhail. I design AI systems, then build them until they actually run.</h2>
+          <div class="bio reveal-up">
+            <div class="bio-tabs" role="tablist" aria-label="Bio length">
+              <button type="button" role="tab" id="tab-short" aria-controls="bio-short" aria-selected="true">30 seconds</button>
+              <button type="button" role="tab" id="tab-long" aria-controls="bio-long" aria-selected="false" tabindex="-1">2 minutes</button>
+              <button type="button" role="tab" id="tab-rec" aria-controls="bio-rec" aria-selected="false" tabindex="-1">TL;DR for builders</button>
+            </div>
+            <div class="bio-panel" role="tabpanel" id="bio-short" aria-labelledby="tab-short">
+              <h3 class="bio-h">In 30 seconds</h3>
+              <p>I’m a solutions architect who still writes the code. I design and build AI agents, LLM routers and RAG systems on cloud and data platforms, after 10+ years in cloud and infra on Azure and AWS. These days it’s agents, evals and making models cheaper to run. Some of it runs in production at my day job; the rest lives on GitHub.</p>
+            </div>
+            <div class="bio-panel" role="tabpanel" id="bio-long" aria-labelledby="tab-long">
+              <h3 class="bio-h">In 2 minutes</h3>
+              <p>I started out automating VMs by the thousand, then moved into cloud migrations, landing zones and Terraform pipelines, then DevOps: Kubernetes, observability and lots of IaC.</p>
+              <p>Now I design and build the AI layer. At my day job that means an Azure AI Foundry gateway that governs how AI gets used, and AI agents on Databricks, Snowflake and Sigma that save people from manual analysis. I care about evals and operational readiness more than demos.</p>
+              <p>On my own time I design and build things to learn, starting from an architecture diagram: an LLM auto-router that picks the cheapest model that can do the job, a production-grade RAG, MCP tools for ops, and hackathon builds like EMBER. If it breaks, I write down why.</p>
+            </div>
+            <div class="bio-panel" role="tabpanel" id="bio-rec" aria-labelledby="tab-rec">
+              <h3 class="bio-h">TL;DR for builders</h3>
+              <ul class="rec-list">
+                <li><b>Designs &amp; builds:</b> AI agents, LLM routing, RAG, evals, MCP tools</li>
+                <li><b>How:</b> architecture first, then code, then evals to check it works</li>
+                <li><b>Runs on:</b> Azure AI Foundry, Databricks, Snowflake, Google Cloud / Gemini</li>
+                <li><b>Under the hood:</b> 10+ years of Azure, AWS, Terraform, Kubernetes and CI/CD</li>
+                <li><b>Right now:</b> waiting on AI Builder Cup results; adding a held-out eval to the LLM auto-router</li>
+                <li><a href="#work">Projects</a> · <a href="https://github.com/suhail39ahmed" target="_blank" rel="noopener">GitHub</a> · <a href="files/Suhail_Resume_v1.8.pdf" download>Resume (PDF)</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="stats" aria-label="At a glance">
+          <div class="stat"><b><span class="count" data-count="10">10</span>+</b><span>years in infrastructure, cloud &amp; data</span></div>
+          <div class="stat"><b><span class="count" data-count="9">9</span></b><span>certifications</span></div>
+          <div class="stat"><b><span class="count" data-count="21">21</span></b><span>public GitHub repos</span></div>
+        </div>
+        <div class="skillmap">
+          <h3 class="skillmap-h" id="skillmap-h">Stack I play with: tap one to see where it shows up</h3>
+          <div class="skills" role="group" aria-labelledby="skillmap-h"><button type="button" class="skill" data-skill="foundry" aria-pressed="false">Azure AI Foundry</button><button type="button" class="skill" data-skill="agents" aria-pressed="false">AI agents</button><button type="button" class="skill" data-skill="databricks" aria-pressed="false">Databricks</button><button type="button" class="skill" data-skill="snowflake" aria-pressed="false">Snowflake</button><button type="button" class="skill" data-skill="sigma" aria-pressed="false">Sigma</button><button type="button" class="skill" data-skill="rag" aria-pressed="false">RAG &amp; retrieval</button><button type="button" class="skill" data-skill="evals" aria-pressed="false">Evals</button><button type="button" class="skill" data-skill="mcp" aria-pressed="false">MCP</button><button type="button" class="skill" data-skill="terraform" aria-pressed="false">Terraform / IaC</button><button type="button" class="skill" data-skill="cicd" aria-pressed="false">CI/CD &amp; DevOps</button><button type="button" class="skill" data-skill="gcp" aria-pressed="false">Google Cloud / Gemini</button><button type="button" class="skill" data-skill="python" aria-pressed="false">Python</button></div>
+          <p class="skill-out" id="skill-out" aria-live="polite">Pick a tool to light up the projects, hackathons and production work that use it.</p>
+        </div>
+      </section>
+      <section class="prod" id="production">
+        <p class="kicker">05 / Running in production</p>
+        <h2 class="reveal-up">At my day job, this stuff runs for real.</h2>
+        <div class="pillars">
+          <article class="pillar reveal-up" id="foundry-ai-gateway" data-skills="foundry agents evals">
+            <span>P-01</span>
+            <h3>Azure AI Foundry AI gateway</h3>
+            <p>An Azure AI Foundry gateway I designed and implemented to manage, monitor and govern AI solutions: one place for model access, oversight and control.</p>
+          </article>
+          <article class="pillar reveal-up" id="data-ai-agents" data-skills="agents databricks snowflake sigma">
+            <span>P-02</span>
+            <h3>AI agents on Databricks, Snowflake &amp; Sigma</h3>
+            <p>AI agents I designed on the data platform that cut manual analysis for ops and business teams, plus AI for analytics and operational insights.</p>
+          </article>
+          <article class="pillar reveal-up" id="ai-readiness" data-skills="evals mcp cicd">
+            <span>P-03</span>
+            <h3>Readiness &amp; responsible tooling</h3>
+            <p>Evals, testing and operational readiness for AI apps; trying out Cursor and MCP with security and configuration first.</p>
+          </article>
+        </div>
+        <p class="note">Scope only. Internal details and numbers stay at work.</p>
+      </section>
+      <section class="stack">
+        <p class="kicker">06 / Certifications</p>
+        <div class="stack-row reveal-up">
+          <span>Azure Solutions Architect Expert</span>
+          <span>DevOps Engineer Expert</span>
+          <span>AWS Solutions Architect</span>
+          <span>Terraform Associate 004</span>
+          <span>Databricks Data Engineer</span>
+          <span>SnowPro Core</span>
+          <span>AI-103 Azure AI Apps and Agents</span>
+          <span>Azure AI Fundamentals</span>
+          <span>OCI Architect Associate</span>
+        </div>
+      </section>
+      <section class="path" id="path">
+        <p class="kicker">07 / Career path</p>
+        <details class="career">
+          <summary><span class="career-h">Ten years from VMs to AI agents</span> <span class="note">Show the full career path</span></summary>
+        <div class="track">
+          <article class="node reveal-up">
+            <time>2026 →</time>
+            <h3>Solutions Architect — Cloud, Data &amp; AI</h3>
+            <p>Revantage Global · Singapore</p>
+            <details class="more" open><summary>Responsibilities</summary>
+            <ul class="duties">
+              <li>Enable AI across Databricks, Snowflake, and Sigma for analytics and operational insights.</li>
+              <li>Design AI agents that cut manual analysis for Ops and business teams.</li>
+              <li>Implement Azure AI Foundry as a gateway to manage, monitor, and govern AI solutions.</li>
+              <li>Evaluate Cursor and MCP with a focus on security, configuration, and responsible use.</li>
+              <li>Support AI application build-out, evals, testing, and operational readiness.</li>
+            </ul>
+            </details>
+          </article>
+          <article class="node reveal-up">
+            <time>2024 — 2026</time>
+            <h3>Senior DevOps Engineer</h3>
+            <p>Revantage Global · Singapore</p>
+            <details class="more"><summary>Responsibilities</summary>
+            <ul class="duties">
+              <li>Design enterprise Azure and AWS architectures, including Hub-and-Spoke landing zones.</li>
+              <li>Build IaC and CI/CD with Terraform, Bicep, Azure DevOps, and GitLab.</li>
+              <li>Run Kubernetes, Docker, and ECS/Fargate for availability and cost.</li>
+              <li>Implement Prometheus, Grafana, observability, and cloud security controls.</li>
+            </ul>
+            </details>
+          </article>
+          <article class="node reveal-up">
+            <time>2022 — 2024</time>
+            <h3>Cloud / DevOps Consultant</h3>
+            <p>Accenture Singapore</p>
+            <details class="more"><summary>Responsibilities</summary>
+            <ul class="duties">
+              <li>Migrate complex legacy applications to Azure and AWS with resilient, cost-aware designs.</li>
+              <li>Build secure landing zones with Terraform and GitLab CI/CD to cyber standards.</li>
+              <li>Deliver cloud security and compliance projects with guardrails on Azure workloads.</li>
+            </ul>
+            </details>
+          </article>
+          <article class="node reveal-up">
+            <time>2020 — 2022</time>
+            <h3>Cloud / DevOps Engineer</h3>
+            <p>Accenture India · Bangalore</p>
+            <details class="more"><summary>Responsibilities</summary>
+            <ul class="duties">
+              <li>Deploy IaaS on AWS and Azure using Terraform and GitLab CI/CD.</li>
+              <li>Execute application migrations and performance optimizations.</li>
+              <li>Investigate incidents and work remediations with compliance and security teams.</li>
+            </ul>
+            </details>
+          </article>
+          <article class="node reveal-up">
+            <time>2016 — 2020</time>
+            <h3>Technical Lead</h3>
+            <p>Cognizant · Bangalore</p>
+            <details class="more"><summary>Responsibilities</summary>
+            <ul class="duties">
+              <li>Automate cloud management with vRealize Automation and Orchestrator across 1000+ VMs.</li>
+              <li>Integrate vRO with CouchDB and manage ESXi, HA, DRS, and migrations.</li>
+              <li>Run Agile delivery and Bitbucket workflows; training that lifted team skills.</li>
+            </ul>
+            </details>
+          </article>
+        </div>
+        </details>
+      </section>
+      <section class="signal" id="signal">
+        <p class="kicker">08 / Contact</p>
+        <h2 class="reveal-up">Designing or building something similar? Let’s swap notes.</h2>
+        <div class="signal-links reveal-up">
+          <a href="mailto:suhail39ahmed@gmail.com">suhail39ahmed@gmail.com</a>
+          <a href="tel:+6583750876">+65 8375 0876</a>
+          <a href="https://www.linkedin.com/in/suhail-ahmed-sg/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/suhail39ahmed/" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <a class="btn solid" href="files/Suhail_Resume_v1.8.pdf" download>Resume (PDF)</a>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/about.js"></script>
+  </body>
+</html>
