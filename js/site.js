@@ -5,7 +5,7 @@ const D={reducedMotion:RM,canvas:'pending',renderer:'canvas2d',scripts:'site.js'
 const m=$('.marquee');if(m){const c=m.cloneNode(true);c.classList.add('m2');c.setAttribute('aria-hidden','true');m.after(c)}
 // reveals
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -5% 0px'});
-$$('section .wrap>.reveal,.pillar,.row,.card,.facts,.prod>div,.term,.certs,details,.about-ava,.rows,.seeall').forEach(el=>{el.classList.add('rv');io.observe(el)});
+$$('section .wrap>.reveal,.pillar,.row,.card,.facts,.prod>div,.term,.certs,details,.about-ava,.rows,.seeall,.helps>div,.lane,.arch-wrap').forEach(el=>{el.classList.add('rv');io.observe(el)});
 setTimeout(()=>$$('.rv').forEach(e=>e.classList.add('in')),3500);
 // hero word scramble
 const hw=$('#hw'),W=['AI AGENTS','CLOUD PLATFORMS','DATA PLATFORMS','LLM ROUTERS & RAG'],CH='01<>/[]{}#=+*_';

@@ -109,3 +109,24 @@ footer{padding:28px;text-align:center;font-size:.8rem;color:var(--muted)}
 #hw::after{content:"";display:inline-block;width:.08em;height:.85em;background:var(--gold);margin-left:.06em;vertical-align:-.05em;animation:blink 1s steps(2) infinite}
 @media (max-width:900px){.hw{min-height:2.1em;display:flex;align-items:flex-end}}
 @media (max-width:900px){.hw{display:block;height:2.1em;min-height:0;overflow:hidden}}
+/* architecture section */
+.arch-sec{padding-top:40px}
+.arch-wrap{position:relative;margin-top:30px}
+#arch{display:block;width:100%;height:620px}
+.archtip{position:absolute;z-index:5;width:260px;background:var(--ink);color:var(--paper);font:12px/1.45 var(--mono);padding:10px 12px;border-radius:10px;box-shadow:0 12px 30px rgba(11,31,58,.25);pointer-events:none}
+.lanes{display:none}
+.helps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+.helps div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.helps i{display:block;width:14px;height:14px;border-radius:50%;border:3px solid var(--gold);margin-bottom:10px}
+.helps b{font-family:var(--disp);font-weight:800;letter-spacing:-.01em;display:block;line-height:1.25}.helps p{font-size:.88rem;color:var(--muted);margin-top:6px}
+@media (max-width:900px){.arch-wrap{display:none}.lanes{display:grid;gap:14px;margin-top:24px}
+ .lane{border:1px dashed rgba(11,31,58,.25);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px;position:relative}
+ .lane.az{background:rgba(30,79,216,.05)}.lane.ai{background:rgba(168,134,79,.07)}.lane.db{background:rgba(11,31,58,.05)}
+ .lane b{font:700 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+ .lane span{font:600 .82rem var(--mono);background:var(--card);border:1px solid rgba(11,31,58,.45);border-radius:8px;padding:7px 10px;position:relative;margin-left:14px}
+ .lane span::before{content:"";position:absolute;left:-12px;top:-8px;bottom:50%;border-left:1.5px solid rgba(11,31,58,.3);border-bottom:1.5px solid rgba(11,31,58,.3);width:10px}
+ .lane span.ring{box-shadow:0 0 0 3px rgba(168,134,79,.55)}
+ .lane span::after{content:"";position:absolute;left:-15px;top:50%;width:6px;height:6px;margin-top:-3px;background:var(--gold);border-radius:1px;animation:pk 2.4s linear infinite}
+ .lane span:nth-child(odd)::after{animation-delay:1.2s;background:var(--ink)}
+ @keyframes pk{0%{transform:translateY(-22px);opacity:0}30%{opacity:1}100%{transform:translateY(0);opacity:0}}
+ .helps{grid-template-columns:1fr}}
