@@ -108,3 +108,4 @@ footer{padding:28px;text-align:center;font-size:.8rem;color:var(--muted)}
 .hw .caret{display:none}
 #hw::after{content:"";display:inline-block;width:.08em;height:.85em;background:var(--gold);margin-left:.06em;vertical-align:-.05em;animation:blink 1s steps(2) infinite}
 @media (max-width:900px){.hw{min-height:2.1em;display:flex;align-items:flex-end}}
+@media (max-width:900px){.hw{display:block;height:2.1em;min-height:0;overflow:hidden}}
