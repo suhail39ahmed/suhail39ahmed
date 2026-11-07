@@ -216,7 +216,7 @@
   
   <!-- Legend -->
   <g id="legend" transform="translate(950, 560)">
-    <text class="label-sm" x="0" y="0">Gateway ’ Router ’ Cache ’ Token trim ’ Workflow ’ RAG ’ Evals</text>
-    <text class="label-sm" x="0" y="15">Data: Bronze ’ Silver ’ Gold ’ Embeddings ’ Vector Search</text>
+    <text class="label-sm" x="0" y="0">Gateway &gt; Router &gt; Cache &gt; Token trim &gt; Workflow &gt; RAG &gt; Evals</text>
+    <text class="label-sm" x="0" y="15">Data: Bronze &gt; Silver &gt; Gold &gt; Embeddings &gt; Vector Search</text>
   </g>
 </svg>
