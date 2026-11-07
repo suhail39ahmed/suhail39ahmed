@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>README Preview - Suhail Ahmed</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #24292f;
+      background: #ffffff;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1012px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 32px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+    }
+    h1 {
+      font-size: 2em;
+      border-bottom: 1px solid #d0d7de;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.5em;
+      border-bottom: 1px solid #d0d7de;
+      padding-bottom: 8px;
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.25em;
+      margin-top: 20px;
+      margin-bottom: 12px;
+    }
+    p {
+      margin-bottom: 16px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin: 20px 0;
+    }
+    code {
+      background: #f6f8fa;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 85%;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 16px 0;
+    }
+    th, td {
+      border: 1px solid #d0d7de;
+      padding: 6px 13px;
+      text-align: left;
+    }
+    th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid #d0d7de;
+      margin: 24px 0;
+    }
+    .stats-box {
+      background: #f6f8fa;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background: #0969da;
+      color: white;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .emoji {
+      font-size: 1.2em;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><span class="emoji">👋</span> Hi, I'm Suhail</h1>
+    
+    <p>
+      I <strong>design and build AI agents, LLM routers and RAG systems</strong> on cloud and data platforms. 
+      Architecture first, then code, then measurement.
+    </p>
+    
+    <p>
+      10+ years building cloud infrastructure (Azure, AWS, Terraform, Kubernetes) — now I apply that foundation 
+      to AI engineering. Solutions Architect · Singapore.
+    </p>
+    
+    <p>
+      <strong><a href="https://savvysuhail.com/">Portfolio</a></strong> · 
+      <strong><a href="https://savvysuhail.com/#terminal">Terminal</a></strong> · 
+      <a href="https://www.linkedin.com/in/suhail-ahmed-sg/">LinkedIn</a>
+    </p>
+    
+    <hr>
+    
+    <h2><span class="emoji">🎯</span> What I'm building</h2>
+    
+    <p>
+      <strong>Software Engineering & Automation</strong> — from VMs to AI engineering. 
+      Equal focus on AI, cloud platforms, and data platforms. 
+      Agents and RAG are tools in the AI toolkit, not my entire identity.
+    </p>
+    
+    <ul>
+      <li>🤖 <strong>AI Engineering</strong>: Agents, LLM routing, RAG systems, evals & operational readiness</li>
+      <li>☁️ <strong>Cloud Platforms</strong>: Azure & AWS architectures, IaC (Terraform/Bicep), Kubernetes, CI/CD</li>
+      <li>📊 <strong>Data Platforms</strong>: Databricks, Snowflake, Sigma — lakehouse to AI</li>
+    </ul>
+    
+    <hr>
+    
+    <h2><span class="emoji">📊</span> GitHub Activity</h2>
+    
+    <div class="stats-box">
+      <p>📦 <strong>Loading...</strong> public repositories</p>
+      <p><em>Stats update daily at 00:00 UTC</em></p>
+    </div>
+    
+    <hr>
+    
+    <h2><span class="emoji">🏗️</span> Architecture: How it all fits together</h2>
+    
+    <p>Here's how a request flows through an Azure AI gateway, the AI workflow, and a Databricks lakehouse:</p>
+    
+    <img src="../assets/architecture.svg" alt="Architecture Diagram" />
+    
+    <p><strong>Key components:</strong></p>
+    <ul>
+      <li>🔐 <strong>Gateway</strong>: Azure AI Foundry secures and routes every call (Key Vault, auth, rate limits)</li>
+      <li>⚡ <strong>Cache + Trim</strong>: Semantic cache for repeat queries; token minimizer cuts context and cost</li>
+      <li>🤖 <strong>AI Flow</strong>: Agentic workflow → Skills/MCP → RAG retriever → Guardrails/Evals</li>
+      <li>🏢 <strong>Data</strong>: Databricks lakehouse (Bronze → Silver → Gold → Embeddings → Vector Search)</li>
+    </ul>
+    
+    <hr>
+    
+    <h2><span class="emoji">🚀</span> Flagship Projects</h2>
+    
+    <p>Each card shows the <strong>key design decision</strong> that makes it work.</p>
+    
+    <h3>🤖 AI Engineering</h3>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>What it is</th>
+          <th>Design Decision</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://github.com/suhail39ahmed/llm-auto-router">llm-auto-router</a></td>
+          <td>Routes prompts to the cheapest capable model. 98% routing accuracy vs 62% for keyword rules; ~27-29% cheaper than all-gpt-5.4.</td>
+          <td>LLM classifier picks one of 4 tiers; JSON validated against policy rules; invalid output falls back to strongest model.</td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/suhail39ahmed/production_grade_rag">production_grade_rag</a></td>
+          <td>RAG built through 7 phases with architecture diagram and demo.</td>
+          <td>Hybrid BM25 + vector search, cross-encoder rerank to top 5, CI eval gate on every PR.</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <hr>
+    
+    <h2><span class="emoji">🎮</span> Try it: Interactive Terminal</h2>
+    
+    <p>Want to explore my work? Try the <strong><a href="https://savvysuhail.com/#terminal">interactive terminal</a></strong> on my portfolio site.</p>
+    
+    <pre><code>$ help
+# Commands: whoami, projects, stack, contact, clear
+# Real functional UI, keyboard & touch accessible
+# No command execution — just a safe exploration interface</code></pre>
+    
+    <hr>
+    
+    <h2><span class="emoji">🔧</span> Tech Stack</h2>
+    
+    <pre><code>AI:        Azure AI Foundry · Databricks · Snowflake Cortex · Google Cloud / Gemini
+Cloud:     Azure · AWS · Terraform · Bicep · Kubernetes · Docker
+Data:      Databricks · Snowflake · Sigma · Unity Catalog
+CI/CD:     GitHub Actions · Azure DevOps · GitLab CI
+Tools:     Python · TypeScript · MCP · Streamlit · Evals</code></pre>
+    
+    <hr>
+    
+    <p><em>This README updates daily with fresh GitHub stats · <a href=".github/workflows/update-profile.yml">View update workflow</a></em></p>
+  </div>
+</body>
+</html>
