@@ -1,0 +1,222 @@
+<svg width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&amp;display=swap');
+      
+      .bg { fill: #F3E9DC; }
+      .grid-line { stroke: #0B1F3A; stroke-opacity: 0.08; stroke-width: 1; }
+      .node { fill: #FBF7F1; stroke: #0B1F3A; stroke-width: 1.5; rx: 6; }
+      .node-platform { fill: #E6D5BC; }
+      .node-highlight { fill: #A8864F; }
+      .label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; fill: #0B1F3A; }
+      .label-sm { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #0B1F3A; fill-opacity: 0.7; }
+      .lane-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; fill: #0B1F3A; text-transform: uppercase; }
+      .path { stroke: #0B1F3A; stroke-opacity: 0.35; stroke-width: 2; fill: none; }
+      .path-dashed { stroke-dasharray: 4 3; }
+      .dot { fill: #2e9e5b; }
+      .dot-gold { fill: #A8864F; }
+      
+      @keyframes flow {
+        0% { offset-distance: 0%; }
+        100% { offset-distance: 100%; }
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+      
+      .packet {
+        animation: flow 4s linear infinite;
+      }
+      
+      .packet-1 { animation-delay: 0s; }
+      .packet-2 { animation-delay: 1s; }
+      .packet-3 { animation-delay: 2s; }
+      .packet-4 { animation-delay: 3s; }
+      
+      .dot {
+        animation: pulse 2s ease-in-out infinite;
+      }
+    </style>
+    
+    <!-- Flow paths for animation -->
+    <path id="flow-main" d="M 120 90 L 280 90 L 280 190 L 440 190 L 440 290 L 600 290 L 600 390 L 760 390 L 760 490 L 920 490" />
+    <path id="flow-cache" d="M 280 90 L 920 490" />
+  </defs>
+  
+  <!-- Background -->
+  <rect class="bg" width="1200" height="600"/>
+  
+  <!-- Grid -->
+  <g opacity="0.6">
+    <line class="grid-line" x1="0" y1="150" x2="1200" y2="150"/>
+    <line class="grid-line" x1="0" y1="300" x2="1200" y2="300"/>
+    <line class="grid-line" x1="0" y1="450" x2="1200" y2="450"/>
+    <line class="grid-line" x1="300" y1="0" x2="300" y2="600"/>
+    <line class="grid-line" x1="600" y1="0" x2="600" y2="600"/>
+    <line class="grid-line" x1="900" y1="0" x2="900" y2="600"/>
+  </g>
+  
+  <!-- Lane labels -->
+  <text class="lane-label" x="20" y="30">Azure Cloud Lane</text>
+  <text class="lane-label" x="20" y="200">AI Request Flow</text>
+  <text class="lane-label" x="20" y="470">Data Platform Lane</text>
+  
+  <!-- Azure Cloud Lane -->
+  <g id="azure-lane">
+    <rect class="node node-platform" x="50" y="60" width="150" height="50"/>
+    <text class="label" x="125" y="90" text-anchor="middle">Foundry Gateway</text>
+    <circle class="dot" cx="70" cy="75" r="3"/>
+    
+    <rect class="node node-platform" x="250" y="60" width="130" height="50"/>
+    <text class="label" x="315" y="90" text-anchor="middle">LLM Router</text>
+    <circle class="dot" cx="270" cy="75" r="3"/>
+    
+    <rect class="node node-platform" x="430" y="60" width="120" height="50"/>
+    <text class="label" x="490" y="90" text-anchor="middle">Azure OpenAI</text>
+    <circle class="dot" cx="450" cy="75" r="3"/>
+    
+    <rect class="node node-platform" x="600" y="60" width="110" height="50"/>
+    <text class="label" x="655" y="90" text-anchor="middle">Key Vault</text>
+    <circle class="dot" cx="620" cy="75" r="3"/>
+  </g>
+  
+  <!-- AI Request Flow Lane -->
+  <g id="flow-lane">
+    <!-- Prompt -->
+    <rect class="node" x="50" y="230" width="100" height="40"/>
+    <text class="label" x="100" y="255" text-anchor="middle">Prompt</text>
+    <circle class="dot" cx="70" cy="240" r="3"/>
+    
+    <!-- Semantic Cache -->
+    <rect class="node node-highlight" x="200" y="230" width="140" height="40"/>
+    <text class="label" x="270" y="250" text-anchor="middle">Semantic</text>
+    <text class="label" x="270" y="262" text-anchor="middle">Cache</text>
+    <circle class="dot-gold" cx="220" cy="240" r="3"/>
+    
+    <!-- Token Minimizer -->
+    <rect class="node" x="390" y="230" width="140" height="40"/>
+    <text class="label" x="460" y="250" text-anchor="middle">Token</text>
+    <text class="label" x="460" y="262" text-anchor="middle">Minimizer</text>
+    <circle class="dot" cx="410" cy="240" r="3"/>
+    
+    <!-- Agentic Workflow -->
+    <rect class="node" x="580" y="230" width="140" height="40"/>
+    <text class="label" x="650" y="250" text-anchor="middle">Agentic</text>
+    <text class="label" x="650" y="262" text-anchor="middle">Workflow</text>
+    <circle class="dot" cx="600" cy="240" r="3"/>
+    
+    <!-- Skills / MCP -->
+    <rect class="node" x="580" y="300" width="140" height="40"/>
+    <text class="label" x="650" y="325" text-anchor="middle">Skills / MCP</text>
+    <circle class="dot" cx="600" cy="310" r="3"/>
+    
+    <!-- RAG Retriever -->
+    <rect class="node" x="770" y="230" width="120" height="40"/>
+    <text class="label" x="830" y="250" text-anchor="middle">RAG</text>
+    <text class="label" x="830" y="262" text-anchor="middle">Retriever</text>
+    <circle class="dot" cx="790" cy="240" r="3"/>
+    
+    <!-- Guardrails & Evals -->
+    <rect class="node node-highlight" x="940" y="230" width="140" height="40"/>
+    <text class="label" x="1010" y="250" text-anchor="middle">Guardrails</text>
+    <text class="label" x="1010" y="262" text-anchor="middle">Evals</text>
+    <circle class="dot-gold" cx="960" cy="240" r="3"/>
+    
+    <!-- Response -->
+    <rect class="node" x="940" y="300" width="140" height="40"/>
+    <text class="label" x="1010" y="325" text-anchor="middle">Response</text>
+    <circle class="dot" cx="960" cy="310" r="3"/>
+  </g>
+  
+  <!-- Data Platform Lane -->
+  <g id="data-lane">
+    <rect class="node node-platform" x="50" y="500" width="120" height="40"/>
+    <text class="label" x="110" y="525" text-anchor="middle">Sources</text>
+    <circle class="dot" cx="70" cy="510" r="3"/>
+    
+    <rect class="node node-platform" x="220" y="500" width="130" height="40"/>
+    <text class="label" x="285" y="520" text-anchor="middle">Bronze</text>
+    <circle class="dot" cx="240" cy="510" r="3"/>
+    
+    <rect class="node node-platform" x="400" y="500" width="110" height="40"/>
+    <text class="label" x="455" y="525" text-anchor="middle">Silver</text>
+    <circle class="dot" cx="420" cy="510" r="3"/>
+    
+    <rect class="node node-platform" x="560" y="500" width="100" height="40"/>
+    <text class="label" x="610" y="520" text-anchor="middle">Gold</text>
+    <circle class="dot" cx="580" cy="510" r="3"/>
+    
+    <rect class="node node-platform" x="710" y="500" width="140" height="40"/>
+    <text class="label" x="780" y="520" text-anchor="middle">Embeddings</text>
+    <circle class="dot" cx="730" cy="510" r="3"/>
+    
+    <rect class="node node-highlight" x="900" y="500" width="140" height="40"/>
+    <text class="label" x="970" y="520" text-anchor="middle">Vector Search</text>
+    <circle class="dot-gold" cx="920" cy="510" r="3"/>
+  </g>
+  
+  <!-- Connection paths -->
+  <g id="connections">
+    <!-- Horizontal flows -->
+    <path class="path" d="M 150 250 L 200 250"/>
+    <path class="path" d="M 340 250 L 390 250"/>
+    <path class="path" d="M 530 250 L 580 250"/>
+    <path class="path" d="M 650 270 L 650 300"/>
+    <path class="path" d="M 720 250 L 770 250"/>
+    <path class="path" d="M 890 250 L 940 250"/>
+    <path class="path" d="M 1010 270 L 1010 300"/>
+    
+    <!-- Cache hit path (dashed) -->
+    <path class="path path-dashed" d="M 270 270 Q 600 370 1010 300"/>
+    <text class="label-sm" x="640" y="360" text-anchor="middle">cache hit</text>
+    
+    <!-- Data flow -->
+    <path class="path" d="M 170 520 L 220 520"/>
+    <path class="path" d="M 350 520 L 400 520"/>
+    <path class="path" d="M 510 520 L 560 520"/>
+    <path class="path" d="M 660 520 L 710 520"/>
+    <path class="path" d="M 850 520 L 900 520"/>
+    
+    <!-- RAG to Vector Search -->
+    <path class="path" d="M 830 270 Q 830 380 970 500"/>
+    <path class="path" d="M 970 500 Q 970 380 830 270"/>
+    <text class="label-sm" x="900" y="390" text-anchor="middle">query/retrieve</text>
+    
+    <!-- Azure to Flow connections -->
+    <path class="path path-dashed" d="M 125 110 L 125 230"/>
+    <path class="path path-dashed" d="M 315 110 L 460 230"/>
+    <path class="path path-dashed" d="M 655 110 L 650 230"/>
+  </g>
+  
+  <!-- Animated flow packets -->
+  <g id="packets">
+    <circle class="dot-gold packet packet-1" r="4">
+      <animateMotion dur="8s" repeatCount="indefinite">
+        <mpath href="#flow-main"/>
+      </animateMotion>
+    </circle>
+    <circle class="dot packet packet-2" r="4">
+      <animateMotion dur="8s" repeatCount="indefinite">
+        <mpath href="#flow-main"/>
+      </animateMotion>
+    </circle>
+    <circle class="dot-gold packet packet-3" r="4">
+      <animateMotion dur="8s" repeatCount="indefinite">
+        <mpath href="#flow-main"/>
+      </animateMotion>
+    </circle>
+    <circle class="dot packet packet-4" r="4">
+      <animateMotion dur="8s" repeatCount="indefinite">
+        <mpath href="#flow-main"/>
+      </animateMotion>
+    </circle>
+  </g>
+  
+  <!-- Legend -->
+  <g id="legend" transform="translate(950, 560)">
+    <text class="label-sm" x="0" y="0">Gateway ’ Router ’ Cache ’ Token trim ’ Workflow ’ RAG ’ Evals</text>
+    <text class="label-sm" x="0" y="15">Data: Bronze ’ Silver ’ Gold ’ Embeddings ’ Vector Search</text>
+  </g>
+</svg>

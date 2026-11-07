@@ -20,7 +20,7 @@
       "sameAs": ["https://github.com/suhail39ahmed", "https://www.linkedin.com/in/suhail-ahmed-sg/"]
     }
     </script>
-</head><body>
+<link rel="stylesheet" href="/css/terminal.css"></head><body>
 
 
 <a href="#work" class="btn" style="position:absolute;left:-999px">Skip to projects</a>
@@ -46,11 +46,21 @@
 <section><div class="wrap intro reveal"><div><span class="eyebrow">Hello, builder</span><p class="big" style="margin-top:12px">I sketch the architecture first, then build it, then <em>measure whether it actually works.</em></p><p class="lead" style="margin-top:16px">This is where I share what I’m designing, building, breaking and learning: open-source labs, hackathon builds, and notes for fellow tinkerers.</p></div>
 <ul class="facts"><li><b>Designs, builds & runs:</b> AI agents & LLM routing · cloud platforms & IaC · data platforms on Databricks, Snowflake & Sigma</li><li><b>How:</b> architecture first, then code, then evals</li><li><b>Runs on:</b> Azure AI Foundry, Databricks, Snowflake, Google Cloud / Gemini</li><li><b>Under the hood:</b> 10+ years of Azure, AWS, Terraform, Kubernetes and CI/CD</li><li><b>Right now:</b> waiting on AI Builder Cup results; adding a held-out eval to the LLM auto-router</li></ul></div></section>
 
-<section class="dark" id="terminal"><div class="wrap"><div class="reveal"><span class="eyebrow">02 / Playground</span><h2>AI that ships. Poke at it.</h2><p class="lead">A tiny terminal. Type <b>help</b>, or try <b>router explain this stack trace</b>.</p></div>
-<div class="term reveal"><div class="bar"><i></i><i></i><i></i><span>suhail@savvysuhail: ~</span></div><div id="out" role="log" aria-live="polite"></div>
-<form id="tf"><label for="cmd">$</label><input id="cmd" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="type a command…"></form></div>
-<div class="hints"><button>help</button><button>whoami</button><button>projects</button><button>stack</button><button>router summarise this PDF</button><button>router design a multi-agent RAG architecture</button><button>contact</button><button>clear</button></div>
-<p class="note">Demo only: runs in your browser, no backend, no API keys. <code>router</code> picks a tier with simple keyword rules — the real <a href="https://github.com/suhail39ahmed/llm-auto-router">llm-auto-router</a> uses an LLM classifier.</p></div></section>
+<section class="dark" id="terminal"><div class="wrap"><div class="reveal"><span class="eyebrow">02 / Playground</span><h2>Explore my work. Try the terminal.</h2><p class="lead">Real functional terminal UI. Type <b>help</b> to get started, or try <b>projects ai</b>.</p></div>
+<div id="term-container" class="reveal">
+<div class="term-bar"><i></i><i></i><i></i><span>suhail@portfolio: ~</span></div>
+<div class="term-viewport"><div id="term-output" role="log" aria-live="polite"></div></div>
+<form id="term-form"><label for="term-input">$</label><input id="term-input" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="type a command..."></form>
+</div>
+<div class="term-hints reveal">
+<button onclick="document.getElementById('term-input').value='help';document.getElementById('term-form').dispatchEvent(new Event('submit'))">help</button>
+<button onclick="document.getElementById('term-input').value='whoami';document.getElementById('term-form').dispatchEvent(new Event('submit'))">whoami</button>
+<button onclick="document.getElementById('term-input').value='projects';document.getElementById('term-form').dispatchEvent(new Event('submit'))">projects</button>
+<button onclick="document.getElementById('term-input').value='stack';document.getElementById('term-form').dispatchEvent(new Event('submit'))">stack</button>
+<button onclick="document.getElementById('term-input').value='contact';document.getElementById('term-form').dispatchEvent(new Event('submit'))">contact</button>
+<button onclick="document.getElementById('term-input').value='clear';document.getElementById('term-form').dispatchEvent(new Event('submit'))">clear</button>
+</div>
+<p class="note">Fully functional terminal. Keyboard accessible (Tab, Up/Down arrows). No backend, no command execution — just a safe exploration interface.</p></div></section>
 <section id="hackathons"><div class="wrap"><div class="reveal"><span class="eyebrow">03 / Hackathons</span><h2>Where I build under a deadline.</h2></div><div class="rows">
 <div class="row reveal"><span class="s">Submitted · awaiting results</span><div><h3>Google Cloud AI Builder Cup 2026</h3><p>Google Cloud · Hack2skill · submitted 18 Oct 2026 · evaluation 19 Oct – 6 Nov. Project: <a href="#ember-fire-commander">EMBER — weather-aware fire triage</a></p></div></div>
 <div class="row reveal"><span class="s">Submitted</span><div><h3>Nebius x NVIDIA Global AI Hackathon</h3><p>Nebius x NVIDIA · Devpost · Oct 2026. Project: <a href="#lakeshift">LakeShift</a> · <a href="https://lakeshift-nebius-nemotron.streamlit.app/" target="_blank" rel="noopener">Live demo</a></p></div></div>
@@ -74,4 +84,4 @@
 <section id="contact" class="contact"><div class="wrap reveal"><span class="eyebrow">07 / Contact</span><h2>Designing or building something similar?<br>Let’s swap notes.</h2>
 <div class="links"><a class="btn" href="mailto:suhail39ahmed@gmail.com">suhail39ahmed@gmail.com</a><a class="btn ghost" style="color:var(--navy);border-color:var(--navy)" href="tel:+6583750876">+65 8375 0876</a><a class="btn ghost" style="color:var(--navy);border-color:var(--navy)" href="https://www.linkedin.com/in/suhail-ahmed-sg/">LinkedIn</a><a class="btn ghost" style="color:var(--navy);border-color:var(--navy)" href="https://github.com/suhail39ahmed/">GitHub</a><a class="btn ghost" style="color:var(--navy);border-color:var(--navy)" href="/files/Suhail_Resume_v1.8.pdf">Resume (PDF)</a></div></div></section>
 <footer>© Suhail Ahmed · Singapore</footer>
-<script src="/js/main.js" defer></script><script src="/js/site.js" defer></script><script src="/js/arch.js" defer></script></body></html>
+<script src="/js/main.js" defer></script><script src="/js/site.js" defer></script><script src="/js/arch.js" defer></script><script src="/js/terminal.js" defer></script></body></html>
