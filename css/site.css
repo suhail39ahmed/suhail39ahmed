@@ -95,9 +95,9 @@ details{margin-top:26px;border-radius:18px;padding:20px 24px}summary{cursor:poin
 footer{padding:28px;text-align:center;font-size:.8rem;color:var(--muted)}
 .subpage{padding-top:70px}
 /* reveals (IntersectionObserver adds .in) */
-.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
 .js .rv.in{opacity:1;transform:none}
-.js .about-ava.rv{transform:scale(.6) rotate(-30deg)}.js .about-ava.rv.in{transform:none}
+.js .about-ava.rv{transform:scale(1)}.js .about-ava.rv.in{transform:none}
 .grid .rv:nth-child(2){transition-delay:.08s}.grid .rv:nth-child(3){transition-delay:.16s}.grid .rv:nth-child(4){transition-delay:.24s}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 #dbg{position:fixed;left:10px;bottom:10px;z-index:300;background:var(--ink);color:var(--paper);font:12px/1.4 var(--mono);padding:8px 10px;border-radius:8px}
