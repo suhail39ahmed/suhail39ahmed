@@ -59,10 +59,10 @@ def generate_stats_section(stats: dict) -> str:
             lines.append(" ".join(lang_badges))
             lines.append("")
         
-        # Recent activity
+        # Recent activity with genuine repo links
         recent = stats.get('recent_activity', [])
         if recent:
-            lines.append("**Recently active:**")
+            lines.append("**Recently active repositories:**")
             for repo in recent[:3]:
                 name = escapeHtml(repo['name'])
                 url = repo['url']  # URLs don't need escaping in markdown links
@@ -70,7 +70,15 @@ def generate_stats_section(stats: dict) -> str:
                 raw_desc = repo.get('description', 'No description')[:80]
                 desc = escapeHtml(raw_desc)
                 lang = escapeHtml(repo.get('language', 'N/A'))
-                lines.append(f"- [{name}]({url}) — {desc} `{lang}`")
+                repo_updated = repo.get('updated_at', '')
+                # Parse and format the update time
+                if repo_updated:
+                    from datetime import datetime
+                    dt = datetime.fromisoformat(repo_updated.replace('Z', '+00:00'))
+                    time_str = dt.strftime('%b %d')
+                    lines.append(f"- [{name}]({url}) — {desc} · `{lang}` · Updated {time_str}")
+                else:
+                    lines.append(f"- [{name}]({url}) — {desc} · `{lang}`")
             lines.append("")
     
     lines.append(f"*Last updated: {updated}*")
