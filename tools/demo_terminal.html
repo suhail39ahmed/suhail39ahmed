@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal Demo - Suhail Ahmed</title>
+  <link rel="stylesheet" href="../css/terminal.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0B1F3A 0%, #1a3a5c 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .demo-wrapper {
+      width: 100%;
+      max-width: 1000px;
+    }
+    .demo-header {
+      text-align: center;
+      color: #F3E9DC;
+      margin-bottom: 30px;
+    }
+    .demo-header h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .demo-header p {
+      opacity: 0.8;
+      font-size: 1.1rem;
+    }
+    .demo-footer {
+      text-align: center;
+      color: #F3E9DC;
+      margin-top: 20px;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrapper">
+    <div class="demo-header">
+      <h1>🖥️ Interactive Terminal Demo</h1>
+      <p>Try typing: <code>help</code>, <code>projects ai</code>, <code>stack</code></p>
+    </div>
+    
+    <div id="term-container">
+      <div class="term-bar">
+        <i></i><i></i><i></i>
+        <span>suhail@portfolio: ~</span>
+      </div>
+      <div class="term-viewport">
+        <div id="term-output" role="log" aria-live="polite"></div>
+      </div>
+      <form id="term-form">
+        <label for="term-input">$</label>
+        <input id="term-input" autocomplete="off" spellcheck="false" 
+               aria-label="Terminal command" placeholder="type a command...">
+      </form>
+    </div>
+    
+    <div class="term-hints">
+      <button onclick="submitCmd('help')">help</button>
+      <button onclick="submitCmd('whoami')">whoami</button>
+      <button onclick="submitCmd('projects')">projects</button>
+      <button onclick="submitCmd('projects ai')">projects ai</button>
+      <button onclick="submitCmd('stack')">stack</button>
+      <button onclick="submitCmd('contact')">contact</button>
+      <button onclick="submitCmd('clear')">clear</button>
+    </div>
+    
+    <div class="demo-footer">
+      <p>✅ Keyboard accessible (Tab, Up/Down arrows) | Mobile-friendly | No backend required</p>
+    </div>
+  </div>
+  
+  <script src="../js/terminal.js"></script>
+  <script>
+    function submitCmd(cmd) {
+      const input = document.getElementById('term-input');
+      const form = document.getElementById('term-form');
+      input.value = cmd;
+      form.dispatchEvent(new Event('submit'));
+    }
+  </script>
+</body>
+</html>
