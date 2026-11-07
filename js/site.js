@@ -6,6 +6,8 @@ const m=$('.marquee');if(m){const c=m.cloneNode(true);c.classList.add('m2');c.se
 // reveals
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -5% 0px'});
 $$('section .wrap>.reveal,.pillar,.row,.card,.facts,.prod>div,.term,.certs,details,.about-ava,.rows,.seeall,.helps>div,.lane,.arch-wrap').forEach(el=>{el.classList.add('rv');io.observe(el)});
+// Fallback to show all reveals after delay, but also show immediately for prefers-reduced-motion or no-js
+if(RM||!window.IntersectionObserver){$$('.rv').forEach(e=>e.classList.add('in'))}
 setTimeout(()=>$$('.rv').forEach(e=>e.classList.add('in')),3500);
 // hero word scramble
 const hw=$('#hw'),W=['AI AGENTS','CLOUD PLATFORMS','DATA PLATFORMS','LLM ROUTERS & RAG'],CH='01<>/[]{}#=+*_';
