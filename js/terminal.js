@@ -11,7 +11,7 @@
     ai: [
       { name: 'llm-auto-router', url: 'https://github.com/suhail39ahmed/llm-auto-router', desc: 'Routes prompts to cheapest capable model. 98% accuracy, ~27-29% cheaper.', tech: 'Azure AI Foundry, Python' },
       { name: 'production_grade_rag', url: 'https://github.com/suhail39ahmed/production_grade_rag', desc: 'RAG through 7 phases. Hybrid BM25+vector, rerank, CI eval gate.', tech: 'RAG, Python, Retrieval' },
-      { name: 'ember-fire-commander', url: 'https://github.com/suhail39ahmed/ember-fire-commander', desc: 'EMBER: Weather-aware wildfire triage for village brigades.', tech: 'Gemini Live, ADK, Cloud Run' },
+      { name: 'ember-fire-commander', url: 'https://github.com/suhail39ahmed/ember-fire-commander', desc: 'EMBER: Weather-aware wildfire triage for village brigades.', tech: 'Gemini Live, Agent Platform, Cloud Run' },
       { name: 'foundry-eval-gate', url: 'https://github.com/suhail39ahmed/foundry-eval-gate', desc: 'CI eval gate on agent traces: faithfulness, tool success, PII leak.', tech: 'Evals, CI/CD, Agents' },
       { name: 'fraud-policy-copilot', url: 'https://github.com/suhail39ahmed/fraud-policy-copilot', desc: 'Snowflake CoCo CLI fraud case copilot with policy citations.', tech: 'Snowflake, CoCo CLI' },
       { name: 'ado-pipeline-doctor', url: 'https://github.com/suhail39ahmed/ado-pipeline-doctor', desc: 'Failed pipeline logs → RCA JSON, human approval required.', tech: 'Azure DevOps, GitHub Actions' }
