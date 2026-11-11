@@ -56,7 +56,7 @@ Each card shows the **key design decision** that makes it work.
 |---------|------------|----------------|
 | **[llm-auto-router](https://github.com/suhail39ahmed/llm-auto-router)** | Routes prompts to the cheapest capable model. 98% routing accuracy vs 62% for keyword rules; ~27-29% cheaper than all-gpt-5.4. | LLM classifier picks one of 4 tiers; JSON validated against policy rules; invalid output falls back to strongest model. |
 | **[production_grade_rag](https://github.com/suhail39ahmed/production_grade_rag)** | RAG built through 7 phases with architecture diagram and demo. | Hybrid BM25 + vector search, cross-encoder rerank to top 5, CI eval gate on every PR. |
-| **[ember-fire-commander](https://github.com/suhail39ahmed/ember-fire-commander)** | EMBER: weather-aware wildfire triage for village brigades (Gemini Live, ADK, Cloud Run). AI Builder Cup 2026. | Agents fuse many phones into one incident; human supervisor approves high-stakes calls; WITHDRAW safety rule is deterministic code. |
+| **[ember-fire-commander](https://github.com/suhail39ahmed/ember-fire-commander)** | EMBER: weather-aware wildfire triage for village brigades (Gemini Live, Agent Platform, Cloud Run). AI Builder Cup 2026. | Agents fuse many phones into one incident; human supervisor approves high-stakes calls; WITHDRAW safety rule is deterministic code. |
 | **[foundry-eval-gate](https://github.com/suhail39ahmed/foundry-eval-gate)** | CI eval gate on agent traces: faithfulness, tool success, PII leak. | Deterministic checks exit non-zero, blocking GitHub Actions / Azure DevOps merges. |
 | **[fraud-policy-copilot](https://github.com/suhail39ahmed/fraud-policy-copilot)** | Snowflake CoCo CLI fraud case copilot: transaction → policy match → risk score with citations. | Streamlit in Snowflake: tx id → customer context → rule matches → risk score with policy citations. |
 | **[ado-pipeline-doctor](https://github.com/suhail39ahmed/ado-pipeline-doctor)** | Failed pipeline logs → RCA JSON, human approval required. | Structured RCA JSON with explicit `human_approval_required` flag for safe agent wiring. |
@@ -97,7 +97,7 @@ $ help
 
 Building under deadlines forces design clarity.
 
-- **Google Cloud AI Builder Cup 2026** (Hack2skill): [EMBER](https://github.com/suhail39ahmed/ember-fire-commander) submitted, awaiting results
+- **Google Cloud AI Builder Cup 2026** (Hack2skill): [EMBER](https://github.com/suhail39ahmed/ember-fire-commander), participated as team Musketeers (4)
 - **Nebius x NVIDIA Global AI Hackathon** (Devpost): [LakeShift](https://github.com/suhail39ahmed/lakeshift) submitted
 - **Databricks GenAI Hackathon 2024** (team REV-Engers): RAG experiments, [notebooks on GitHub](https://github.com/suhail39ahmed/REV-Engers_Databricks_GenAI_Hackathon24)
 
