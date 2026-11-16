@@ -27,7 +27,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install requests PyYAML
+          pip install requests PyYAML pytest
       
       - name: Fetch GitHub stats
         id: fetch-stats
