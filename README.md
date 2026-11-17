@@ -22,9 +22,17 @@ I **design and build AI agents, LLM routers and RAG systems** on cloud and data 
 
 <!-- STATS_START -->
 
-📦 **Loading...** public repositories
+📦 **20** public repositories
 
-*Stats update daily at 00:00 UTC*
+**Languages:**
+![Python](https://img.shields.io/badge/Python-12_repos-0B1F3A?style=flat-square&logo=github) ![JavaScript](https://img.shields.io/badge/JavaScript-2_repos-0B1F3A?style=flat-square&logo=github) ![TypeScript](https://img.shields.io/badge/TypeScript-1_repos-0B1F3A?style=flat-square&logo=github) ![HTML](https://img.shields.io/badge/HTML-1_repos-0B1F3A?style=flat-square&logo=github) ![HCL](https://img.shields.io/badge/HCL-1_repos-0B1F3A?style=flat-square&logo=github) ![Dockerfile](https://img.shields.io/badge/Dockerfile-1_repos-0B1F3A?style=flat-square&logo=github)
+
+**Recently active repositories:**
+- [rabt-care-loop](https://github.com/suhail39ahmed/rabt-care-loop) — Rabt – care-loop orchestrator for Abu Dhabi screening programmes. No result left · `Python` · Updated Nov 16
+- [agentic-procurement](https://github.com/suhail39ahmed/agentic-procurement) — ProcureAI — AI agents negotiate, then PayPal pays safely. Dual-track marketplace · `TypeScript` · Updated Nov 11
+- [suhail39ahmed](https://github.com/suhail39ahmed/suhail39ahmed) — Source for savvysuhail.com and my GitHub profile README. · `HTML` · Updated Nov 08
+
+*Last updated: November 17, 2026*
 
 <!-- STATS_END -->
 
